@@ -1,13 +1,6 @@
 # myNEMO
 
-On Irene :
-  - module load python3/3.11.4
+This software will help you set up NEMO and all accessories (OASIS, XIOS, etc ...) for your experiment
 
-Everything needed to use NEMO efficiently
-
-
-All the steps :
-  - [ ] compile OASIS (if need be)
-  - [ ] compile XIOS : check [instructions](XIOS/README.md)
-  - [ ] compile NEMO : check [instructions](NEMO/README.md)
-  - [ ] run demonstration test WED025 : check [instructions](NEMO/WED025.md)
+1st step : Make sure you have a python environment with [these libraries](environment.yml) installed on your machine
+2nd : Follow the instructions given by the software by launching : python3 start.py
