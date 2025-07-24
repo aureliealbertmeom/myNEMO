@@ -2,7 +2,7 @@
 
 
 
-This software will help you set up NEMO and all accessories (OASIS, XIOS, etc ...) for your experiment
+This software will help you set up NEMO and all its accessories (OASIS, XIOS, etc ...) for your experiment
 
 1st step : Make sure you have a python environment with [these libraries](environment.yml) installed on your machine
 
