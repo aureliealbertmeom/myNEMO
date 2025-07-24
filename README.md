@@ -1,4 +1,8 @@
 # myNEMO
+
+On Irene :
+  - module load python3/3.11.4
+
 Everything needed to use NEMO efficiently
 
 
