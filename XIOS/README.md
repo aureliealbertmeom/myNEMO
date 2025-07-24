@@ -1,4 +1,3 @@
 # XIOS
 
-- [ ] [download XIOS](get_xios.ksh)
-- [ ] [compile it](compile_xios.ksh)
+Here you will find template scripts and examples of scripts adapted to some existing machine and some arch files.
