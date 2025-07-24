@@ -1,0 +1,7 @@
+name: myNEMO
+channels:
+  - pypi
+
+dependencies:
+  - python=3.11.4
+  - inquirer=3.4.0
