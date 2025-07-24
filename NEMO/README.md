@@ -1,4 +1,3 @@
 # NEMO
 
- - [ ] [get NEMO](get_nemo.ksh)
- - [ ] [compile NEMO](compile_WED025.ksh)
+ Here you will find some template scripts and examples of scripts adapted to some real test cases for NEMO compiling and running
