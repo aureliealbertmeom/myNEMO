@@ -1,6 +1,6 @@
-# myNEMO
+# 🐠 myNEMO
 
-🐠
+
 
 This software will help you set up NEMO and all accessories (OASIS, XIOS, etc ...) for your experiment
 
