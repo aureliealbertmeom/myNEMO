@@ -30,8 +30,7 @@
 #  - unix variables "$..." are accpeted and will be evaluated before calling fcm.
 #  - fcm variables are starting with a % (and not a $)
 #
-#%XIOS_HOME           /ccc/work/cont003/gen12020/alberaur/DEV/xios3-trunk-2656
-%XIOS_HOME           /ccc/work/cont003/gen12020/alberaur/DEV/xios-trunk-2430
+%XIOS_HOME           /ccc/work/cont003/gen12020/alberaur/DEV/xios3-trunk-2656
 %OASIS_HOME          $CCCWORKDIR/now/models/oa3mct
 
 %NCDF_INC            -I$NETCDFFORTRAN_INCDIR -I$NETCDF_INCDIR
