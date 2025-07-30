@@ -77,9 +77,9 @@ else:
                 question6 = [ inquirer.Text(q6,message="Which specific tag do you have in mind?") ]
                 answer6 = inquirer.prompt(question6)
                 xios_tag=answer6[q6]
-                scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.sh'
+                scriptname=ls.all_path_dev[machine]+'/myNEMO/XIOS/get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.ksh'
                 if not os.path.exists(scriptname):
-                    templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios_tag.sh'
+                    templatename=ls.all_path_dev[machine]+'/myNEMO/XIOS/template_get_xios_tag.ksh'
                     shutil.copyfile(templatename,scriptname)
                     subprocess.call(["sed", "-i", "-e",  's%VERS%'+str(xios_version2)+'%g',scriptname])
                     subprocess.call(["sed", "-i", "-e",  's%TAG%'+str(xios_tag)+'%g',scriptname])
@@ -87,7 +87,7 @@ else:
             case "no":
                 scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version2)+'.sh'
                 if not os.path.exists(scriptname):
-                    templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios_notag.sh'
+                    templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/template_get_xios_notag.sh'
                     shutil.copyfile(templatename,scriptname)
                     subprocess.call(["sed", "-i", "-e",  's%VERS%'+str(xios_version2)+'%g',scriptname])
                 print('Then use the get_xios'+str(xios_version2)+'.sh script located in the subrepo XIOS to download XIOS')
