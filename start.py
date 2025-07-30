@@ -116,7 +116,7 @@ else:
                     case "Stop":
                         sys.exit("Exiting, bye")
                     case "Continue":
-                        print('You can now modify list.py to add XIOS version '+str(xios_version)+' for machine '+str(machine)
+                        print('You can now modify list.py to add XIOS version '+str(xios_version)+' for machine '+str(machine)+' in all_tag_xios and the associated path in all_path_xios')
 
 #NEMO version
 q8="nemo-version"
