@@ -34,8 +34,8 @@ for tag_nemo in all_tag_nemo['irene']:
 all_arch_nemo={}
 all_arch_nemo['irene']='X64_IRENE'
 
-all_ref_conf={}
-all_ref_conf['NEMO_4.2.2']=['AGRIF_DEMO','AMM12','C1D_PAPA','GYRE_BFM','GYRE_PISCES',
+all_ref_conf_nemo={}
+all_ref_conf_nemo['NEMO_4.2.2']=['AGRIF_DEMO','AMM12','C1D_PAPA','GYRE_BFM','GYRE_PISCES',
                        'ORCA2_ICE_PISCES','ORCA2_OFF_PISCES','ORCA2_OFF_TRC',
                        'ORCA2_SAS_ICE','SPITZ12','WED025','X3_ORCA2_ICE']
 

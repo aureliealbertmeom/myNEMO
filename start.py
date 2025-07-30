@@ -142,7 +142,7 @@ else:
     if not os.path.exists(scriptname):
         templatename=ls.all_path_dev[machine]+'myNEMO/NEMO/get_nemo_tag.sh'
         f.use_template(templatename, scriptname, {'TAG':str(nemo_version)})
-    print('Use the get_nemo_'+str(nemo_version)+'.sh script located in the subrepo NEMO to download the version '+str(nemo_version)+' of NEMO')
+    print('Use the '+str(scriptname)+' script to download '+str(nemo_version))
     q8a="continue"
     question8a = [ inquirer.List(q8a,message="Proceed with the download and if it is successful add it to the list in list.py in all_tag_nemo and hit continue", choices=["Continue","Stop"]) ]
     answer8a = inquirer.prompt(question8a)
@@ -158,7 +158,7 @@ archname=ls.all_path_dev[machine]+'/myNEMO/NEMO/arch/arch-'+str(arch_nemo)+'_'+s
 if not os.path.exists(archname):
     templatename=ls.all_path_dev[machine]+'myNEMO/NEMO/arch/template_arch-'+str(arch_nemo)+'_xios_path.fcm'
     f.use_template(templatename, scriptname, {'PATH_XIOS':str(path_xios)})
-print('Copy the '+str(archname)+' arch file script located in the subrepo NEMO/arch in the arch/CNRS subdirectory of NEMO_'+str(nemo_version))
+print('Copy the '+str(archname)+' arch file to '+str(path_dev)+'/'+str(nemo_version)+'/arch/CNRS')
 
 q9="ref_config"
 choices_nemo_ref_configs=ls.all_ref_conf_nemo[nemo_version]
@@ -167,9 +167,9 @@ answer9 = inquirer.prompt(question9)
 nemo_ref_conf=answer9[q9]
 
 scriptname=ls.all_path_dev[machine]+'/myNEMO/NEMO/compile_nemo_'+str(nemo_ref_conf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)+'.ksh'
-templatename=ls.all_path_dev[machine]+'myNEMO/NEMO/template_compile_config_ref_arch.ksh'
+templatename=ls.all_path_dev[machine]+'/myNEMO/NEMO/template_compile_config_ref_arch.ksh'
 f.use_template(templatename, scriptname, {'ARCH':str(arch_nemo)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf)})
-print('Copy and use the script '+str(scriptname)+' located in the subrepo NEMO to NEMO_'+str(nemo_version)+' repo to compile the '+str(nemo_ref_conf)+' reference with selected version of XIOS ')
+print('Copy and use the script '+str(scriptname)+'  NEMO to '+str(path_dev)+'/'+str(nemo_version)+' to compile the '+str(nemo_ref_conf)+' reference with selected version of XIOS ')
 
 
 
