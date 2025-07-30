@@ -6,11 +6,11 @@ import shutil
 import subprocess
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer  
 import lists as ls
 
 
-#Trivial question to start, ls.allows to exit in case of running by mistake
+#Trivial question to start, allows to exit in case of running by mistake
 q1="start"
 question1 = [ inquirer.List(q1,message="So you want to run a NEMO experiment?",choices=["yes","no"]) ]
 answer1 = inquirer.prompt(question1)
@@ -47,7 +47,7 @@ question3 = [ inquirer.List(q3,message="Do you want to replicate an existing exp
 answer3 = inquirer.prompt(question3)
 match answer3[q3]:
     case "yes":
-        sys.exit("Sorry, no experiments have designed yet")
+        sys.exit("Sorry, no experiments have been designed yet")
 
 #XIOS version
 q4="xios-version"
@@ -77,20 +77,25 @@ else:
                 question6 = [ inquirer.Text(q6,message="Which specific tag do you have in mind?") ]
                 answer6 = inquirer.prompt(question6)
                 xios_tag=answer6[q6]
-                scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.sh'
-                if not os.path.exists(scriptname):
-                    templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios_tag.sh'
-                    shutil.copyfile(templatename,scriptname)
-                    subprocess.call(["sed", "-i", "-e",  's%VERS%'+str(xios_version2)+'%g',scriptname])
-                    subprocess.call(["sed", "-i", "-e",  's%TAG%'+str(xios_tag)+'%g',scriptname])
-                print('Then use the get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.sh script located in the subrepo XIOS to download XIOS')
+                xios_version_tag='XIOS'+str(xios-version2)+'_'+str(xios_tag)
+                if xios_version_tag in ls.all_tag_xios[machine]:
+                    path_xios=ls.all_path_xios[machine][xios_version_tag]
+                    print("Version "+str(xios_version_tag)+" has been downloaded on "+str(machine)+" and is located at "+str(path_xios))
+                else:
+                    scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.sh'
+                    if not os.path.exists(scriptname):
+                        templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios_tag.sh'
+                        shutil.copyfile(templatename,scriptname)
+                        subprocess.call(["sed", "-i", "-e",  's%VERS%'+str(xios_version2)+'%g',scriptname])
+                        subprocess.call(["sed", "-i", "-e",  's%TAG%'+str(xios_tag)+'%g',scriptname])
+                    print('Then use the get_xios'+str(xios_version2)+'-'+str(xios_tag)+'.sh script located in the subrepo XIOS to download XIOS')
             case "no":
                 scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version2)+'.sh'
                 if not os.path.exists(scriptname):
                     templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios_notag.sh'
                     shutil.copyfile(templatename,scriptname)
                     subprocess.call(["sed", "-i", "-e",  's%VERS%'+str(xios_version2)+'%g',scriptname])
-                print('Then use the get_xios'+str(xios_version2)+'.sh script located in the subrepo XIOS to download XIOS')
+                print('Then use the get_xios'+str(xios_version2)+'.sh script located in the subrepo XIOS to download trunk version of XIOS'+str(xios_version2))
         
         q7="continue"
         question7= [ inquirer.List(q7,message="Proceed with the download and if it is successful hit continue", choices=["Continue","Stop"]) ]
@@ -108,8 +113,15 @@ else:
                     shutil.copyfile(templatename,scriptname)
                     subprocess.call(["sed", "-i", "-e",  's%ARCH%'+str(ls.all_arch_xios[machine])+'%g',scriptname])
                     print("Now you just have to compile XIOS using the compile_xios_"+str(ls.all_arch_xios[machine])+".sh script that is available in XIOS subdirectory") 
-
-
+                q7a="continue"
+                question7a = [ inquirer.List(q7a,message="Proceed with the compilation and if it is successful hit continue", choices=["Continue","Stop"]) ]
+                answer7a = inquirer.prompt(question7a)
+                continue_bool1=answer7a[q7a]
+                match continue_bool1:
+                    case "Stop":
+                        sys.exit("Exiting, bye")
+                    case "Continue":
+                        print('You can now modify list.py to add XIOS version '+str(xios_version)+' for machine '+str(machine)
 
 #NEMO version
 q8="nemo-version"
