@@ -1,8 +1,8 @@
 import os
 import re
 import sys
-from pprint import pprint
 import subprocess
+import shutil
 
 sys.path.append(os.path.realpath("."))
 #library for interactions
@@ -29,7 +29,7 @@ machine=answer2[q2]
 match machine:
     case "irene":
         print(str(machine)+" it is !")
-        path_dev=ls.all_path_store[machine]
+        path_dev=ls.all_path_dev[machine]
         path_work=ls.all_path_store[machine]
         path_scratch=ls.all_path_store[machine]
         path_store=ls.all_path_store[machine]
@@ -118,7 +118,8 @@ else:
         
             #A script with the proper arch to compile on this machine
             scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/compile_xios_'+str(arch_xios)+'.sh'
-            #check if the corresponding compile_xios script already existsif not os.path.exists(scriptname):
+            #check if the corresponding compile_xios script already exists
+            if not os.path.exists(scriptname):
                 templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/template_compile_xios_arch.sh'
                 f.use_template(templatename, scriptname, {'ARCH':str(arch_xios)})
             print("Now you just have to compile XIOS using the compile_xios_"+str(arch_xios)+".sh script that is available in XIOS subdirectory") 
@@ -170,20 +171,49 @@ if not os.path.exists(archname):
     f.use_template(templatename, scriptname, {'PATH_XIOS':str(path_xios)})
 print('Copy the '+str(archname)+' arch file to '+str(path_dev)+'/'+str(nemo_version)+'/arch/CNRS')
 
+q8b="continue"
+question8b= [ inquirer.List(q8b,message="Did you copy the arch file for NEMO ?", choices=["Yes","No"]) ]
+answer8b = inquirer.prompt(question8b)
+continue_bool1=answer8b[q8b]
+
+match continue_bool1:
+    case "No":
+        sys.exit("Ok, bye")
+
 #Choose a reference config to start with
 q9="ref_config"
 choices_nemo_ref_configs=ls.all_ref_conf_nemo[nemo_version]
 question9 = [ inquirer.List(q9,message="What reference configuration of NEMO would you like to use?",choices=choices_nemo_ref_configs) ]
 answer9 = inquirer.prompt(question9)
 nemo_ref_conf=answer9[q9]
+config=str(nemo_ref_conf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)
 
 #A script to compile the reference config with proper arch file
-scriptname=ls.all_path_dev[machine]+'/myNEMO/NEMO/compile_nemo_'+str(nemo_ref_conf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)+'.ksh'
-templatename=ls.all_path_dev[machine]+'/myNEMO/NEMO/template_compile_config_ref_arch.ksh'
-f.use_template(templatename, scriptname, {'ARCH':str(arch_nemo)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf)})
+scriptname=ls.all_path_dev[machine]+'/myNEMO/NEMO/compile_nemo_'+str(config)+'.ksh'
+if not os.path.exists(scriptname):
+    templatename=ls.all_path_dev[machine]+'/myNEMO/NEMO/template_compile_config_ref_arch.ksh'
+    f.use_template(templatename, scriptname, {'ARCH':str(arch_nemo)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf)})
 print('Copy and use the script '+str(scriptname)+'  NEMO to '+str(path_dev)+'/'+str(nemo_version)+' to compile the '+str(nemo_ref_conf)+' reference with selected version of XIOS ')
 
+q9b="continue"
+question9b= [ inquirer.List(q9b,message="Did you suceed in compiling NEMO ?", choices=["Yes","No"]) ]
+answer9b = inquirer.prompt(question9b)
+continue_bool1=answer9b[q9b]
 
+match continue_bool1:
+    case "No":
+        sys.exit("Ok, bye")
+    case "Yes":
+        print('We are going to archive this new config by keeping its ccp keys file and MY_SRC files if there are any')
+        path_config_nemo=ls.all_path_dev[machine]+'/'+str(nemo_version)+'/cfgs/'+str(config)
+        path_config_my=ls.all_path_dev[machine]+'/myNEMO/NEMO/'+str(nemo_version)+'/'+str(config)
+        os.makedirs(path_config_my)
+        cppname='cpp_'+str(config)+'.fcm'
+        shutil.copyfile(path_config_nemo+'/'+cppname,path_config_my+'/'+cppname)
+        if len(os.listdir(path_config_nemo+'/MY_SRC')) > 0:
+            os.makedirs(path_config_my+'/MY_SRC')
+            for filemy in os.listdir(path_config_nemo+'/MY_SRC'):
+                shutil.copyfile(path_config_nemo+'/MY_SRC/'+filemy,path_config_my+'/MY_SRC/'+filemy)
 
 
 
@@ -200,7 +230,7 @@ print('Copy and use the script '+str(scriptname)+'  NEMO to '+str(path_dev)+'/'+
 #
 #match new_question:
 #    case "yes":
-#        pprint("")
+#        print("")
 #
 #    case "no":
 #        sys.exit("")
