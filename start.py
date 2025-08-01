@@ -186,6 +186,10 @@ choices_nemo_ref_configs=ls.all_ref_conf_nemo[nemo_version]
 question9 = [ inquirer.List(q9,message="What reference configuration of NEMO would you like to use?",choices=choices_nemo_ref_configs) ]
 answer9 = inquirer.prompt(question9)
 nemo_ref_conf=answer9[q9]
+
+#conf here means more a set of cpp keys but it is associated with a regional configuration as well
+conf=str(nemo_ref_conf)
+#config here is more a set of compilation parameter (intel, xios version and cpp keys)
 config=str(nemo_ref_conf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)
 
 #A script to compile the reference config with proper arch file
@@ -214,6 +218,42 @@ match continue_bool1:
             os.makedirs(path_config_my+'/MY_SRC')
             for filemy in os.listdir(path_config_nemo+'/MY_SRC'):
                 shutil.copyfile(path_config_nemo+'/MY_SRC/'+filemy,path_config_my+'/MY_SRC/'+filemy)
+        print('You can now update the list of configs for '+str(nemo_version)+' on '+str(machine))
+        q9c="continue"
+        question9c = [ inquirer.List(q9c,message="Are you ready to continue ?",choices=["yes","no"]) ]
+        answer9c = inquirer.prompt(question9c)
+        match answer9c:
+            case "no":
+                sys.exit("Ok, bye")
+
+
+
+#Defining the experiment : here experiment means a simulation
+q10="config_exp"
+choices_nemo_config_exp=ls.all_exp_config_nemo[machine][nemo_version][config]
+choices_new_config_exp=choices_nemo_config_exp.copy()
+choices_new_config_exp.append("EXP00")
+
+question10 = [ inquirer.List(q10,message="Which existing simulation do you want to replicate ? (if none exists for this config on this machine, choose default EXP00 provided with NEMO )", choices=choices_new_config_exp) ]
+answer10 = inquirer.prompt(question10)
+ref_exp=answer10[q10]
+
+if ref_exp == "EXP00":
+    print('We are going to run the default EXP00')
+    exp=ref_exp
+else:
+    q10a="new_config_exp"
+    question10a = [ inquirer.Text(q10a,message="How should we call this new experiment?") ]
+    answer10a = inquirer.prompt(question10a)
+    exp=answer10a[q10a]    
+
+print('Lets install this new experiment :')
+tmpdir_exp=path_scratch+'/'+
+sdir_exp_work=path_work+'/'+
+rdir_exp_work=path_work+'/'+
+sdir_exp_store=path_store+'/'+
+rdir_exp_store=path_store+'/'+
+
 
 
 
@@ -223,14 +263,30 @@ match continue_bool1:
 
 
 #New question
-#qxx=""
-#questionxx = [ inquirer.List(qxx,message="?",choices=["yes","no"]) ]
-#answerxx = inquirer.prompt(questionxx)
-#new_question=answerxx[qxx]
-#
-#match new_question:
-#    case "yes":
-#        print("")
-#
-#    case "no":
-#        sys.exit("")
+# Choose from a list :
+
+#qx=""
+#choicesx=
+#choicesx_x=choicesx.copy()
+#choicesx_x.append("else")
+#questionx = [ inquirer.List(qx,message="?",choices=choicesx_x) ]
+#answerx = inquirer.prompt(questionx)
+#=answerx[qx]
+
+#Yes no question
+
+#qx="continue"
+#questionx = [ inquirer.List(qx,message="hit continue", choices=["Continue","Stop"]) ]
+#answerx = inquirer.prompt(questionx)
+#continue_boolx=answerx[qx]
+#match continue_boolx:
+#        case "Stop":
+#            sys.exit("Exiting, bye")
+
+# Get an answer
+#qx=""
+#questionx = [ inquirer.Text(qx,message="?") ]
+#answerx = inquirer.prompt(questionx)
+#=answerx[qx]
+
+

@@ -1,0 +1,7 @@
+- name : WED025-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS2_2430
+  nemo: NEMO_4.2.2
+  config: WED025
+

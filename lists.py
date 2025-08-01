@@ -39,6 +39,22 @@ all_ref_conf_nemo['NEMO_4.2.2']=['AGRIF_DEMO','AMM12','C1D_PAPA','GYRE_BFM','GYR
                        'ORCA2_ICE_PISCES','ORCA2_OFF_PISCES','ORCA2_OFF_TRC',
                        'ORCA2_SAS_ICE','SPITZ12','WED025','X3_ORCA2_ICE']
 
+all_geo_ref_conf_nemo={}
+all_geo_ref_conf_nemo['WED025']='WED025'
+all_geo_ref_conf_nemo['X3_ORCA2_ICE']='ORCA2'
+
+all_geo_conf_nemo={}
+all_geo_conf_nemo['irene']=['ORCA2','WED025','eORCA05.L121','eORCA36.L121']
+
+all_conf_nemo={}
+all_conf_nemo['irene']={}
+all_conf_nemo['irene']['NEMO_4.2.2']=['WED025_X64_IRENE_XIOS2_2430']
+
+all_exp_config_nemo={}
+all_exp_config_nemo['irene']={}
+all_exp_config_nemo['irene']['NEMO_4.2.2']={}
+all_exp_config_nemo['irene']['NEMO_4.2.2']['WED025_X64_IRENE_XIOS2_2430']={}
+
 
 
 
