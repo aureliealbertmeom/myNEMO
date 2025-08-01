@@ -5,8 +5,11 @@ from pprint import pprint
 import subprocess
 
 sys.path.append(os.path.realpath("."))
+#library for interactions
 import inquirer  
+#module gathering all the parameters, path etc
 import lists as ls
+#some functions
 import functions as f
 
 #Trivial question to start, allows to exit in case of running by mistake
@@ -57,10 +60,12 @@ question4 = [ inquirer.List(q4,message="What version of XIOS would you like to u
 answer4 = inquirer.prompt(question4)
 xios_version_tag=answer4[q4]
 
+#If XIOS version is already installed and compiled
 if xios_version_tag in ls.all_tag_xios[machine]:
     path_xios=ls.all_path_xios[machine][xios_version_tag]
     print("Version "+str(xios_version_tag)+" has been compiled on "+str(machine)+" and is located at "+str(path_xios))
 
+#A new version of XIOS for this machine has to be downloaded and compiled
 else:
     print("We are going to compile XIOS on "+str(machine))
     q5="xios-version2"
@@ -72,6 +77,7 @@ else:
     answer6a = inquirer.prompt(question6a)
     xios_tag_bool=answer6a[q6a]
     match xios_tag_bool:
+        #A specific tag is identified
         case "yes":
             q6="xios-tag"
             question6 = [ inquirer.Text(q6,message="Which specific tag do you have in mind?") ]
@@ -83,6 +89,7 @@ else:
                 f.use_template(templatename, scriptname, {'VERS':str(xios_version),'TAG':str(xios_tag)})
             print('Then use the get_xios'+str(xios_version)+'-'+str(xios_tag)+'.sh script located in the subrepo XIOS to download XIOS')
             xios_version_tag=str(xios_version)+'-'+str(xios_tag)
+        #No specific tag, we take the current trunk version
         case "no":
             scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/get_xios'+str(xios_version)+'.sh'
             if not os.path.exists(scriptname):
@@ -99,21 +106,23 @@ else:
         case "Stop":
             sys.exit("Exiting, bye")
         case "Continue":
+            #We want to know which tag we end up with
             if xios_tag_bool == "no":
                 q7a="tag"   
                 question7a = [ inquirer.Text(q7a,message="Which tag did you end up with? (svn info will tell you)") ]
                 answer7a = inquirer.prompt(question7a)
                 xios_tag=answer7a[q7a]
                 xios_version_tag=str(xios_version)+'-'+str(xios_tag)
-                
+            #The path depends on the version AND tag    
             path_xios=ls.all_path_dev[machine]+'/xios'+str(xios_version)+'-trunk-'+str(xios_tag)
         
-            #check if the corresponding compile_xios script already exists
+            #A script with the proper arch to compile on this machine
             scriptname=ls.all_path_dev[machine]+'myNEMO/XIOS/compile_xios_'+str(arch_xios)+'.sh'
-            if not os.path.exists(scriptname):
+            #check if the corresponding compile_xios script already existsif not os.path.exists(scriptname):
                 templatename=ls.all_path_dev[machine]+'myNEMO/XIOS/template_compile_xios_arch.sh'
                 f.use_template(templatename, scriptname, {'ARCH':str(arch_xios)})
-                print("Now you just have to compile XIOS using the compile_xios_"+str(arch_xios)+".sh script that is available in XIOS subdirectory") 
+            print("Now you just have to compile XIOS using the compile_xios_"+str(arch_xios)+".sh script that is available in XIOS subdirectory") 
+            #Compilation is complete
             q7b="continue"
             question7b = [ inquirer.List(q7b,message="Proceed with the compilation and if it is successful hit continue", choices=["Continue","Stop"]) ]
             answer7b = inquirer.prompt(question7b)
@@ -132,10 +141,11 @@ question8 = [ inquirer.List(q8,message="What version of NEMO would you like to u
 answer8 = inquirer.prompt(question8)
 nemo_version=answer8[q8]
 
+#Existing NEMO version on this machine
 if nemo_version in ls.all_tag_nemo[machine]:
     path_nemo=ls.all_path_nemo[machine][nemo_version]
     print("Version "+str(nemo_version)+" has been downloaded on "+str(machine)+" and is located at "+str(path_nemo))
-
+#Download a new version
 else:
     print("We are going to download NEMO version "+str(nemo_version)+" on "+str(machine))
     scriptname=ls.all_path_dev[machine]+'myNEMO/NEMO/get_nemo_'+str(nemo_version)+'.sh'
@@ -151,21 +161,23 @@ else:
         case "Stop":
             sys.exit("Exiting, bye")
 
-
+#Compilation of a ref case
 print('Now we are going to compile the selected version of NEMO with the previously selected version of XIOS')
-
+#Looking for the proper arch file + adding the xios version in it
 archname=ls.all_path_dev[machine]+'/myNEMO/NEMO/arch/arch-'+str(arch_nemo)+'_'+str(xios_version_tag)+'.fcm'
 if not os.path.exists(archname):
     templatename=ls.all_path_dev[machine]+'myNEMO/NEMO/arch/template_arch-'+str(arch_nemo)+'_xios_path.fcm'
     f.use_template(templatename, scriptname, {'PATH_XIOS':str(path_xios)})
 print('Copy the '+str(archname)+' arch file to '+str(path_dev)+'/'+str(nemo_version)+'/arch/CNRS')
 
+#Choose a reference config to start with
 q9="ref_config"
 choices_nemo_ref_configs=ls.all_ref_conf_nemo[nemo_version]
 question9 = [ inquirer.List(q9,message="What reference configuration of NEMO would you like to use?",choices=choices_nemo_ref_configs) ]
 answer9 = inquirer.prompt(question9)
 nemo_ref_conf=answer9[q9]
 
+#A script to compile the reference config with proper arch file
 scriptname=ls.all_path_dev[machine]+'/myNEMO/NEMO/compile_nemo_'+str(nemo_ref_conf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)+'.ksh'
 templatename=ls.all_path_dev[machine]+'/myNEMO/NEMO/template_compile_config_ref_arch.ksh'
 f.use_template(templatename, scriptname, {'ARCH':str(arch_nemo)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf)})
