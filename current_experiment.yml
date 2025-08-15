@@ -8,4 +8,8 @@
   nit0: 1
   nitend: 1116
   add_key: key_xios3
+  purpose: "Running WED025 with XIOS3"
+  success: True
+  remarks: ""
+  date: "08/08/2025"
        

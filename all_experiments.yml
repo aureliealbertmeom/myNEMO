@@ -5,13 +5,21 @@
   nemo: NEMO_4.2.2
   nemo_ref: WED025
   prev_exp: EXP00
-
+  date: "04/08/2025"
+  purpose: "First Test on Irene with myNEMO cfg mngr"
+  sucess: True
+  remarks: "One month duration instead of one year because not enough forcing files are provided, bug in the reference on the name of the runoff file name"
+      
 - name : WED025-EXP02
   machine: irene
   compiler: X64_IRENE
   xios: XIOS2_2430
   nemo: NEMO_4.2.2
   prev_exp: EXP01
+  date: "06/08/2025"
+  purpose: "Second test with myNEMO, reproducing an existing exp"
+  success: True
+  remarks: "Name of the experiment is changed so that the outputs and restarts are distinguishable"
 
 - name : ORCA2-EXP01
   machine: irene
@@ -20,6 +28,10 @@
   nemo: NEMO_4.2.2
   nemo_ref: X3_ORCA2_ICE
   prev_exp: EXP00
+  date: "07/08/2025"
+  purpose: "First test of XIOS3 on Irene with the dedicated nemo reference config ORCA2 with NEMO 422"
+  success: False
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
 
 - name : ORCA2-EXP02
   machine: irene
@@ -29,6 +41,10 @@
   nemo_ref: X3_ORCA2_ICE_PISCES
   prev_exp: EXP00
   del_key: key_top
+  date: "07/08/2025"
+  purpose: "Trying to debug ORCA2-EXP01 by removing the top cpp key and switching to NEMO 5"
+  success: False
+  remarks: "Error Please verify that both the operating system and the processor support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3, SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT, AVX2, AVX512F, AVX512DQ, ADX, AVX512CD, AVX512BW and AVX512VL instructions, realized later that the compilation option -xCORE-AVX512 was responsible"
 
 - name : ORCA2-EXP03
   machine: irene
@@ -38,6 +54,10 @@
   nemo_ref: X3_ORCA2_ICE_PISCES
   prev_exp: EXP00
   del_key: key_top
+  date: "08/08/2025"
+  purpose: "Debug prev exp with updating XIOS3"
+  success: True
+  remarks: "Adding some cores for xios in server mode (12 were specified in iodef in pool) really fixed the freezing issues"
 
 - name : WED025-EXP03
   machine: irene
@@ -47,5 +67,9 @@
   nemo_ref: WED025
   prev_exp: EXP00
   nit0: 1
-  nitend: 2232 
+  nitend: 2232
+  date: "08/08/2025"
+  purpose: "Running reference case WED025 with NEMO5"
+  success: False
+  remarks: "Same forcing issue than before, time step have been doubled between NEMO422 and NEMO5, so my number of time steps are more than the length of focing files (1month)" 
        

@@ -37,6 +37,15 @@ def continue_question(message):
         case "Continue":
             print("We will proceed with the next step")
 
+def open_question(message):
+    """
+    Ask an open question to the user and retrieve their answer
+    """
+    qx="question"
+    questionx = [ inquirer.Text(qx,message=message) ]
+    answerx = inquirer.prompt(questionx)
+    return answerx[qx]
+
 def read_single_yaml(filei):
     """
     Read a yaml file and returns a dictionary
