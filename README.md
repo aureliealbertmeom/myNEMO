@@ -1,7 +1,7 @@
 # 🐠 myNEMO
 
 This software will help you set up NEMO and all its accessories (OASIS, XIOS, etc ...) for your experiment.
-It will also generate a webpage gathering all the informations on your experiment : aureliealbertmeom.github.io/myNEMO
+It will also generate a webpage gathering all the informations on your experiment : https://aureliealbertmeom.github.io/myNEMO
 
  - 1st step : Make sure you have a python environment with [these libraries](environment.yml) installed on your machine
 
