@@ -2,4 +2,4 @@
 
 source ~/.bashrc
 load_intel
-./makenemo -m 'ARCH' -r REFCONF -n REFCONF_ARCH -j 8 ## --clean_config
+./makenemo -m 'X64_IRENE_XIOS2_2430' -r WED025 -n WED025_X64_IRENE_XIOS2_2430 -j 8 ## --clean

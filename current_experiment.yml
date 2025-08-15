@@ -1,0 +1,11 @@
+- name : WED025-EXP04
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025
+  prev_exp: EXP03
+  nit0: 1
+  nitend: 1116
+  add_key: key_xios3
+       

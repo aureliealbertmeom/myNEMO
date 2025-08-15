@@ -1,0 +1,51 @@
+- name : WED025-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS2_2430
+  nemo: NEMO_4.2.2
+  nemo_ref: WED025
+  prev_exp: EXP00
+
+- name : WED025-EXP02
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS2_2430
+  nemo: NEMO_4.2.2
+  prev_exp: EXP01
+
+- name : ORCA2-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2656
+  nemo: NEMO_4.2.2
+  nemo_ref: X3_ORCA2_ICE
+  prev_exp: EXP00
+
+- name : ORCA2-EXP02
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2656
+  nemo: NEMO_5.0
+  nemo_ref: X3_ORCA2_ICE_PISCES
+  prev_exp: EXP00
+  del_key: key_top
+
+- name : ORCA2-EXP03
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: X3_ORCA2_ICE_PISCES
+  prev_exp: EXP00
+  del_key: key_top
+
+- name : WED025-EXP03
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS2_2430
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  prev_exp: EXP00
+  nit0: 1
+  nitend: 2232 
+       

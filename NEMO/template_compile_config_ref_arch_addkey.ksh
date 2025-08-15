@@ -2,4 +2,4 @@
 
 source ~/.bashrc
 load_intel
-./makenemo -m 'ARCH' -r REFCONF -n REFCONF_ARCH -j 8 ## --clean_config
+./makenemo -m 'ARCH' -r REFCONF -n REFCONF_ARCH --add_key 'KEYADD' -j 8  ## --clean_config

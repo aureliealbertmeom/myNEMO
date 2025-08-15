@@ -1,0 +1,6 @@
+- name : job1
+  exp: ORCA2-EXP03
+  nit0: 1
+  nitend: 5840
+  dt: 5400
+
