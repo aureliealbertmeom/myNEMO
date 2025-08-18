@@ -14,10 +14,10 @@
                 </ul>
                 Motivations and results :
                 <ul>
-                    <li> Purpose : <font color="LightSkyBlue">{{ c.purpose }}</font> </li>
-                    <li> {% if c.success == "Oui" %} <font color="LightSeaGreen">and it was a success </font> {% endif %} </li>
-                    <li> {% if c.success == "Non" %} <font color="LightCoral">and it failed </font> {% endif %} </li>
-                    <li> Remarks : <font color="LightSlateGrey">{{ c.remarks }} </font>  </li>
+                    <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
+                    <li> {% if c.success == "Oui" %} Result : <font color="Teal"> Success </font> {% endif %} </li>
+                    <li> {% if c.success == "Non" %} Result : <font color="Tomato"> Failed </font> {% endif %} </li>
+                    <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
                 </ul>
             </div>
         </div>
