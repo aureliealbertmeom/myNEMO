@@ -2,22 +2,20 @@
 {% assign confcase = c.name | split: "-" %}
 
 {% if c.name == "WED025-EXP03" %} 
-<div class="row justify-content-center">
 
-                Technical aspects :
+                <h2> Technical aspects : </h2>
                 <ul>
                     <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
                     <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
                     <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
                     <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
                 </ul>
-                Motivations and results :
+                <h2>Motivations and results : </h2>
                 <ul>
                     <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
                     {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li>{% endif %} 
                     {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li>{% endif %} 
                     <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
                 </ul>
-</div>
 {% endif %}
 {% endfor %}
