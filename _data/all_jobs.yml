@@ -1,0 +1,10 @@
+- job: 9882298
+  exp : WED025-EXP03
+  dt : 2400
+  nit0: 1
+  nitend: 2232
+  date: "08/08/2025"
+  success: Non
+  remarks: "Same forcing issue than before, time step have been doubled between NEMO422 and NEMO5, so my number of time steps are more than the length of focing files (1month)" 
+       
+  

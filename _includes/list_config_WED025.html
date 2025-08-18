@@ -1,10 +1,12 @@
 {% for c in site.data.all_experiments %}
 
-{% if c.nemo_ref == "WED025" %} 
+{% assign config = c.name | split: "-" %}
+{% if config[0] == "WED025" %} 
+
 <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title h3">{{ c.name }}</h2>
+                <h2 class="card-title h3"> <a href="https://aureliealbertmeom.github.io/myNEMO/content/experiments/{{ c.name }}.html"> </a>{{ c.name }}</h2>
             </div>
         </div>
 </div>

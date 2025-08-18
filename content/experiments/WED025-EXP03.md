@@ -1,5 +1,8 @@
-{% for c in site.data.all_experiments %}
-{% assign confcase = c.name | split: "-" %}
+---
+section_id: Experiments
+nav_order: 3
+title: WED025-EXP03
+---
 
 <div class="row justify-content-center">
         <div class="card">
@@ -22,4 +25,6 @@
             </div>
         </div>
 </div>
-{% endfor %}
+
+{% include list_jobs_WED025-EXP03.html %}
+

@@ -1,6 +1,6 @@
 ---
 nav_order: 1
-title: Experiments
+title: All Experiments
 ---
 
 Here is the list of all experiments produced with NEMO :

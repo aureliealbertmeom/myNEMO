@@ -1,0 +1,21 @@
+{% for c in site.data.all_jobs %}
+
+{% if c.exp == "WED025-EXP03" %} 
+<div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title h3">{{ c.name }}</h2>
+                Job  :
+                <ul>
+                    <li> Number : {{ cc.job }}  </li>
+                    <li> was launched on  : {{ c.date }} </li>
+                    <li> performed the exp {{ c.exp }} from time-step {{ c.nit0 }} to {{ c.nitend }} with a time-step of {{ c.dt }} seconds </li>
+                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> {% endif %} </li>
+                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> {% endif %} </li>
+                    {% if c.remarks %} <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font> {% endif %} </li>
+                </ul>
+            </div>
+        </div>
+</div>
+{% endif %}
+{% endfor %}
