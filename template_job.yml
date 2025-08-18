@@ -1,0 +1,17 @@
+- nb:         #the number of jobs for this exp
+  job:        #the jobid, to be filled post run
+  exp :       #name of the experiment (should be the same than in current_exp.yml)
+  dt :        #time-step  for this part of the run, in seconds
+  nit0:       #time step start
+  nitend:     #time step end
+  node:       #number of nodes requested
+  cores:      #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: # number of cores for NEMo
+  xios_cores: # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time:       # time limit for the job
+  date:       # date of launch
+  success:    #Oui or Non, to be filled post run 
+  remarks: 
+  cpu_time:   # Total CPU in h, to be filled post run
+  real_time:  # Elapse time in seconds, to be filled post run
+  

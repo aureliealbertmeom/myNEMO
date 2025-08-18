@@ -66,10 +66,18 @@
   nemo: NEMO_5.0
   nemo_ref: WED025
   prev_exp: EXP00
-  nit0: 1
-  nitend: 2232
-  date: "08/08/2025"
   purpose: "Running reference case WED025 with NEMO5"
   success: Non
   remarks: "Same forcing issue than before, time step have been doubled between NEMO422 and NEMO5, so my number of time steps are more than the length of focing files (1month)" 
        
+- name : WED025-EXP04
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025
+  prev_exp: EXP03
+  add_key: key_xios3
+  purpose: "Running WED025 with XIOS3"
+  success: True
+  remarks: ""

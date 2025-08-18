@@ -1,4 +1,5 @@
 import os
+import glob
 import re
 import sys
 import subprocess
@@ -10,8 +11,9 @@ import lists as ls
 #some functions
 import functions as f
 
-#Get the parameters for this new experiment
+#Get the parameters for this new experiment and the specific job we are going to launch
 dic_exp=f.read_single_yaml("current_experiment.yml")
+dic_job=f.read_single_yaml("current_job.yml")
 
 machine=dic_exp['machine']
 xios_version_tag=dic_exp['xios']
@@ -19,8 +21,10 @@ nemo_version=dic_exp['nemo']
 name=dic_exp['name']
 [config, new_exp]=name.split('-')
 ref_exp=dic_exp['prev_exp']
-nit0=dic_exp['nit0']
-nitend=dic_exp['nitend']
+nit0=dic_job['nit0']
+nitend=dic_job['nitend']
+jobnb=dic_job['nb']
+
 
 if "nemo_ref" in dic_exp:
     #We will use a reference simulation provided by NEMO
@@ -196,11 +200,27 @@ for filexp in os.listdir(path_ref_exp):
             shutil.copyfile(path_ref_exp+'/'+filexp,tmpdir_exp+'/'+filexp)
             subprocess.call(["sed", "-i", "-e",  's/'+str(ref_exp)+'/'+str(new_exp)+'/g', tmpdir_exp+'/'+filexp])
 
+#We need to manage the segment of the exp (init or restart + time steps)
+file_nam_temp=tmpdir_exp+'/template_namelist_cfg'
+if nit0 == 1:
+    print("We start from init, we generate a template namelist to manage the following segments")
+    shutil.copyfile(tmpdir_exp+'/namelist_cfg',file_nam_temp)
+    print("Go modify the "+str(file_nam_temp)+" file, so that nn_it000, nn_itend and ln_rstart are filled with NIT000, NITEND and RESTART") 
+    f.continue_question('Hit Continue when it is done')
+    f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'false'})
+else:
+    print("We are continuing an existing exp, the template namelist should exist")
+    if os.path.exists(file_nam_temp):
+        f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'true'})
+    else:
+        f.continue_question("No template namelist, check all is correct and hit Continue to go on")
+
+
 #We need xios
 if not os.path.exists(tmpdir_exp+'/xios'):
     os.symlink(path_xios+'/bin/xios_server.exe', tmpdir_exp+'/xios')
 
-#Gather the forcing files and job options
+#Gather the forcing files
 list_file=path_mynemo+'/NEMO/CONFIGS/list_files.yml'
 alldics=f.read_multiple_yaml(list_file)
 for dic in np.arange(len(alldics)):
@@ -223,14 +243,75 @@ else:
     for dic in np.arange(len(alldics)):
         if alldics[dic]['name'] == config+'-'+new_exp:
             all_files=alldics[dic]['all_files']
-            [node,core,time,core_xios,core_nemo]=alldics[dic]['job']
     for filefrc in all_files:
         if not os.path.exists(tmpdir_exp+'/'+filefrc):
             path_input=path_work+'/'+str(config)+'/'+str(config)+'-I'
             os.symlink(path_input+'/'+filefrc, tmpdir_exp+'/'+filefrc)
 
+# Restarts or no restarts ?
+core_nemo=dic_job['nemo_cores']
+if nit0 == 1:
+    print("We start from init, no restarts are needed")
+else:
+    print("We are continuing an existing exp, we need restarts")
+    nitm1=int(nit0)-1
+    nitm18="{:08d}".format(nitm1)
+    #Check for restart.nc
+    if os.path.exists(tmpdir_exp+'/restart.nc'):
+        #Check if correct restart
+        sourcelink=os.path.realpath(tmpdir_exp+'/restart.nc')
+        if sourcelink != tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc':
+            print('Wrong restart, we need modify it')
+            linkrst_bool=True
+        else:
+            linkrst_bool=False
+    else:
+        linkrst_bool=True
+        #Check for restart.nc with recombined restarts
+        if not os.path.exists(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc'):
+            #Check for subdomain restarts
+            if len(glob.glob(tmpdir_exp+'/'+name+'_*'+str(nitm1)+'_restart*nc')) > 0:
+                print("We need to recombine restarts")
+                #Looking for rebuild_nemo tool
+                if not os.path.exists(path_nemo+'/tools/REBUILD_NEMO/rebuild_nemo'):
+                    print("We need to compile the rebuild tool")
+                    compilerebuild=path_nemo+'/tools/compile_rebuild_'+compiler+'.ksh'
+                    templatename=path_mynemo+'/NEMO/template_compile_tool.ksh'
+                    f.use_template(templatename, compilerebuild, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'TOOL':'REBUILD_NEMO','PATH':path_nemo+'/tools'})
+                    subprocess.call(["chmod", "+x", compilerebuild])
+                    f.continue_question('We are about to compile REBUILD_NEMO in '+path_nemo+'/tools/ check that everything is ok and hit Continue to proceed')
+                    subprocess.run(compilerebuild,shell=True)
+                    f.continue_question('If compilation went ok, hit Continue so that the script can be saved')
+                    shutil.copyfile(compilerebuild,path_mynemo+'/NEMO/compile_rebuild_'+compiler+'_'+str(xios_version_tag)+'.ksh')
+                scriptrebuirst=tmpdir_exp+'/job_rebuild_restart'+str(jobnb)+'.ksh'
+                templatename=path_mynemo+'/NEMO/job_rebuild_restart_irene.ksh'
+                f.use_template(templatename, scriptrebuirst, {'TMPDIR':tmpdir_exp,'PATH_REBUILD':path_nemo+'/tools/REBUILD_NEMO','BASE':name+'_'+str(nitm18)+'_restart','DOMAINS':core_nemo})
+                subprocess.call(["chmod", "+x",scriptrebuirst])
+                f.continue_question('We are about to recombine restarts, hit Continue if that is ok')
+                subprocess.call([jobsub,compilerebuild])
+            #No subdomain restarts
+            else:
+                print('There are no restart files in '+tmpdir_exp+', we will check the -R directory')
+                if len(glob.glob(rdir_exp_work+'/'+name+'_*'+str(nitm1)+'_restart*')) > 0:
+                    print('Lets bring them back to tmpdir')
+                else:
+                    sys.exit('No restarts have been found at all, we have to stop')
+    #Recombined restart exists
+    if linkrst_bool == True:
+        os.symlink(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc',tmpdir_exp+'/restart.nc')
+        if os.path.exists(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart_ice.nc'):
+            os.symlink(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart_ice.nc',tmpdir_exp+'/restart_ice.nc')
+
+
 #Generate the job 
-jobname=tmpdir_exp+'/job.ksh'
+
+#Job parameters
+node=dic_job['node']
+core=dic_job['cores']
+time=dic_job['time']
+core_xios=dic_job['xios_cores']
+
+jobname=tmpdir_exp+'/job'+str(jobnb)+'.ksh'
 if not os.path.exists(jobname):
     if int(core_xios) > 0:
         jobtemplate=path_mynemo+'/NEMO/job_multi_'+machine+'.ksh'
@@ -242,24 +323,24 @@ if not os.path.exists(jobname):
             core_xiosm1=int(core_xios)-1
             cores_m1=int(core)-1
             if int(core_xios)+int(core_nemo) != int(core):
-                sys.exit('Wrong repartition of cores etween nemo and xios')
+                sys.exit('Wrong repartition of cores between nemo and xios')
             else:
                 f.use_template(mpmdtemplate, mpmdname, {'XIOS':str(core_xiosm1),'NEMO1':core_xios,'NEMO2':coresm1})
                 subprocess.call(["chmod", "+x", mpmdname])
     else:
         jobtemplate=path_mynemo+'/NEMO/job_'+machine+'.ksh'
-        f.use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+name})
+        f.use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+name,'KK':jobnb})
         subprocess.call(["chmod", "+x", jobname])
 
 
 #We also set up the output and restart job before launching
-joboname=tmpdir_exp+'/job_output.ksh'
+joboname=tmpdir_exp+'/job_output'+str(jobnb)+'.ksh'
 if not os.path.exists(joboname):
     jobotemplate=path_mynemo+'/NEMO/job_output_'+machine+'.ksh'
     f.use_template(jobotemplate, joboname, {'TMPDIR':tmpdir_exp,'CONFCASE':name,'SDIR':sdir_exp_work})
     subprocess.call(["chmod", "+x", joboname])
 
-jobrname=tmpdir_exp+'/job_restart.ksh'
+jobrname=tmpdir_exp+'/job_restart'+str(jobnb)+'.ksh'
 if not os.path.exists(jobrname):
     jobrtemplate=path_mynemo+'/NEMO/job_restart_'+machine+'.ksh'
     f.use_template(jobrtemplate, jobrname, {'TMPDIR':tmpdir_exp,'CONFCASE':name,'NITEND':nitend,'RDIR':rdir_exp_work})
@@ -267,10 +348,10 @@ if not os.path.exists(jobrname):
 
 
 #Launch the main job
-runname=tmpdir_exp+'/run.ksh'
+runname=tmpdir_exp+'/run'+str(jobnb)+'.ksh'
 if not os.path.exists(runname):
     runtemplate=path_mynemo+'/NEMO/run_'+machine+'.ksh'
-    f.use_template(runtemplate, runname, {'SUB':jobsub,'TMPDIR':str(tmpdir_exp)})
+    f.use_template(runtemplate, runname, {'SUB':jobsub,'TMPDIR':str(tmpdir_exp),'KK':jobnb})
     subprocess.call(["chmod", "+x", runname])
 
 f.continue_question('We are about to launch the job in '+tmpdir_exp+' check that everything is ok and hit Continue to proceed')

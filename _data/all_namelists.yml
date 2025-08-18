@@ -1,0 +1,42 @@
+- exp : WED025-EXP01
+  date_start : 20000101
+  restart : False
+  domain_file : domain_cfg.nc
+  mesh_file : False
+  initt_file : ['WED025_init_JRA_200001.nc',' -12',' votemper',' false',' true',' yearly']
+  inits_file : ['WED025_init_JRA_200001.nc',' -12',' vosaline',' false',' true',' yearly']
+  dmp_file : 0
+  forcing_atm : 
+        - typ: JRA
+        - wndi_file: ['u10_JRA',' 3',' uas_10m',' true',' false',' yearly',' weights_bicubic_JRA.nc']
+        - wndj_file: ['v10_JRA',' 3',' vas_10m',' true',' false',' yearly',' weights_bicubic_JRA.nc']
+        - qsr_file: ['rsds_JRA',' 3',' rsds',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - qlw_file: ['rlds_JRA',' 3',' rlds',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - tair_file: ['t10_JRA',' 3',' tas_10m',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - humi_file: ['q10_JRA',' 3',' huss_10m',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - prec_file: ['precip_JRA',' 3',' prto',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - snow_file: ['snow_JRA',' 3',' prsn',' true',' false',' yearly',' weights_bilin_JRA.nc']
+        - slp_file: ['slp_JRA',' 3',' psl',' true',' false',' yearly',' weights_bilin_JRA.nc']
+  chla_file : ['2',' chlorophyll_WED025.nc',' -1',' CHLA',' true',' true',' yearly']
+  runoff_file : ['WED025_runoff.nc',' -1',' runoff',' true',' true',' yearly']
+  isf : true
+  isfcav_mlt : ['true',' isfmlt_cav',' -12',' fwflisf',' false',' true',' yearly']
+  isfpar_mlt : 
+          - param: true
+          - sn_isfpar_zmax: ['isfmlt_par','']
+          - sn_isfpar_zmin: ['isfmlt_par','']
+          - sn_isfpar_fwf: ['isfmlt_par','']
+          - sn_isfpar_Leff: ['isfmlt_par','']
+  lat_mom_bc : no_slip
+  tide : ['True']
+  tide_const : ['M2','S2','K1','O1']
+  bdy : ['True']
+  bdy_coord_file : ['coordinates_bdy_WED025.nc']
+  bdy_file : ['WED025_bdy']
+  drag : ['nonlin',' 2.5e-3',' 2.5e-3']
+  ocean_eos : ['teos10']
+  tra_adv : ['fct',' 2',' 2']
+  tra_ldf : ['lap',' iso',' 20',' 0.011']
+  dyn_adv : ['vector',' een',' isf',' split-expl']
+  dyn_ldf : ['bilap',' hor',' 20',' 0.0838']
+  zdf : ['tke','evd','0','10','1.2e-4','2e-06','0','1','meansit']

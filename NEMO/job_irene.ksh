@@ -25,8 +25,8 @@ if [[ "$nbe" -eq '0' ]]; then
         if [[ "$nba" -eq '4' ]]; then
 		mkdir -p CONFEXP
 		cp *xml namelist* CONFEXP/.
-	        ccc_msub job_output.ksh
-	        ccc_msub job_restart.ksh
+	        ccc_msub job_outputKK.ksh
+	        ccc_msub job_restartKK.ksh
 	fi
 fi
 

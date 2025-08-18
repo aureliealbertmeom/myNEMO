@@ -2,4 +2,4 @@
 
 cd TMPDIR
 
-SUB job.ksh
+SUB jobKK.ksh

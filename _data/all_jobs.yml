@@ -1,4 +1,22 @@
+- nb: 2
+  job: 9968038
+  exp : WED025-EXP04
+  dt : 2400
+  nit0: 1117
+  nitend: 2232
+  node: 1
+  cores: 32
+  nemo_cores: 20
+  xios_cores: 12
+  time: 7200
+  date: "18/08/2025"
+  success: Non
+  remarks: "Do not have the right forcing and bdy names for a second job"
+  cpu_time: 2.5
+  real_time: 41
+  
 - job: 9882298
+  nb: 1
   exp : WED025-EXP03
   dt : 2400
   nit0: 1
@@ -7,4 +25,20 @@
   success: Non
   remarks: "Same forcing issue than before, time step have been doubled between NEMO422 and NEMO5, so my number of time steps are more than the length of focing files (1month)" 
        
+- nb: 1
+  job: 9883373 
+  exp : WED025-EXP04
+  dt : 2400
+  nit0: 1
+  nitend: 1116
+  node: 1
+  cores: 32
+  nemo_cores: 20
+  xios_cores: 12
+  time: 7200
+  date: "08/08/2025"
+  success: Oui
+  remarks: ""
+  cpu_time: 20
+  real_time: 2294
   
