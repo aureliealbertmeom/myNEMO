@@ -8,8 +8,8 @@
                 <ul>
                     <li> was launched on  : {{ c.date }} </li>
                     <li> run from time-step {{ c.nit0 }} to {{ c.nitend }} with a time-step of {{ c.dt }} seconds </li>
-                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> {% endif %} </li>
-                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> {% endif %} </li>
+                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li> {% endif %} 
+                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li> {% endif %} 
                     {% if c.remarks %} <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font> {% endif %} </li>
                 </ul>
             </div>

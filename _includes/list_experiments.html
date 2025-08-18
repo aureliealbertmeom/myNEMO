@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title h3">{{ c.name }}</h2>
+                <h2 class="card-title h3"> <a href="https://aureliealbertmeom.github.io/myNEMO/content/experiments/{{ c.name }}.html"> {{ c.name }} </a> </h2>
                 Technical aspects :
                 <ul>
                     <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
@@ -15,8 +15,8 @@
                 Motivations and results :
                 <ul>
                     <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
-                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> {% endif %} </li>
-                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> {% endif %} </li>
+                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li>{% endif %} 
+                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li>{% endif %} 
                     <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
                 </ul>
             </div>
