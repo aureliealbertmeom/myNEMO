@@ -5,23 +5,20 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title h3">{{ c.name }}</h2>
-                This experiment is a simulation running :
+                Technical aspects :
                 <ul>
                     <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
                     <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
                     <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
                     <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
                 </ul>
-                Purpose : <font color="yellow">{{ c.purpose }}</font> </li>
+                Motivations and results :
+                <ul>
+                    <li> Purpose : <font color="LightSkyBlue">{{ c.purpose }}</font> </li>
+                    <li> {% if c.success == "Oui" %} <font color="LightSeaGreen">and it was a success </font> {% endif %} </li>
+                    <li> {% if c.success == "Non" %} <font color="LightCoral">and it failed </font> {% endif %} </li>
+                    <li> Remarks : <font color="LightSlateGrey">{{ c.remarks }} </font>  </li>
                 </ul>
-                {% if c.success == "Oui" %} 
-                <font color="green">and it was a success </font>
-                {% endif %}
-                {% if c.success == "Non" %} 
-                <code class="language-plaintext highlighter-rouge">and it failed</code>
-                {% endif %}
-                Remarks : {{ c.remarks }} 
-                
             </div>
         </div>
 </div>

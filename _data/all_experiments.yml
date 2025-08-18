@@ -7,7 +7,7 @@
   prev_exp: EXP00
   date: "04/08/2025"
   purpose: "First Test on Irene with myNEMO cfg mngr"
-  sucess: Oui
+  success: Oui
   remarks: "One month duration instead of one year because not enough forcing files are provided, bug in the reference on the name of the runoff file name"
       
 - name : WED025-EXP02
