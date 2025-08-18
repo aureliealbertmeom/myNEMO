@@ -12,19 +12,16 @@
                     <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
                     <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
                 </ul>
-                It was run in order to :
-                <ul>
-                    <li> {{ c.purpose }} </li>
+                Purpose : <font color="yellow">{{ c.purpose }}</font> </li>
                 </ul>
                 {% if c.success == "Oui" %} 
-                <li> <font color="green">and it was a success </font> </li>
+                <font color="green">and it was a success </font>
                 {% endif %}
                 {% if c.success == "Non" %} 
-                <li> <code class="language-plaintext highlighter-rouge">and it failed</code>  </li>
+                <code class="language-plaintext highlighter-rouge">and it failed</code>
                 {% endif %}
-                <ul>
-                    <li> Remarks : {{ c.remarks }} </li>  
-                </ul>
+                Remarks : {{ c.remarks }} 
+                
             </div>
         </div>
 </div>
