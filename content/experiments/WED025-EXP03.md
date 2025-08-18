@@ -4,27 +4,7 @@ nav_order: 3
 title: WED025-EXP03
 ---
 
-<div class="row justify-content-center">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title h3">{{ c.name }}</h2>
-                Technical aspects :
-                <ul>
-                    <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
-                    <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
-                    <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
-                    <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
-                </ul>
-                Motivations and results :
-                <ul>
-                    <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
-                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> {% endif %} </li>
-                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> {% endif %} </li>
-                    <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
-                </ul>
-            </div>
-        </div>
-</div>
+The experiment WED025-EXP03 was run via several jobs : 
 
 {% include list_jobs_WED025-EXP03.html %}
 
