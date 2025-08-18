@@ -1,0 +1,28 @@
+{% for c in site.data.all_experiments %}
+{% assign confcase = c.name | split: "-" %}
+
+<div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title h3">{{ c.name }}</h2>
+                This experiment is a simulation running :
+                <ul>
+                    <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
+                    <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
+                    <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
+                    <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
+                </ul>
+                It was run in order to :
+                <ul>
+                    <li> {{ c.purpose }} </li>
+                    {% if c.success == "True" %} 
+                    <li> <code class="language-plaintext highlighter-green">and it was a success </code> </li>
+                    {% endif %}
+                    {% if c.success == "False" %} 
+                    <li> <code class="language-plaintext highlighter-rouge">and it failed</code>  </li>
+                    {% endif %}
+                    <li> Remarks : {{ c.remarks }} </li>  
+                </ul>
+            </div>
+        </div>
+</div>

@@ -216,7 +216,15 @@ div.highlighter-rouge {
     padding: 1rem 1.5rem;
     border-radius: .25rem;
 }
-
+div.highlighter-green {
+    background-color: #06692F;
+    border: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    overflow: auto;
+    padding: 1rem 1.5rem;
+    border-radius: .25rem;
+}
 /* term highlighting */
 .term {
     font-size: 1.3rem;
