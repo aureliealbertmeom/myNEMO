@@ -15,12 +15,14 @@
                 It was run in order to :
                 <ul>
                     <li> {{ c.purpose }} </li>
-                    {% if c.success == True %} 
-                    <li> <code class="language-plaintext highlighter-green">and it was a success </code> </li>
-                    {% endif %}
-                    {% if c.success == False %} 
-                    <li> <code class="language-plaintext highlighter-rouge">and it failed</code>  </li>
-                    {% endif %}
+                </ul>
+                {% if c.success == "Oui" %} 
+                <li> <font color="green">and it was a success </font> </li>
+                {% endif %}
+                {% if c.success == "Non" %} 
+                <li> <code class="language-plaintext highlighter-rouge">and it failed</code>  </li>
+                {% endif %}
+                <ul>
                     <li> Remarks : {{ c.remarks }} </li>  
                 </ul>
             </div>
