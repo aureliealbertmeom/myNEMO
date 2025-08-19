@@ -51,7 +51,7 @@ all_geo_conf_nemo['irene']=['ORCA2','WED025','eORCA05.L121','eORCA36.L121']
 all_comp_nemo={}
 all_comp_nemo['irene']={}
 all_comp_nemo['irene']['NEMO_4.2.2']=['WED025_X64_IRENE_XIOS2_2430','X3_ORCA2_ICE_X64_IRENE_XIOS3_2656','WED025_X64_IRENE_XIOS2_2430']
-all_comp_nemo['irene']['NEMO_5.0']=['X3_ORCA2_ICE_PISCES','X3_ORCA2_ICE_PISCES_X64_IRENE_XIOS3_2806','WED025_X64_IRENE_XIOS2_2430','WED025_X64_IRENE_XIOS3_2806']
+all_comp_nemo['irene']['NEMO_5.0']=['X3_ORCA2_ICE_PISCES','X3_ORCA2_ICE_PISCES_X64_IRENE_XIOS3_2806','WED025_X64_IRENE_XIOS2_2430','WED025_wkey_xios3_X64_IRENE_XIOS3_2806']
 
 all_exp_config_nemo={}
 all_exp_config_nemo['irene']={}

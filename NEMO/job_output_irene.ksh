@@ -24,4 +24,10 @@ for freq in 1h 1d 5d 1m 1y; do
 	fi
 done
 
+#Also save namelists and output
+mkdir -p SDIR/ANNEX
+for file in namelist* ocean.output timing.output; do
+	fileo="${file}KK"
+	cp $file SDIR/ANNEX/.
+done
 

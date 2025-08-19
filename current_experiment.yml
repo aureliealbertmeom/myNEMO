@@ -1,15 +1,9 @@
-- name : WED025-EXP04
+- name : eORCA05.L121-EXP01
   machine: irene
   compiler: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
-  cpp_conf: WED025
-  prev_exp: EXP03
-  nit0: 1
-  nitend: 1116
-  add_key: key_xios3
-  purpose: "Running WED025 with XIOS3"
-  success: True
-  remarks: ""
-  date: "08/08/2025"
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: WED025-EXP04
+  purpose: "First eORCA05.L121 run on Irene with NEMO5 and XIOS3"
        

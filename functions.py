@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+import os
+import glob
 import sys
 import shutil
 import subprocess
@@ -67,3 +69,267 @@ def read_multiple_yaml(filei):
         dic=yaml.safe_load(stream)
 
     return dic
+
+def install_xios(machine, xios_version_tag, path_dev, path_mynemo,compiler):
+    """
+    Install the xios_version_tag version of XIOS on the machine
+    using script from myNEMO
+    """
+    print("We are going to compile XIOS on "+str(machine))
+    scriptname=path_mynemo+'/XIOS/get_xios_'+str(xios_version_tag)+'.ksh'
+    if not os.path.exists(scriptname):
+        templatename=path_mynemo+'/XIOS/template_get_xios_tag.ksh'
+        use_template(templatename, scriptname, {'VERS':str(xios_version),'TAG':str(xios_tag)})
+    subprocess.call(["chmod", "+x",scriptname])
+    print('Go to '+path_dev+' and use the script '+str(scriptname)+'.sh script to download '+xios_version_tag)
+    continue_question('If successfully downloaded, ht Continue to go on')
+    path_xios=path_dev+'/xios'+xios_version+'-trunk-'+xios_tag
+    #A script with the proper arch to compile on this machine
+    scriptname=path_mynemo+'/XIOS/compile_xios_'+str(compiler)+'.sh'
+    #check if the corresponding compile_xios script already exists
+    if not os.path.exists(scriptname):
+        templatename=path_mynemo+'/XIOS/template_compile_xios_arch.ksh'
+        use_template(templatename, scriptname, {'ARCH':str(compiler)})
+    shutil.copyfile(scriptname,path_xios+'/compile_xios_'+str(compiler)+'.sh')
+    subprocess.call(["chmod", "+x", path_xios+'/compile_xios_'+str(compiler)+'.sh'])
+    print('Go to '+path_xios+' and compile XIOS using script compile_xios_'+str(compiler)+'.sh')
+    continue_question('If succesfully compiled, hit Continue to go on')
+    print('Go to '+path_mynemo+' and modify lists.py : add '+xios_version+' to the list all_tag_xios for '+machine+' and '+path_xios+' to all_path_xios')
+    continue_question('If that is done, hit Continue to go on')
+    return path_xios
+
+def download_nemo(nemo_version,machine,path_mynemo,path_dev):
+    """
+    Download the nemo_version of NEMO on the machine
+    """
+    print("We are going to download NEMO version "+str(nemo_version)+" on "+str(machine))
+    [nemo,tag]=nemo_version.split('_')
+    scriptname=path_mynemo+'/NEMO/get_nemo_'+str(tag)+'.sh'
+    if not os.path.exists(scriptname):
+        templatename=path_mynemo+'/NEMO/template_get_nemo_tag.sh'
+        use_template(templatename, scriptname, {'TAG':str(tag),'PATH':path_dev})
+    shutil.copyfile(scriptname,path_dev+'/get_nemo_'+str(tag)+'.sh')
+    subprocess.call(["chmod", "+x", path_dev+'/get_nemo_'+str(tag)+'.sh'])
+    print('Go to '+path_dev+' and download NEMO using script get_nemo_'+str(tag)+'.sh')
+    continue_question('If succesfully dowloaded, hit Continue to go on')
+    path_nemo=path_dev+'/'+nemo_version
+    print('Go to '+path_mynemo+' and modify lists.py : add '+nemo_version+' to the list all_tag_nemo for '+machine+' and '+path_nemo+' to all_path_nemo')
+    continue_question('If that is done, hit Continue to go on')
+    return path_nemo
+
+def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp):
+    """
+    Compile the nemo_version of NEMO with the xios_version of xios and compiler on machine
+    """
+    print('Now we are going to compile the selected version of NEMO with the previously selected version of XIOS')
+    #Looking for the proper arch file + adding the xios version in it
+    archname='arch-'+str(compiler)+'_'+str(xios_version_tag)+'.fcm'
+    if not os.path.exists(path_nemo+'/arch/CNRS/'+archname):
+        if not os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname):
+            templatename=path_mynemo+'/NEMO/'+nemo_version+'/arch/template_arch-'+str(compiler)+'_xios_path.fcm'
+            use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname, {'PATH_XIOS':str(path_xios)})
+        print('We copy the '+str(archname)+' arch file to '+path_nemo+'/arch/CNRS')
+        shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname,path_nemo+'/arch/CNRS/'+archname)
+
+    #A script to compile the reference config with proper arch file
+    scriptname='compile_nemo_'+str(comp_nemo)+'.ksh'
+    if not os.path.exists(path_nemo+'/'+scriptname):
+        if not os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname):
+            if 'del_key' in dic_exp:
+                del_key=dic_exp['del_key']
+                templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch_delkey.ksh'
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf),'KEYDEL':str(del_key)})
+            elif 'add_key' in dic_exp:
+                add_key=dic_exp['add_key']
+                templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch_addkey.ksh'
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf),'KEYADD':str(add_key)})
+            else:
+                templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch.ksh'
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf)})
+    shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname,path_nemo+'/'+scriptname)
+    subprocess.call(["chmod", "+x", path_nemo+'/'+scriptname])
+    print('Go to '+path_nemo+' and compile NEMO with '+str(scriptname))
+    continue_question('If successfully compiled, hit Continue to go on')
+
+    #Archiving scripts
+    print('We are going to archive this new comp_nemo by keeping its ccp keys file and MY_SRC files if there are any')
+    path_comp_nemo_nemo=path_nemo+'/cfgs/'+str(comp_nemo)
+    path_comp_nemo_my=path_mynemo+'/NEMO/'+str(nemo_version)+'/cfgs/'+str(comp_nemo)
+    os.makedirs(path_comp_nemo_my)
+    cppname='cpp_'+str(comp_nemo)+'.fcm'
+    shutil.copyfile(path_comp_nemo_nemo+'/'+cppname,path_comp_nemo_my+'/'+cppname)
+    if len(os.listdir(path_comp_nemo_nemo+'/MY_SRC')) > 0:
+        os.makedirs(path_comp_nemo_my+'/MY_SRC')
+        for filemy in os.listdir(path_comp_nemo_nemo+'/MY_SRC'):
+            shutil.copyfile(path_comp_nemo_nemo+'/MY_SRC/'+filemy,path_comp_nemo_my+'/MY_SRC/'+filemy)
+    print('Go to '+path_mynemo+' and modify lists.py : add '+comp_nemo+' to all_comp_nemo for '+str(nemo_version)+' on '+str(machine))
+    continue_question('If that is done, hit Continue to go on')
+
+def find_exp_in_dics(list_file,name,prop):
+    """
+    Check if name exists in list_file and retrieve prop from the dic
+    """
+    
+    while 'all_files' not in vars():
+        alldics=read_multiple_yaml(list_file)
+        for dic in np.arange(len(alldics)):
+            if alldics[dic]['name'] == name:
+                all_files=alldics[dic][prop]
+
+        if 'all_files' not in vars():
+            print('The list of forcing files is not available for this reference experiment, fill out '+path_mynemo+'/NEMO/CONFIGS/list_files.yml')
+            f.continue_question('And hit Continue to proceed')
+    
+    return all_files
+
+def process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_version_tag,core_nemo,jobsub,jobnb,rdir_exp_store,rdir_exp_work):
+    """
+    Look for appropriate restart in tmpdir_exp and recombine and compile rebuild_nemo if needed
+    """
+    print("We are continuing an existing exp, we need restarts")
+    nitm1=int(nit0)-1
+    nitm18="{:08d}".format(nitm1)
+    #Check for restart.nc
+    if os.path.exists(tmpdir_exp+'/restart.nc'):
+        #Check if correct restart
+        sourcelink=os.path.realpath(tmpdir_exp+'/restart.nc')
+        if sourcelink != tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc':
+            print('Wrong restart, we need modify it')
+            linkrst_bool=True
+        else:
+            linkrst_bool=False
+    else:
+        linkrst_bool=True
+        #Check for restart.nc with recombined restarts
+        if not os.path.exists(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc'):
+            #Check for subdomain restarts
+            if len(glob.glob(tmpdir_exp+'/'+name+'_*'+str(nitm1)+'_restart*nc')) == 0:
+                print('There are no restart files in '+tmpdir_exp+', we will check the -R directory')
+                if (len(glob.glob(rdir_exp_work+'/'+name+'_*'+str(nitm1)+'_restart*'))+len(glob.glob(rdir_exp_store+'/'+name+'_*'+str(nitm1)+'_restart*'))) > 0:
+                    print('Lets bring them back to tmpdir')
+                    if len(glob.glob(rdir_exp_work+'/'+name+'_*'+str(nitm1)+'_restart*')) > 0:
+                        for filerst in glob.glob(rdir_exp_work+'/'+name+'_*'+str(nitm1)+'_restart*'):
+                            basename=os.path.basename(filerst)
+                            shutil.copyfile(filerst,tmpdir_exp+'/'+basename)
+                    else:
+                        for filerst in glob.glob(rdir_exp_store+'/'+name+'_*'+str(nitm1)+'_restart*'):
+                            basename=os.path.basename(filerst)
+                            shutil.copyfile(filerst,tmpdir_exp+'/'+basename)
+                    subprocess.call(["tar", "-xvf", tmpdir_exp+'/'+basename])
+                else:
+                    sys.exit('No restarts have been found at all, we have to stop')
+            print("We need to recombine restarts")
+            #Looking for rebuild_nemo tool
+            if not os.path.exists(path_nemo+'/tools/REBUILD_NEMO/rebuild_nemo'):
+                print("We need to compile the rebuild tool")
+                compilerebuild=path_nemo+'/tools/compile_rebuild_'+compiler+'.ksh'
+                templatename=path_mynemo+'/NEMO/template_compile_tool.ksh'
+                use_template(templatename, compilerebuild, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'TOOL':'REBUILD_NEMO','PATH':path_nemo+'/tools'})
+                subprocess.call(["chmod", "+x", compilerebuild])
+                continue_question('We are about to compile REBUILD_NEMO in '+path_nemo+'/tools/ check that everything is ok and hit Continue to proceed')
+                subprocess.run(compilerebuild,shell=True)
+                continue_question('If compilation went ok, hit Continue so that the script can be saved')
+                shutil.copyfile(compilerebuild,path_mynemo+'/NEMO/compile_rebuild_'+compiler+'_'+str(xios_version_tag)+'.ksh')
+            scriptrebuirst=tmpdir_exp+'/job_rebuild_restart'+str(jobnb)+'.ksh'
+            templatename=path_mynemo+'/NEMO/job_rebuild_restart_irene.ksh'
+            use_template(templatename, scriptrebuirst, {'TMPDIR':tmpdir_exp,'PATH_REBUILD':path_nemo+'/tools/REBUILD_NEMO','BASE':name+'_'+str(nitm18)+'_restart','DOMAINS':core_nemo})
+            subprocess.call(["chmod", "+x",scriptrebuirst])
+            continue_question('We are about to recombine restarts, hit Continue if that is ok')
+            subprocess.call([jobsub,compilerebuild])
+
+    #Recombined restart exists
+    if linkrst_bool == True:
+        os.symlink(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart.nc',tmpdir_exp+'/restart.nc')
+        if os.path.exists(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart_ice.nc'):
+            os.symlink(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart_ice.nc',tmpdir_exp+'/restart_ice.nc')
+
+
+def setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name,core_nemo,config):
+    """
+    Set up all the scripts needed to run the segment of the simulation
+    """
+    jobname=tmpdir_exp+'/job'+str(jobnb)+'.ksh'
+    if not os.path.exists(jobname):
+        if int(core_xios) > 0:
+            jobtemplate=path_mynemo+'/NEMO/job_multi_'+machine+'.ksh'
+            use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+config+'/'+name,'KK':jobnb})
+            subprocess.call(["chmod", "+x", jobname])
+            mpmdname=tmpdir_exp+'/mpmd.conf'
+            if not os.path.exists(mpmdname):
+                mpmdtemplate=path_mynemo+'/NEMO/template_mpmd.conf'
+                core_xiosm1=int(core_xios)-1
+                cores_m1=int(core)-1
+                if int(core_xios)+int(core_nemo) != int(core):
+                    sys.exit('Wrong repartition of cores between nemo and xios')
+                else:
+                    use_template(mpmdtemplate, mpmdname, {'XIOS':str(core_xiosm1),'NEMO1':core_xios,'NEMO2':coresm1})
+                    subprocess.call(["chmod", "+x", mpmdname])
+        else:
+            jobtemplate=path_mynemo+'/NEMO/job_'+machine+'.ksh'
+            use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+name,'KK':jobnb})
+            subprocess.call(["chmod", "+x", jobname])
+
+    #We also set up the output and restart job before launching
+    joboname=tmpdir_exp+'/job_output'+str(jobnb)+'.ksh'
+    if not os.path.exists(joboname):
+        jobotemplate=path_mynemo+'/NEMO/job_output_'+machine+'.ksh'
+        use_template(jobotemplate, joboname, {'TMPDIR':tmpdir_exp,'CONFCASE':name,'SDIR':sdir_exp_work,'KK':jobnb})
+        subprocess.call(["chmod", "+x", joboname])
+    
+    jobrname=tmpdir_exp+'/job_restart'+str(jobnb)+'.ksh'
+    if not os.path.exists(jobrname):
+        jobrtemplate=path_mynemo+'/NEMO/job_restart_'+machine+'.ksh'
+        use_template(jobrtemplate, jobrname, {'TMPDIR':tmpdir_exp,'CONFCASE':name,'NITEND':nitend,'RDIR':rdir_exp_work})
+        subprocess.call(["chmod", "+x", jobrname])
+
+    #Launch the main job
+    runname=tmpdir_exp+'/run'+str(jobnb)+'.ksh'
+    if not os.path.exists(runname):
+        runtemplate=path_mynemo+'/NEMO/run_'+machine+'.ksh'
+        use_template(runtemplate, runname, {'SUB':jobsub,'TMPDIR':str(tmpdir_exp),'KK':jobnb})
+        subprocess.call(["chmod", "+x", runname])
+
+    continue_question('We are about to launch the job in '+tmpdir_exp+' check that everything is ok and hit Continue to proceed')
+    subprocess.run(runname,shell=True)
+
+    print('You can check the progress of your job with qmt command and the progression of NEMO with tail -f ocean.output and tts')
+
+def gather_init(all_files,tmpdir_exp,path_input):
+    """
+    Make links to the init files in the tmp_dir for the exp
+    """
+    for filefrc in all_files:
+        if not os.path.exists(tmpdir_exp+'/'+filefrc):
+            os.symlink(path_input+'/'+filefrc, tmpdir_exp+'/'+filefrc)
+
+def gather_forc(all_files,tmpdir_exp,path_input,years):
+    """
+    Make links to the forcing files in the tmp_dir for the exp
+    """
+    for filefrc in all_files:
+        for year in years:
+            filefrc_year=filefrc+'_'+year+'.nc'
+            if not os.path.exists(tmpdir_exp+'/'+filefrc_year):
+                os.symlink(path_input+'/'+filefr_year, tmpdir_exp+'/'+filefrc)
+
+def years_forc(nit0,nitend,dt,date_init):
+    """
+    Make a list of all the years of forcing that are needed to run this segment defined by first and last time step, duration of the time-step and the starting datea of the segment
+    """
+    year1=date_init[0:3]
+    years=[year1]
+    length=(int(nitend)-int(nit0)+1)*int(dt)
+    if length/(3600*24) > 334:
+        #We need 3 years of forcing
+        years.append(int(year1)-1)
+        years.append(int(year1)+1)
+    else:
+        #It depends on the start date
+        month1=date_init[4:5]
+        if int(month1) == 1:
+            #We need current and previous year
+            years.append(int(year1)-1)
+        elif int(month1) == 12:
+            #We need current and next year
+            years.append(int(year1)+1)
+    return years

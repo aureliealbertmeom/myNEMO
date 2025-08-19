@@ -23,8 +23,10 @@ nbe=$(grep -o 'E R R O R' ocean.output | wc -l)
 
 if [[ "$nbe" -eq '0' ]]; then
         if [[ "$nba" -eq '4' ]]; then
-		mkdir -p CONFEXP
-		cp *xml namelist* CONFEXP/.
+		if "KK" -eq '1'; then
+			mkdir -p CONFEXP
+			cp *xml namelist* CONFEXP/.
+		fi
 	        ccc_msub job_outputKK.ksh
 	        ccc_msub job_restartKK.ksh
 	fi

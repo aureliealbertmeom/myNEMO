@@ -1,17 +1,18 @@
-- nb: 2
-  job: 9968038
-  exp : WED025-EXP04
-  dt : 2400
-  nit0: 1117
-  nitend: 2232
+- nb: 1
+  job: 
+  exp : eORCA05.L121-EXP01
+  dt : 600
+  nit0: 1
+  nitend: 720
+  date_init: 20120101
   node: 1
-  cores: 32
-  nemo_cores: 20
+  cores: 128
+  nemo_cores: 114
   xios_cores: 12
   time: 7200
-  date: "18/08/2025"
-  success: Non
-  remarks: "Do not have the right forcing and bdy names for a second job"
-  cpu_time: 2.5
-  real_time: 41
+  date: "19/08/2025"
+  success: 
+  remarks: 
+  cpu_time: 
+  real_time: 
   

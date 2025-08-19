@@ -1,4 +1,9 @@
 - name : WED025-EXP00
+  all_init : ['eORCA05.L121_domain_cfg_isfcav_PM_b0.5-15m-v2_4.2.nc','votemper_MP026-eORCA05_MP026_v2_4.2.nc','vosaline_MP026-eORCA05_MP026_v2_4.2.nc','wght_JRA55-eORCA05_bicub_4.2.nc','vosaline_MP026-eORCA05_MP026_v2_4.2.nc','chlorophyl_v0.0','sosaline_MP026-eORCA05_MP026_v2_4.2.nc','eORCA05_ISBA_runoff_y1979-2018_4.2.nc','ghflux_v2.0.nc']
+  all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
+  path_forc: '/ccc/store/cont003/gen12020/alberaur/DATA_FORCING/JRA55'
+
+- name : WED025-EXP00
   all_files : ['domain_cfg.nc','WED025_init_JRA_200001.nc','u10_JRA_y2000.nc',' weights_bicubic_JRA.nc','v10_JRA_y2000.nc','rsds_JRA_y2000.nc',' weights_bilin_JRA.nc','rlds_JRA_y2000.nc','t10_JRA_y2000.nc','q10_JRA_y2000.nc','precip_JRA_y2000.nc','snow_JRA_y2000.nc','slp_JRA_y2000.nc',' chlorophyll_WED025.nc','WED025_runoff.nc','isfmlt_par.nc','coordinates_bdy_WED025.nc','WED025_bdyT_ice_y1999.nc','WED025_bdyT_ice_y2000.nc','WED025_bdytide_K1_grid_T.nc','WED025_bdytide_K1_grid_U.nc','WED025_bdytide_K1_grid_V.nc','WED025_bdytide_M2_grid_T.nc','WED025_bdytide_M2_grid_U.nc','WED025_bdytide_M2_grid_V.nc','WED025_bdytide_O1_grid_T.nc','WED025_bdytide_O1_grid_U.nc','WED025_bdytide_O1_grid_V.nc','WED025_bdytide_S2_grid_T.nc','WED025_bdytide_S2_grid_U.nc','WED025_bdytide_S2_grid_V.nc','WED025_bdyT_ssh_y1999.nc','WED025_bdyT_ssh_y2000.nc','WED025_bdyT_tra_y1999.nc','WED025_bdyT_tra_y2000.nc','WED025_bdyU_u2d_y1999.nc','WED025_bdyU_u2d_y2000.nc','WED025_bdyU_u3d_y1999.nc','WED025_bdyU_u3d_y2000.nc','WED025_bdyV_u2d_y1999.nc','WED025_bdyV_u2d_y2000.nc','WED025_bdyV_u3d_y1999.nc','WED025_bdyV_u3d_y2000.nc',',WED025_icb_y1999.nc','WED025_icb_y2000.nc']
   job : ['1','32','7200']
 - name : ORCA2-EXP00
