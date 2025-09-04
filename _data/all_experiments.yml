@@ -1,3 +1,67 @@
+- name : eORCA36.L121-EXP03
+  machine: irene
+  compiler: X64_IRENE_init
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP02
+  purpose: "keep init array compilation option"       
+- name : eORCA05.L121-EXP03
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: eORCA05.L121-EXP02
+  purpose: "New decomposition for better performances (1 year in one job)"
+       
+- name : eORCA36.L121-EXP02
+  machine: irene
+  compiler: X64_IRENE_debug
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP01
+  purpose: "debug compilation options"
+       
+- name : eORCA05.L121-EXP02
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: eORCA05.L121-EXP01
+  purpose: "New domain with 30m limit for cavity height"
+       
+- name : eORCA36.L121-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: eORCA025.L121-EXP01
+  purpose: "Test eORCA36.L121 without cavities on Irene with NEMO5 and XIOS3"
+       
+- name : eORCA025.L121-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: eORCA05.L121-EXP01
+  purpose: "Test eORCA025.L121 from OPM026 exp P Mathiot on Irene with NEMO5 and XIOS3"
+       
+- name : eORCA05.L121-EXP01
+  machine: irene
+  compiler: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
+  prev_exp: WED025-EXP04
+  purpose: "First eORCA05.L121 run on Irene with NEMO5 and XIOS3"
+
 - name : WED025-EXP01
   machine: irene
   compiler: X64_IRENE

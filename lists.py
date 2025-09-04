@@ -17,7 +17,7 @@ all_path_store={}
 all_path_store['irene']='/ccc/store/cont003/gen12020/alberaur'
 
 all_arch={}
-all_arch['irene']='X64_IRENE'
+all_arch['irene']=['X64_IRENE','X64_IRENE_debug']
 
 all_tag_xios={}
 all_tag_xios['irene']=['XIOS3_2656','XIOS2_2430','XIOS3_2806']
@@ -51,14 +51,20 @@ all_geo_conf_nemo['irene']=['ORCA2','WED025','eORCA05.L121','eORCA36.L121']
 all_comp_nemo={}
 all_comp_nemo['irene']={}
 all_comp_nemo['irene']['NEMO_4.2.2']=['WED025_X64_IRENE_XIOS2_2430','X3_ORCA2_ICE_X64_IRENE_XIOS3_2656','WED025_X64_IRENE_XIOS2_2430']
-all_comp_nemo['irene']['NEMO_5.0']=['X3_ORCA2_ICE_PISCES','X3_ORCA2_ICE_PISCES_X64_IRENE_XIOS3_2806','WED025_X64_IRENE_XIOS2_2430','WED025_wkey_xios3_X64_IRENE_XIOS3_2806']
+all_comp_nemo['irene']['NEMO_5.0']=['X3_ORCA2_ICE_PISCES','X3_ORCA2_ICE_PISCES_X64_IRENE_XIOS3_2806','WED025_X64_IRENE_XIOS2_2430','WED025_wkey_xios3_X64_IRENE_XIOS3_2806','WED025_wkey_xios3_X64_IRENE_debug_XIOS3_2806','WED025_wkey_xios3_X64_IRENE_init_XIOS3_2806']
 
 all_exp_config_nemo={}
 all_exp_config_nemo['irene']={}
 all_exp_config_nemo['irene']['NEMO_4.2.2']={}
 all_exp_config_nemo['irene']['NEMO_4.2.2']['WED025_X64_IRENE_XIOS2_2430']={}
 
+all_tools={}
+all_tools['irene']={}
+all_tools['irene']['NEMO_5.0']=['REBUILD_NEMO','DOMAINcfg']
 
+all_exec_tool={}
+all_exec_tool['REBUILD_NEMO']=['rebuild_nemo.exe']
+all_exec_tool['DOMAINcfg']=['make_domain_cfg.exe','dom_doc.exe']
 
 
 

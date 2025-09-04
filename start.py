@@ -20,10 +20,12 @@ xios_version_tag=dic_exp['xios']
 nemo_version=dic_exp['nemo']
 name=dic_exp['name']
 [config, new_exp]=name.split('-')
-ref_exp=dic_exp['prev_exp']
-[ref_config, ref_case]=ref_exp.split('-')
+if 'prev_exp' in dic_exp:
+    ref_exp=dic_exp['prev_exp']
+    [ref_config, ref_case]=ref_exp.split('-')
 nit0=dic_job['nit0']
 nitend=dic_job['nitend']
+dt=dic_job['dt']
 date_init=dic_job['date_init']
 jobnb=dic_job['nb']
 
@@ -97,7 +99,7 @@ if comp_nemo in ls.all_comp_nemo[machine][nemo_version]:
     print('This specific reference NEMO config has already been compiled with the selected version of xios and compiler')
 else:
     #Compilation of a ref case
-    f.compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo)
+    f.compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine)
 
 #Set up the experiment : create directories
 tmpdir_exp=path_scratch+'/TMPDIR_'+str(config)+'-'+str(new_exp)
@@ -125,14 +127,20 @@ else:
         os.makedirs(tmpdir_exp)
 
 #Get the path to the reference 
-if 'nemo_ref_conf' in vars():
-    print("The reference experiment is the default NEMO")
-    path_ref_exp=path_nemo+'/cfgs/'+str(comp_nemo)+'/'+ref_exp
-else:
-    print('The reference experiment is '+ref_exp)
+if jobnb > 1:
+    print('This is not the first segment run for this experiment')
+    ref_exp=name
     path_ref_exp=path_mynemo+'/NEMO/CONFIGS/'+ref_config+'/'+ref_exp
-    if not os.path.exists(tmpdir_exp+'/nemo'):
-        os.symlink(path_comp_nemo+'/BLD/bin/nemo.exe', tmpdir_exp+'/nemo')
+else:
+    if 'ref_exp' in vars():
+        print('The reference experiment is '+ref_exp)
+        path_ref_exp=path_mynemo+'/NEMO/CONFIGS/'+ref_config+'/'+ref_exp
+        if not os.path.exists(tmpdir_exp+'/nemo'):
+            os.symlink(path_comp_nemo+'/BLD/bin/nemo.exe', tmpdir_exp+'/nemo')
+    else:
+        ref_exp='EXP00'
+        print("The reference experiment is the default NEMO")
+        path_ref_exp=path_nemo+'/cfgs/'+str(comp_nemo)+'/'+ref_exp
 
 #We copy/link the namelists and other xml scripts
 for filexp in os.listdir(path_ref_exp):
@@ -147,18 +155,23 @@ for filexp in os.listdir(path_ref_exp):
 #We need to manage the segment of the exp (init or restart + time steps)
 file_nam_temp=tmpdir_exp+'/template_namelist_cfg'
 if nit0 == 1:
-    print("We start from init, we generate a template namelist to manage the following segments")
-    shutil.copyfile(tmpdir_exp+'/namelist_cfg',file_nam_temp)
-    print("Go modify the "+str(file_nam_temp)+" file, so that nn_it000, nn_itend and ln_rstart are filled with NIT000, NITEND and RESTART") 
-    f.continue_question('If that is done, hit Continue to go on')
+    if not os.path.exists(file_nam_temp):
+        print("We start from init, we generate a template namelist to manage the following segments")
+        shutil.copyfile(tmpdir_exp+'/namelist_cfg',file_nam_temp)
+        print("Go modify the "+str(file_nam_temp)+" file, so that nn_it000, nn_itend, ln_rstart and rn_dt are filled with NIT000, NITEND, RESTART and RDT") 
+        f.continue_question('If that is done, hit Continue to go on')
+    else:
+        print('We start from init, the template namelist '+file_nam_temp+' already exists, go check that it is ok')
+        f.continue_question('If that is done, hit Continue to go on')
+
     print("We are using this freshly created template to generate the appropriate namelist for this segment")
-    f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'false'})
+    f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'false','RDT':dt})
 else:
     print("We are continuing an existing exp, the template namelist should exist")
     if not os.path.exists(file_nam_temp):
         f.continue_question("No template namelist, create one and hit Continue to go on")
     print("We are using the template to generate the appropriate namelist for this segment")
-    f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'true'})
+    f.use_template(file_nam_temp,tmpdir_exp+'/namelist_cfg',{'NIT000':nit0,'NITEND':nitend,'RESTART':'true','RDT':dt})
 
 
 #We need xios
@@ -170,27 +183,27 @@ if not os.path.exists(tmpdir_exp+'/xios'):
 list_file=path_mynemo+'/NEMO/CONFIGS/list_files.yml'
 path_input=path_work+'/'+str(config)+'/'+str(config)+'-I'
 
-if "nemo_ref" in dic_exp:
-    print('This is a reference run, all files are gathered in -I')
-    all_files=find_exp_in_dics(list_file,name,'all_files')
-    f.gather_init(all_files,tmpdir_exp,path_input)
-else:
+if "prev_exp" in dic_exp:
     print('This is not a reference run, the init files are gathered in -I and the forcing files are in DATA_FORCING')
-
     #Gather the init files
-    all_init=find_exp_in_dics(list_file,name,'all_init')
+    all_init=f.find_exp_in_dics(list_file,name,'all_init',path_mynemo)
     f.gather_init(all_init,tmpdir_exp,path_input)
     #Gather the forcing files
-    all_forc=find_exp_in_dics(list_file,name,'all_forc')
+    all_forc=f.find_exp_in_dics(list_file,name,'all_forc',path_mynemo)
+    path_forc=f.find_exp_in_dics(list_file,name,'path_forc',path_mynemo)
     years=f.years_forc(nit0,nitend,dt,date_init)
-    f.gather_forc(all_forc,tmpdir_exp,path_input,years)
+    f.gather_forc(all_forc,tmpdir_exp,path_forc,years)
+else:
+    print('This is a reference run, all files are gathered in -I')
+    all_files=f.find_exp_in_dics(list_file,name,'all_files',path_mynemo)
+    f.gather_init(all_files,tmpdir_exp,path_input)
 
 # Restarts or no restarts ?
 core_nemo=dic_job['nemo_cores']
 if nit0 == 1:
     print("We start from init, no restarts are needed")
 else:
-    process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_version_tag,core_nemo,jobsub,jobnb,rdir_exp_store,rdir_ex    p_work)
+    f.process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_version_tag,core_nemo,jobsub,jobnb,rdir_exp_store,rdir_exp_work)
 
 #Generate the job 
 
@@ -200,7 +213,7 @@ core=dic_job['cores']
 time=dic_job['time']
 core_xios=dic_job['xios_cores']
 
-f.setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name,core_nemo,config)
+f.setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name,core_nemo,config,sdir_exp_work,rdir_exp_work,nitend,jobsub)
 
 print('If the job is successful, it will automatically launch extra job that will copy the outputs and restarts on work') 
 

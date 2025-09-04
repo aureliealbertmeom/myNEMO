@@ -4,6 +4,7 @@
   dt :        #time-step  for this part of the run, in seconds
   nit0:       #time step start
   nitend:     #time step end
+  date_init:  #date at the beginning of job
   node:       #number of nodes requested
   cores:      #number of cores requested (should be adequate to the machine characteristics)
   nemo_cores: # number of cores for NEMo

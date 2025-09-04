@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import inquirer
 import yaml
-
+import numpy as np
 
 def use_template(tempname, scriptname, dict_strings_values):
     """
@@ -36,8 +36,6 @@ def continue_question(message):
     match continue_bool:
         case "Stop":
             sys.exit("Exiting, bye")
-        case "Continue":
-            print("We will proceed with the next step")
 
 def open_question(message):
     """
@@ -117,7 +115,7 @@ def download_nemo(nemo_version,machine,path_mynemo,path_dev):
     continue_question('If that is done, hit Continue to go on')
     return path_nemo
 
-def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp):
+def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine):
     """
     Compile the nemo_version of NEMO with the xios_version of xios and compiler on machine
     """
@@ -138,14 +136,14 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
             if 'del_key' in dic_exp:
                 del_key=dic_exp['del_key']
                 templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch_delkey.ksh'
-                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf),'KEYDEL':str(del_key)})
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf),'CPPCONF':str(comp_nemo),'KEYDEL':str(del_key)})
             elif 'add_key' in dic_exp:
                 add_key=dic_exp['add_key']
                 templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch_addkey.ksh'
-                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf),'KEYADD':str(add_key)})
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf),'CPPCONF':str(comp_nemo),'KEYADD':str(add_key)})
             else:
                 templatename=path_mynemo+'/NEMO/template_compile_config_ref_arch.ksh'
-                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(cppconf)})
+                use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'REFCONF':str(nemo_ref_conf),'CPPCONF':str(comp_nemo)})
     shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname,path_nemo+'/'+scriptname)
     subprocess.call(["chmod", "+x", path_nemo+'/'+scriptname])
     print('Go to '+path_nemo+' and compile NEMO with '+str(scriptname))
@@ -155,7 +153,8 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
     print('We are going to archive this new comp_nemo by keeping its ccp keys file and MY_SRC files if there are any')
     path_comp_nemo_nemo=path_nemo+'/cfgs/'+str(comp_nemo)
     path_comp_nemo_my=path_mynemo+'/NEMO/'+str(nemo_version)+'/cfgs/'+str(comp_nemo)
-    os.makedirs(path_comp_nemo_my)
+    if not os.path.exists(path_comp_nemo_my):
+        os.makedirs(path_comp_nemo_my)
     cppname='cpp_'+str(comp_nemo)+'.fcm'
     shutil.copyfile(path_comp_nemo_nemo+'/'+cppname,path_comp_nemo_my+'/'+cppname)
     if len(os.listdir(path_comp_nemo_nemo+'/MY_SRC')) > 0:
@@ -165,20 +164,28 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
     print('Go to '+path_mynemo+' and modify lists.py : add '+comp_nemo+' to all_comp_nemo for '+str(nemo_version)+' on '+str(machine))
     continue_question('If that is done, hit Continue to go on')
 
-def find_exp_in_dics(list_file,name,prop):
+def find_exp_in_dics(list_file,name,prop,path_mynemo):
     """
     Check if name exists in list_file and retrieve prop from the dic
     """
     
-    while 'all_files' not in vars():
-        alldics=read_multiple_yaml(list_file)
-        for dic in np.arange(len(alldics)):
-            if alldics[dic]['name'] == name:
-                all_files=alldics[dic][prop]
+    alldics=read_multiple_yaml(list_file)
+    for dic in np.arange(len(alldics)):
+        if alldics[dic]['name'] == name:
+            all_files=alldics[dic][prop]
 
-        if 'all_files' not in vars():
-            print('The list of forcing files is not available for this reference experiment, fill out '+path_mynemo+'/NEMO/CONFIGS/list_files.yml')
-            f.continue_question('And hit Continue to proceed')
+    if 'all_files' not in vars():
+        print('The list of forcing files is not available for this reference experiment, fill out '+path_mynemo+'/NEMO/CONFIGS/list_files.yml')
+        continue_question('And hit Continue to proceed')
+
+    alldics=read_multiple_yaml(list_file)
+    for dic in np.arange(len(alldics)):
+        if alldics[dic]['name'] == name:
+            all_files=alldics[dic][prop]
+
+    if 'all_files' not in vars():
+        sys.exit('The list of forcing files is still not available for this reference experiment, relaunch start so it actualizes')
+
     
     return all_files
 
@@ -235,7 +242,8 @@ def process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_ve
             use_template(templatename, scriptrebuirst, {'TMPDIR':tmpdir_exp,'PATH_REBUILD':path_nemo+'/tools/REBUILD_NEMO','BASE':name+'_'+str(nitm18)+'_restart','DOMAINS':core_nemo})
             subprocess.call(["chmod", "+x",scriptrebuirst])
             continue_question('We are about to recombine restarts, hit Continue if that is ok')
-            subprocess.call([jobsub,compilerebuild])
+            subprocess.call([jobsub,scriptrebuirst])
+            continue_question('The restarts are being recombined, when it is done, hit Continue to go on')
 
     #Recombined restart exists
     if linkrst_bool == True:
@@ -244,30 +252,30 @@ def process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_ve
             os.symlink(tmpdir_exp+'/'+name+'_'+str(nitm18)+'_restart_ice.nc',tmpdir_exp+'/restart_ice.nc')
 
 
-def setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name,core_nemo,config):
+def setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name,core_nemo,config,sdir_exp_work,rdir_exp_work,nitend,jobsub):
     """
     Set up all the scripts needed to run the segment of the simulation
     """
     jobname=tmpdir_exp+'/job'+str(jobnb)+'.ksh'
-    if not os.path.exists(jobname):
-        if int(core_xios) > 0:
+    if int(core_xios) > 0:
+        if not os.path.exists(jobname):
             jobtemplate=path_mynemo+'/NEMO/job_multi_'+machine+'.ksh'
             use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+config+'/'+name,'KK':jobnb})
             subprocess.call(["chmod", "+x", jobname])
-            mpmdname=tmpdir_exp+'/mpmd.conf'
-            if not os.path.exists(mpmdname):
-                mpmdtemplate=path_mynemo+'/NEMO/template_mpmd.conf'
-                core_xiosm1=int(core_xios)-1
-                cores_m1=int(core)-1
-                if int(core_xios)+int(core_nemo) != int(core):
-                    sys.exit('Wrong repartition of cores between nemo and xios')
-                else:
-                    use_template(mpmdtemplate, mpmdname, {'XIOS':str(core_xiosm1),'NEMO1':core_xios,'NEMO2':coresm1})
-                    subprocess.call(["chmod", "+x", mpmdname])
-        else:
-            jobtemplate=path_mynemo+'/NEMO/job_'+machine+'.ksh'
-            use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+name,'KK':jobnb})
-            subprocess.call(["chmod", "+x", jobname])
+        mpmdname=tmpdir_exp+'/mpmd.conf'
+        if not os.path.exists(mpmdname):
+            mpmdtemplate=path_mynemo+'/NEMO/template_mpmd.conf'
+            core_xiosm1=int(core_xios)-1
+            cores_m1=int(core)-1
+            if int(core_xios)+int(core_nemo) != int(core):
+                sys.exit('Wrong repartition of cores between nemo and xios')
+            else:
+                use_template(mpmdtemplate, mpmdname, {'XIOS':str(core_xiosm1),'NEMO1':core_xios,'NEMO2':cores_m1})
+                subprocess.call(["chmod", "+x", mpmdname])
+    else:
+        jobtemplate=path_mynemo+'/NEMO/job_'+machine+'.ksh'
+        use_template(jobtemplate, jobname, {'NODE':node,'CORE':core,'TIME':time,'TMPDIR':str(tmpdir_exp),'CONFEXP':path_mynemo+'/NEMO/CONFIGS/'+name,'KK':jobnb})
+        subprocess.call(["chmod", "+x", jobname])
 
     #We also set up the output and restart job before launching
     joboname=tmpdir_exp+'/job_output'+str(jobnb)+'.ksh'
@@ -299,37 +307,70 @@ def gather_init(all_files,tmpdir_exp,path_input):
     Make links to the init files in the tmp_dir for the exp
     """
     for filefrc in all_files:
-        if not os.path.exists(tmpdir_exp+'/'+filefrc):
-            os.symlink(path_input+'/'+filefrc, tmpdir_exp+'/'+filefrc)
+        if os.path.exists(path_input+'/'+filefrc):
+            if not os.path.exists(tmpdir_exp+'/'+filefrc):
+                os.symlink(path_input+'/'+filefrc, tmpdir_exp+'/'+filefrc)
+        else:
+            sys.exit(filefrc+' is not available in '+path_input+' go fix that and relaunch start')
 
-def gather_forc(all_files,tmpdir_exp,path_input,years):
+def gather_forc(all_files,tmpdir_exp,path_forc,years):
     """
     Make links to the forcing files in the tmp_dir for the exp
     """
     for filefrc in all_files:
         for year in years:
-            filefrc_year=filefrc+'_'+year+'.nc'
+            filefrc_year=filefrc+'_y'+year+'.nc'
             if not os.path.exists(tmpdir_exp+'/'+filefrc_year):
-                os.symlink(path_input+'/'+filefr_year, tmpdir_exp+'/'+filefrc)
+                if os.path.exists(path_forc+'/'+filefrc_year):
+                    os.symlink(path_forc+'/'+filefrc_year, tmpdir_exp+'/'+filefrc_year)
+                else:
+                    sys.exit(filefrc_year+' is missing from '+path_forc+' fix this and relaunch the start')
 
 def years_forc(nit0,nitend,dt,date_init):
     """
     Make a list of all the years of forcing that are needed to run this segment defined by first and last time step, duration of the time-step and the starting datea of the segment
     """
-    year1=date_init[0:3]
+    year1=str(date_init)[0:4]
     years=[year1]
     length=(int(nitend)-int(nit0)+1)*int(dt)
     if length/(3600*24) > 334:
         #We need 3 years of forcing
-        years.append(int(year1)-1)
-        years.append(int(year1)+1)
+        years.append(str(int(year1)-1))
+        years.append(str(int(year1)+1))
     else:
         #It depends on the start date
-        month1=date_init[4:5]
+        month1=str(date_init)[4:6]
         if int(month1) == 1:
             #We need current and previous year
-            years.append(int(year1)-1)
+            years.append(str(int(year1)-1))
         elif int(month1) == 12:
             #We need current and next year
-            years.append(int(year1)+1)
+            years.append(str(int(year1)+1))
     return years
+
+def compile_tool(machine,arch,nemo_version,tool_name,path_nemo,path_mynemo):
+    """
+    Compile the tool_name distributed with NEMO on machine
+    """
+    print('Now we are going to compile the selected tool')
+    #Looking for the proper arch file + adding the xios version in it
+    archname='arch-'+str(arch)+'.fcm'
+    if not os.path.exists(path_nemo+'/arch/CNRS/'+archname):
+        if not os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname):
+            templatename=path_mynemo+'/NEMO/'+nemo_version+'/arch/template_arch-'+str(compiler)+'_xios_path.fcm'
+            use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname, {'PATH_XIOS':str(path_xios)})
+        print('We copy the '+str(archname)+' arch file to '+path_nemo+'/arch/CNRS')
+        shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname,path_nemo+'/arch/CNRS/'+archname)
+
+    #A script to compile the reference config with proper arch file
+    scriptname='compile_'+str(tool_name)+'_'+arch+'.ksh'
+    if not os.path.exists(path_nemo+'/tools/'+scriptname):
+        if not os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname):
+            templatename=path_mynemo+'/NEMO/template_compile_tool.ksh'
+            use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname, {'ARCH':str(arch),'PATH':path_nemo+'/tools/','TOOL':str(tool_name)})
+    shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname,path_nemo+'/tools/'+scriptname)
+    subprocess.call(["chmod", "+x", path_nemo+'/tools/'+scriptname])
+    print('Go to '+path_nemo+'/tools and compile the tool '+str(tool_name)+' with '+str(scriptname))
+    continue_question('If successfully compiled, hit Continue to go on')
+    continue_question('Now that is has been successfully compiled, add '+tool_name+' to the list all_tools and all_exec_tool to lists.py, hit Continue to go on')
+

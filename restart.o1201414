@@ -1,0 +1,988 @@
+file eORCA05.L121-EXP02_00001200_restart,  num_domains 116, num_threads 1
+ Rebuilding the following files:
+ eORCA05.L121-EXP02_00001200_restart_0000.nc
+ eORCA05.L121-EXP02_00001200_restart_0001.nc
+ eORCA05.L121-EXP02_00001200_restart_0002.nc
+ eORCA05.L121-EXP02_00001200_restart_0003.nc
+ eORCA05.L121-EXP02_00001200_restart_0004.nc
+ eORCA05.L121-EXP02_00001200_restart_0005.nc
+ eORCA05.L121-EXP02_00001200_restart_0006.nc
+ eORCA05.L121-EXP02_00001200_restart_0007.nc
+ eORCA05.L121-EXP02_00001200_restart_0008.nc
+ eORCA05.L121-EXP02_00001200_restart_0009.nc
+ eORCA05.L121-EXP02_00001200_restart_0010.nc
+ eORCA05.L121-EXP02_00001200_restart_0011.nc
+ eORCA05.L121-EXP02_00001200_restart_0012.nc
+ eORCA05.L121-EXP02_00001200_restart_0013.nc
+ eORCA05.L121-EXP02_00001200_restart_0014.nc
+ eORCA05.L121-EXP02_00001200_restart_0015.nc
+ eORCA05.L121-EXP02_00001200_restart_0016.nc
+ eORCA05.L121-EXP02_00001200_restart_0017.nc
+ eORCA05.L121-EXP02_00001200_restart_0018.nc
+ eORCA05.L121-EXP02_00001200_restart_0019.nc
+ eORCA05.L121-EXP02_00001200_restart_0020.nc
+ eORCA05.L121-EXP02_00001200_restart_0021.nc
+ eORCA05.L121-EXP02_00001200_restart_0022.nc
+ eORCA05.L121-EXP02_00001200_restart_0023.nc
+ eORCA05.L121-EXP02_00001200_restart_0024.nc
+ eORCA05.L121-EXP02_00001200_restart_0025.nc
+ eORCA05.L121-EXP02_00001200_restart_0026.nc
+ eORCA05.L121-EXP02_00001200_restart_0027.nc
+ eORCA05.L121-EXP02_00001200_restart_0028.nc
+ eORCA05.L121-EXP02_00001200_restart_0029.nc
+ eORCA05.L121-EXP02_00001200_restart_0030.nc
+ eORCA05.L121-EXP02_00001200_restart_0031.nc
+ eORCA05.L121-EXP02_00001200_restart_0032.nc
+ eORCA05.L121-EXP02_00001200_restart_0033.nc
+ eORCA05.L121-EXP02_00001200_restart_0034.nc
+ eORCA05.L121-EXP02_00001200_restart_0035.nc
+ eORCA05.L121-EXP02_00001200_restart_0036.nc
+ eORCA05.L121-EXP02_00001200_restart_0037.nc
+ eORCA05.L121-EXP02_00001200_restart_0038.nc
+ eORCA05.L121-EXP02_00001200_restart_0039.nc
+ eORCA05.L121-EXP02_00001200_restart_0040.nc
+ eORCA05.L121-EXP02_00001200_restart_0041.nc
+ eORCA05.L121-EXP02_00001200_restart_0042.nc
+ eORCA05.L121-EXP02_00001200_restart_0043.nc
+ eORCA05.L121-EXP02_00001200_restart_0044.nc
+ eORCA05.L121-EXP02_00001200_restart_0045.nc
+ eORCA05.L121-EXP02_00001200_restart_0046.nc
+ eORCA05.L121-EXP02_00001200_restart_0047.nc
+ eORCA05.L121-EXP02_00001200_restart_0048.nc
+ eORCA05.L121-EXP02_00001200_restart_0049.nc
+ eORCA05.L121-EXP02_00001200_restart_0050.nc
+ eORCA05.L121-EXP02_00001200_restart_0051.nc
+ eORCA05.L121-EXP02_00001200_restart_0052.nc
+ eORCA05.L121-EXP02_00001200_restart_0053.nc
+ eORCA05.L121-EXP02_00001200_restart_0054.nc
+ eORCA05.L121-EXP02_00001200_restart_0055.nc
+ eORCA05.L121-EXP02_00001200_restart_0056.nc
+ eORCA05.L121-EXP02_00001200_restart_0057.nc
+ eORCA05.L121-EXP02_00001200_restart_0058.nc
+ eORCA05.L121-EXP02_00001200_restart_0059.nc
+ eORCA05.L121-EXP02_00001200_restart_0060.nc
+ eORCA05.L121-EXP02_00001200_restart_0061.nc
+ eORCA05.L121-EXP02_00001200_restart_0062.nc
+ eORCA05.L121-EXP02_00001200_restart_0063.nc
+ eORCA05.L121-EXP02_00001200_restart_0064.nc
+ eORCA05.L121-EXP02_00001200_restart_0065.nc
+ eORCA05.L121-EXP02_00001200_restart_0066.nc
+ eORCA05.L121-EXP02_00001200_restart_0067.nc
+ eORCA05.L121-EXP02_00001200_restart_0068.nc
+ eORCA05.L121-EXP02_00001200_restart_0069.nc
+ eORCA05.L121-EXP02_00001200_restart_0070.nc
+ eORCA05.L121-EXP02_00001200_restart_0071.nc
+ eORCA05.L121-EXP02_00001200_restart_0072.nc
+ eORCA05.L121-EXP02_00001200_restart_0073.nc
+ eORCA05.L121-EXP02_00001200_restart_0074.nc
+ eORCA05.L121-EXP02_00001200_restart_0075.nc
+ eORCA05.L121-EXP02_00001200_restart_0076.nc
+ eORCA05.L121-EXP02_00001200_restart_0077.nc
+ eORCA05.L121-EXP02_00001200_restart_0078.nc
+ eORCA05.L121-EXP02_00001200_restart_0079.nc
+ eORCA05.L121-EXP02_00001200_restart_0080.nc
+ eORCA05.L121-EXP02_00001200_restart_0081.nc
+ eORCA05.L121-EXP02_00001200_restart_0082.nc
+ eORCA05.L121-EXP02_00001200_restart_0083.nc
+ eORCA05.L121-EXP02_00001200_restart_0084.nc
+ eORCA05.L121-EXP02_00001200_restart_0085.nc
+ eORCA05.L121-EXP02_00001200_restart_0086.nc
+ eORCA05.L121-EXP02_00001200_restart_0087.nc
+ eORCA05.L121-EXP02_00001200_restart_0088.nc
+ eORCA05.L121-EXP02_00001200_restart_0089.nc
+ eORCA05.L121-EXP02_00001200_restart_0090.nc
+ eORCA05.L121-EXP02_00001200_restart_0091.nc
+ eORCA05.L121-EXP02_00001200_restart_0092.nc
+ eORCA05.L121-EXP02_00001200_restart_0093.nc
+ eORCA05.L121-EXP02_00001200_restart_0094.nc
+ eORCA05.L121-EXP02_00001200_restart_0095.nc
+ eORCA05.L121-EXP02_00001200_restart_0096.nc
+ eORCA05.L121-EXP02_00001200_restart_0097.nc
+ eORCA05.L121-EXP02_00001200_restart_0098.nc
+ eORCA05.L121-EXP02_00001200_restart_0099.nc
+ eORCA05.L121-EXP02_00001200_restart_0100.nc
+ eORCA05.L121-EXP02_00001200_restart_0101.nc
+ eORCA05.L121-EXP02_00001200_restart_0102.nc
+ eORCA05.L121-EXP02_00001200_restart_0103.nc
+ eORCA05.L121-EXP02_00001200_restart_0104.nc
+ eORCA05.L121-EXP02_00001200_restart_0105.nc
+ eORCA05.L121-EXP02_00001200_restart_0106.nc
+ eORCA05.L121-EXP02_00001200_restart_0107.nc
+ eORCA05.L121-EXP02_00001200_restart_0108.nc
+ eORCA05.L121-EXP02_00001200_restart_0109.nc
+ eORCA05.L121-EXP02_00001200_restart_0110.nc
+ eORCA05.L121-EXP02_00001200_restart_0111.nc
+ eORCA05.L121-EXP02_00001200_restart_0112.nc
+ eORCA05.L121-EXP02_00001200_restart_0113.nc
+ eORCA05.L121-EXP02_00001200_restart_0114.nc
+ eORCA05.L121-EXP02_00001200_restart_0115.nc
+ Size of global arrays:          720         603
+ Finding rebuild dimensions from the first file...
+ Rebuilding across dimensions x and y
+ names   : x y 
+ lens    :          720         603
+ Chunking:          206         135
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable nav_lon...
+ names   : x y 
+ lens    :          720         603
+ Chunking:          206         135
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable nav_lat...
+ names   : nav_lev 
+ lens    :          121
+ Chunking:            1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable nav_lev...
+ names   : time_counter 
+ lens    :            1
+ Chunking:            1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable time_counter...
+ Defining variable kt...
+ Defining variable ndastp...
+ Defining variable adatrj...
+ Defining variable ntime...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable en...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable avt_k...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable avm_k...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable hmxl_n...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sshbb_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable ubb_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable vbb_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sshb_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable ub_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable vb_e...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable fraqsr_1lev...
+ Defining variable frc_v...
+ Defining variable frc_t...
+ Defining variable frc_s...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable surf_ini...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable ssh_ini...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e3t_ini...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable tmask_ini...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable hc_loc_ini...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sc_loc_ini...
+ Defining variable rdt...
+ names   : dim_DELAY__r8_cflice time_counter 
+ lens    :            1           1
+ Chunking:            1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY__r8_cflice...
+ names   : dim_DELAY_re8_ar5 time_counter 
+ lens    :            8           1
+ Chunking:            8           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_re8_ar5...
+ names   : dim_DELAY_im8_ar5 time_counter 
+ lens    :            8           1
+ Chunking:            8           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_im8_ar5...
+ names   : dim_DELAY_re8_ocebg time_counter 
+ lens    :           17           1
+ Chunking:           17           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_re8_ocebg...
+ names   : dim_DELAY_im8_ocebg time_counter 
+ lens    :           17           1
+ Chunking:           17           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_im8_ocebg...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sshn...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable un...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable vn...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable tn...
+ names   : x y nav_lev time_counter 
+ lens    :          720         603         121           1
+ Chunking:          206         135           1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sn...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable uu_n...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable vv_n...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable ssha...
+ Finished defining output file.
+ Opening input files...
+ All input files open.
+ Rebuilding data from variable nav_lon...
+ Writing variable nav_lon...
+ Rebuilding data from variable nav_lat...
+ Writing variable nav_lat...
+ Copying data from variable nav_lev...
+ Writing variable nav_lev...
+ Copying data from variable time_counter...
+ Writing variable time_counter...
+ Copying data from variable kt...
+ Writing variable kt...
+ Copying data from variable ndastp...
+ Writing variable ndastp...
+ Copying data from variable adatrj...
+ Writing variable adatrj...
+ Copying data from variable ntime...
+ Writing variable ntime...
+ Rebuilding data from variable en...
+ Writing variable en...
+ Rebuilding data from variable avt_k...
+ Writing variable avt_k...
+ Rebuilding data from variable avm_k...
+ Writing variable avm_k...
+ Rebuilding data from variable hmxl_n...
+ Writing variable hmxl_n...
+ Rebuilding data from variable sshbb_e...
+ Writing variable sshbb_e...
+ Rebuilding data from variable ubb_e...
+ Writing variable ubb_e...
+ Rebuilding data from variable vbb_e...
+ Writing variable vbb_e...
+ Rebuilding data from variable sshb_e...
+ Writing variable sshb_e...
+ Rebuilding data from variable ub_e...
+ Writing variable ub_e...
+ Rebuilding data from variable vb_e...
+ Writing variable vb_e...
+ Rebuilding data from variable fraqsr_1lev...
+ Writing variable fraqsr_1lev...
+ Copying data from variable frc_v...
+ Writing variable frc_v...
+ Copying data from variable frc_t...
+ Writing variable frc_t...
+ Copying data from variable frc_s...
+ Writing variable frc_s...
+ Rebuilding data from variable surf_ini...
+ Writing variable surf_ini...
+ Rebuilding data from variable ssh_ini...
+ Writing variable ssh_ini...
+ Rebuilding data from variable e3t_ini...
+ Writing variable e3t_ini...
+ Rebuilding data from variable tmask_ini...
+ Writing variable tmask_ini...
+ Rebuilding data from variable hc_loc_ini...
+ Writing variable hc_loc_ini...
+ Rebuilding data from variable sc_loc_ini...
+ Writing variable sc_loc_ini...
+ Copying data from variable rdt...
+ Writing variable rdt...
+ Copying data from variable DELAY__r8_cflice...
+ Writing variable DELAY__r8_cflice...
+ Copying data from variable DELAY_re8_ar5...
+ Writing variable DELAY_re8_ar5...
+ Copying data from variable DELAY_im8_ar5...
+ Writing variable DELAY_im8_ar5...
+ Copying data from variable DELAY_re8_ocebg...
+ Writing variable DELAY_re8_ocebg...
+ Copying data from variable DELAY_im8_ocebg...
+ Writing variable DELAY_im8_ocebg...
+ Rebuilding data from variable sshn...
+ Writing variable sshn...
+ Rebuilding data from variable un...
+ Writing variable un...
+ Rebuilding data from variable vn...
+ Writing variable vn...
+ Rebuilding data from variable tn...
+ Writing variable tn...
+ Rebuilding data from variable sn...
+ Writing variable sn...
+ Rebuilding data from variable uu_n...
+ Writing variable uu_n...
+ Rebuilding data from variable vv_n...
+ Writing variable vv_n...
+ Rebuilding data from variable ssha...
+ Writing variable ssha...
+ Closing input files...
+ Closing output file eORCA05.L121-EXP02_00001200_restart.nc
+ NEMO rebuild completed successfully
+ 
+file eORCA05.L121-EXP02_00001200_restart_ice,  num_domains 116, num_threads 1
+ Rebuilding the following files:
+ eORCA05.L121-EXP02_00001200_restart_ice_0000.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0001.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0002.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0003.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0004.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0005.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0006.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0007.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0008.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0009.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0010.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0011.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0012.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0013.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0014.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0015.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0016.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0017.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0018.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0019.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0020.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0021.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0022.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0023.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0024.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0025.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0026.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0027.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0028.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0029.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0030.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0031.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0032.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0033.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0034.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0035.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0036.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0037.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0038.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0039.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0040.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0041.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0042.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0043.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0044.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0045.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0046.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0047.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0048.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0049.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0050.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0051.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0052.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0053.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0054.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0055.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0056.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0057.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0058.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0059.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0060.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0061.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0062.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0063.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0064.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0065.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0066.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0067.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0068.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0069.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0070.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0071.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0072.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0073.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0074.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0075.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0076.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0077.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0078.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0079.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0080.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0081.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0082.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0083.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0084.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0085.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0086.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0087.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0088.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0089.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0090.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0091.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0092.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0093.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0094.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0095.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0096.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0097.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0098.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0099.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0100.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0101.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0102.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0103.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0104.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0105.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0106.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0107.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0108.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0109.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0110.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0111.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0112.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0113.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0114.nc
+ eORCA05.L121-EXP02_00001200_restart_ice_0115.nc
+ Size of global arrays:          720         603
+ Finding rebuild dimensions from the first file...
+ Rebuilding across dimensions x and y
+ names   : x y 
+ lens    :          720         603
+ Chunking:          206         135
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable nav_lon...
+ names   : x y 
+ lens    :          720         603
+ Chunking:          206         135
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable nav_lat...
+ names   : numcat 
+ lens    :            5
+ Chunking:            5
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable numcat...
+ names   : time_counter 
+ lens    :            1
+ Chunking:            1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable time_counter...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable stress1_i...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable stress2_i...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable stress12_i...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable snwice_mass...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable snwice_mass_b...
+ Defining variable nn_fsbc...
+ Defining variable kt_ice...
+ names   : dim_DELAY__r8_cflice time_counter 
+ lens    :            1           1
+ Chunking:            1           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY__r8_cflice...
+ names   : dim_DELAY_re8_ar5 time_counter 
+ lens    :            8           1
+ Chunking:            8           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_re8_ar5...
+ names   : dim_DELAY_im8_ar5 time_counter 
+ lens    :            8           1
+ Chunking:            8           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_im8_ar5...
+ names   : dim_DELAY_re8_ocebg time_counter 
+ lens    :           17           1
+ Chunking:           17           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_re8_ocebg...
+ names   : dim_DELAY_im8_ocebg time_counter 
+ lens    :           17           1
+ Chunking:           17           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable DELAY_im8_ocebg...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable v_i...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable v_s...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable a_i...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable t_su...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable u_ice...
+ names   : x y time_counter 
+ lens    :          720         603           1
+ Chunking:          206         135           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable v_ice...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable oa_i...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable a_ip...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable v_ip...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable v_il...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_s_l01...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_s_l02...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_s_l03...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_s_l04...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_s_l05...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l01...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l02...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l03...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l04...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l05...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l06...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l07...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l08...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l09...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable e_i_l10...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable sv_i...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l01...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l02...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l03...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l04...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l05...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l06...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l07...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l08...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l09...
+ names   : x y numcat time_counter 
+ lens    :          720         603           5           1
+ Chunking:          206         135           5           1
+ Deflation :            1
+ Chunk algo:            0
+ Defining variable szv_i_l10...
+ Finished defining output file.
+ Opening input files...
+ All input files open.
+ Rebuilding data from variable nav_lon...
+ Writing variable nav_lon...
+ Rebuilding data from variable nav_lat...
+ Writing variable nav_lat...
+ Copying data from variable numcat...
+ Writing variable numcat...
+ Copying data from variable time_counter...
+ Writing variable time_counter...
+ Rebuilding data from variable stress1_i...
+ Writing variable stress1_i...
+ Rebuilding data from variable stress2_i...
+ Writing variable stress2_i...
+ Rebuilding data from variable stress12_i...
+ Writing variable stress12_i...
+ Rebuilding data from variable snwice_mass...
+ Writing variable snwice_mass...
+ Rebuilding data from variable snwice_mass_b...
+ Writing variable snwice_mass_b...
+ Copying data from variable nn_fsbc...
+ Writing variable nn_fsbc...
+ Copying data from variable kt_ice...
+ Writing variable kt_ice...
+ Copying data from variable DELAY__r8_cflice...
+ Writing variable DELAY__r8_cflice...
+ Copying data from variable DELAY_re8_ar5...
+ Writing variable DELAY_re8_ar5...
+ Copying data from variable DELAY_im8_ar5...
+ Writing variable DELAY_im8_ar5...
+ Copying data from variable DELAY_re8_ocebg...
+ Writing variable DELAY_re8_ocebg...
+ Copying data from variable DELAY_im8_ocebg...
+ Writing variable DELAY_im8_ocebg...
+ Rebuilding data from variable v_i...
+ Writing variable v_i...
+ Rebuilding data from variable v_s...
+ Writing variable v_s...
+ Rebuilding data from variable a_i...
+ Writing variable a_i...
+ Rebuilding data from variable t_su...
+ Writing variable t_su...
+ Rebuilding data from variable u_ice...
+ Writing variable u_ice...
+ Rebuilding data from variable v_ice...
+ Writing variable v_ice...
+ Rebuilding data from variable oa_i...
+ Writing variable oa_i...
+ Rebuilding data from variable a_ip...
+ Writing variable a_ip...
+ Rebuilding data from variable v_ip...
+ Writing variable v_ip...
+ Rebuilding data from variable v_il...
+ Writing variable v_il...
+ Rebuilding data from variable e_s_l01...
+ Writing variable e_s_l01...
+ Rebuilding data from variable e_s_l02...
+ Writing variable e_s_l02...
+ Rebuilding data from variable e_s_l03...
+ Writing variable e_s_l03...
+ Rebuilding data from variable e_s_l04...
+ Writing variable e_s_l04...
+ Rebuilding data from variable e_s_l05...
+ Writing variable e_s_l05...
+ Rebuilding data from variable e_i_l01...
+ Writing variable e_i_l01...
+ Rebuilding data from variable e_i_l02...
+ Writing variable e_i_l02...
+ Rebuilding data from variable e_i_l03...
+ Writing variable e_i_l03...
+ Rebuilding data from variable e_i_l04...
+ Writing variable e_i_l04...
+ Rebuilding data from variable e_i_l05...
+ Writing variable e_i_l05...
+ Rebuilding data from variable e_i_l06...
+ Writing variable e_i_l06...
+ Rebuilding data from variable e_i_l07...
+ Writing variable e_i_l07...
+ Rebuilding data from variable e_i_l08...
+ Writing variable e_i_l08...
+ Rebuilding data from variable e_i_l09...
+ Writing variable e_i_l09...
+ Rebuilding data from variable e_i_l10...
+ Writing variable e_i_l10...
+ Rebuilding data from variable sv_i...
+ Writing variable sv_i...
+ Rebuilding data from variable szv_i_l01...
+ Writing variable szv_i_l01...
+ Rebuilding data from variable szv_i_l02...
+ Writing variable szv_i_l02...
+ Rebuilding data from variable szv_i_l03...
+ Writing variable szv_i_l03...
+ Rebuilding data from variable szv_i_l04...
+ Writing variable szv_i_l04...
+ Rebuilding data from variable szv_i_l05...
+ Writing variable szv_i_l05...
+ Rebuilding data from variable szv_i_l06...
+ Writing variable szv_i_l06...
+ Rebuilding data from variable szv_i_l07...
+ Writing variable szv_i_l07...
+ Rebuilding data from variable szv_i_l08...
+ Writing variable szv_i_l08...
+ Rebuilding data from variable szv_i_l09...
+ Writing variable szv_i_l09...
+ Rebuilding data from variable szv_i_l10...
+ Writing variable szv_i_l10...
+ Closing input files...
+ Closing output file eORCA05.L121-EXP02_00001200_restart_ice.nc
+ NEMO rebuild completed successfully
+ 
+########## ########## ########## ########## ########## ########## ########## ##########
+Execution Sum Up
+########## ########## ########## ########## ########## ########## ########## ##########
+Jobid     : 1201414
+Jobname   : restart
+User      : alberaur
+Account   : gen12020@xlarge
+Limits    : time = 10:00 , memory/job = 26800 Mo
+Date      : submit = 02/09/2025 17:37:24 , start = 02/09/2025 17:38:00 , end = 02/09/2025 17:48:00
+Execution : partition = xlarge , QoS = normal@xlarge , Comment = (null)
+Resources : ntasks = 10 , cpus/task = 1 , ncpus = 10 , nodes = 1
+   Nodes=irene8000 CPU_IDs=0-9 Mem=268000 GRES=
+ 
+Memory / step 
+--------------
+                          Resident Size (Mo)                     Virtual Size (Go)
+JobID            Max     (Node:Task)       AveTask    Max  (Node:Task)            AveTask
+-----------      ------------------------  -------    --------------------------  -------
+1201414.extern       0 (irene8000   :   0)       0      0.00 (irene8000   :   0)    0.00
+1201414.batch     5041 (irene8000   :   0)       4      4.00 (irene8000   :   0)    4.00
+
+Accounting / step 
+------------------
+
+JobID           JobName                  Ntasks  Ncpus Nnodes  Layout       Elapsed               User         System     Eff  State
+------------    ------------             ------  ----- ------  -------      -------               -------      ------     ---  -----
+1201414         restart                       -     10      1        -     00:02:52   (100%)            -            -      -  -
+1201414.batch   batch                         1     10      1  Unknown     00:02:52   (100%)     00:00:00     00:00:00      0  RUNNING
+1201414.extern  extern                        1     10      1  Unknown     00:02:52 (100.0%)     00:00:00     00:00:00      0  RUNNING
+########## ########## ########## ########## ########## ########## ########## ##########

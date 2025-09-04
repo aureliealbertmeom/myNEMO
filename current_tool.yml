@@ -1,0 +1,7 @@
+- name: DOMAINcfg
+  machine: irene
+  nemo: NEMO_5.0
+  arch: X64_IRENE_XIOS3_2806
+  config: eORCA05.L121
+   
+

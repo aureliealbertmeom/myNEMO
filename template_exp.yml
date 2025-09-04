@@ -1,0 +1,10 @@
+- name : # name of the experiment in the form of CONFIG-CASE
+  machine: # machine on which it will run (irene, adastra, jean-zay, dahu ...)
+  compiler: # name of the compiler used on this machine (X64_IRENE)
+  xios: # version of XIOS in the form of XIOSVERSION-TAG
+  nemo: # version of NEMO in the form NEMO_TAG
+  nemo_ref: # reference NEMO config, prev_exp must be EXP00
+  cpp_conf:  #name of the cpp configuration (it can be a NEMO reference w or wo some cpp keys, WED025_wkey_xios3), do not use if nemo_ref is defined
+  prev_exp: #name of a previous exp taken as a reference (for namelists and xml scripts)
+  purpose: "" #why do you want to run this ? 
+       

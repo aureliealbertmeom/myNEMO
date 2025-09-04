@@ -2,4 +2,4 @@
 
 source ~/.bashrc
 load_intel
-./makenemo -m 'ARCH' -r REFCONF -n REFCONF_ARCH --del_key 'KEYDEL' -j 8  ## --clean_config
+./makenemo -m 'ARCH' -r REFCONF -n CPPCONF --del_key 'KEYDEL' -j 8  ## --clean_config
