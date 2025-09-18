@@ -1,9 +1,9 @@
-- name : eORCA05.L121-EXP08
-  machine: irene
-  compiler: X64_IRENE_debug
+- name : eORCA05.L121-EXP09
+  machine: jean-zay
+  compiler: X64_JEANZAY
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
   add_key: key_xios3
-  prev_exp: eORCA05.L121-EXP07
-  purpose: "debugging new xml"
+  prev_exp: eORCA05.L121-EXP08
+  purpose: "debugging new xml on jean zay"

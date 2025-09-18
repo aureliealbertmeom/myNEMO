@@ -3,30 +3,34 @@
 
 #Relative to running NEMO
 
-all_machine=['irene']
+all_machine=['irene','jean-zay']
 all_jobsub_machine={}
 all_jobsub_machine['irene']='ccc_msub'
+all_jobsub_machine['jean-zay']='sbatch'
 
 all_path_dev={}
 all_path_dev['irene']='/ccc/work/cont003/gen12020/alberaur/DEV'
+all_path_dev['jean-zay']='/lustre/fswork/projects/rech/cli/rote001/DEV'
 
 all_path_work={}
 all_path_work['irene']='/ccc/work/cont003/gen12020/alberaur'
+all_path_work['jean-zay']='/lustre/fswork/projects/rech/cli/rote001'
 
 all_path_scratch={}
 all_path_scratch['irene']='/ccc/scratch/cont003/gen12020/alberaur'
+all_path_scratch['jean-zay']='/lustre/fsn1/projects/rech/cli/rote001'
 
 script_path={}
 script_path['irene']='/ccc/work/cont003/gen12020/alberaur/DEV/myNEMO'
-
-scratch_path={}
-scratch_path['irene']='/ccc/scratch/cont003/gen12020/alberaur/TMPPLOTS'
+script_path['jean-zay']='/lustre/fswork/projects/rech/cli/rote001/DEV/git/myNEMO'
 
 all_path_store={}
 all_path_store['irene']='/ccc/store/cont003/gen12020/alberaur'
+all_path_store['jean-zay']='/lustre/fsstor/projects/rech/cli/rote001'
 
 all_arch={}
 all_arch['irene']=['X64_IRENE','X64_IRENE_debug']
+all_arch['jean-zay']=['X64_JEANZAY']
 
 all_tag_xios={}
 all_tag_xios['irene']=['XIOS3_2656','XIOS2_2430','XIOS3_2806']
