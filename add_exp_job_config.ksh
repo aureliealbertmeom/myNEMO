@@ -7,7 +7,7 @@ add_exp=0
 add_config=1
 
 CONFIG=eORCA05.L121
-CASE=EXP07
+CASE=EXP08
 
 if [ $add_job -eq 1 ]; then
 	cp current_job.yml tmp.yml
