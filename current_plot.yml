@@ -1,0 +1,9 @@
+- exp: 'eORCA05.L121-EXP07'
+  machine: 'irene'
+  variables: ['SSH, SSU, SSV, SSS, SST, MLD, SICONC, SITHIC']
+  plot_types: ['map_noproj']
+  plot_locs: ['surf']
+  plot_regions: ['global']
+  frequency: '1h'
+  date_init: '2012-01-01 00:00'
+  date_end: '2012-12-31 23:00'

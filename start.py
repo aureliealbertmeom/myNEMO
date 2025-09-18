@@ -99,7 +99,7 @@ if comp_nemo in ls.all_comp_nemo[machine][nemo_version]:
     print('This specific reference NEMO config has already been compiled with the selected version of xios and compiler')
 else:
     #Compilation of a ref case
-    f.compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine)
+    f.compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios)
 
 #Set up the experiment : create directories
 tmpdir_exp=path_scratch+'/TMPDIR_'+str(config)+'-'+str(new_exp)

@@ -115,7 +115,7 @@ def download_nemo(nemo_version,machine,path_mynemo,path_dev):
     continue_question('If that is done, hit Continue to go on')
     return path_nemo
 
-def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine):
+def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios):
     """
     Compile the nemo_version of NEMO with the xios_version of xios and compiler on machine
     """

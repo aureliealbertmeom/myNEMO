@@ -1,3 +1,184 @@
+- nb: 1         #the number of jobs for this exp
+  job: 1306756        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP07       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     720   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  43800   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  8    #number of nodes requested
+  cores: 1024     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 1012 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 20000      # time limit for the job
+  date: "08/09/2025"      # date of launch
+  success: Non   #Oui or Non, to be filled post run
+  remarks: "Hangs after init, no error nowhere"
+  cpu_time: 5643  # Total CPU in h, to be filled post run
+  real_time: 20033   # Elapse time in seconds, to be filled post run
+
+- nb: 1         #the number of jobs for this exp
+  job: 1337427        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP07       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     360   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  43800   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  8    #number of nodes requested
+  cores: 1024     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 1012 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 20000      # time limit for the job
+  date: "10/09/2025"      # date of launch
+  success: Non   #Oui or Non, to be filled post run
+  remarks: "test reverting to 360s time step, same result hangs with no error"
+  cpu_time: 5651  # Total CPU in h, to be filled post run
+  real_time: 20034   # Elapse time in seconds, to be filled post run
+
+
+- nb: 1         #the number of jobs for this exp
+  job: 1306559        #the jobid, to be filled post run
+  exp : eORCA36.L121-EXP05       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     10   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  8640   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node: 150     #number of nodes requested
+  cores: 19200     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 19000 # number of cores for NEMo
+  xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 82800      # time limit for the job
+  date: "08/09/2025"      # date of launch
+  success: Non    #Oui or Non, to be filled post run
+  remarks: "process killed in writing icevolu"
+  cpu_time: 139770  # Total CPU in h, to be filled post run
+  real_time: 28969  # Elapse time in seconds, to be filled post run
+
+
+- nb: 1         #the number of jobs for this exp
+  job: 1337543        #the jobid, to be filled post run
+  exp : eORCA36.L121-EXP05       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     10   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  8640   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node: 150     #number of nodes requested
+  cores: 19200     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 19000 # number of cores for NEMo
+  xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 82800      # time limit for the job
+  date: "10/09/2025"      # date of launch
+  success:     #Oui or Non, to be filled post run
+  remarks: "test no output of icevolu"
+  cpu_time:   # Total CPU in h, to be filled post run
+  real_time:   # Elapse time in seconds, to be filled post run
+
+- nb: 2         #the number of jobs for this exp
+  job: 1288611        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP05       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     360   #time-step  for this part of the run, in seconds
+  nit0:    7201   #time step start
+  nitend:  87600   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  8    #number of nodes requested
+  cores: 1024     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 1012 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 86390      # time limit for the job
+  date: "07/09/2025"      # date of launch
+  success: Oui   #Oui or Non, to be filled post run
+  remarks: ""
+  cpu_time: 4854  # Total CPU in h, to be filled post run
+  real_time: 17317  # Elapse time in seconds, to be filled post run
+
+- nb: 1         #the number of jobs for this exp
+  job: 1238864        #the jobid, to be filled post run
+  exp : eORCA36.L121-EXP04       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     10   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  8640   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node: 150     #number of nodes requested
+  cores: 19200     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 19000 # number of cores for NEMo
+  xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 82800      # time limit for the job
+  date: "05/09/2025"      # date of launch
+  success: Non    #Oui or Non, to be filled post run
+  remarks: "XIOS error : WARNING: Unexpected request for buffer to communicate with server 18"
+  cpu_time: 223940  # Total CPU in h, to be filled post run
+  real_time: 44634  # Elapse time in seconds, to be filled post run
+  
+- nb: 1         #the number of jobs for this exp
+  job: 1288574        #the jobid, to be filled post run
+  exp : eORCA36.L121-EXP04       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     10   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  8640   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node: 150     #number of nodes requested
+  cores: 19200     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 19000 # number of cores for NEMo
+  xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 82800      # time limit for the job
+  date: "07/09/2025"      # date of launch
+  success: Non     #Oui or Non, to be filled post run
+  remarks: "change xml files : forrtl: error (76): Abort trap signal in xios_server.exe"
+  cpu_time: 6275  # Total CPU in h, to be filled post run
+  real_time: 16593  # Elapse time in seconds, to be filled post run
+  
+- nb: 1         #the number of jobs for this exp
+  job: 1238594        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP06       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     360   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  7200   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  16    #number of nodes requested
+  cores: 2048     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 2036 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 86390      # time limit for the job
+  date: "05/09/2025"      # date of launch
+  success: Oui   #Oui or Non, to be filled post run 
+  remarks: ""
+  cpu_time: 805  # Total CPU in h, to be filled post run
+  real_time: 1476  # Elapse time in seconds, to be filled post run
+  
+- nb: 1         #the number of jobs for this exp
+  job: 1237718        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP05       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     360   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  7200   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  8    #number of nodes requested
+  cores: 1024     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 1012 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 86390      # time limit for the job
+  date: "05/09/2025"      # date of launch
+  success: Oui   #Oui or Non, to be filled post run 
+  remarks: ""
+  cpu_time: 448  # Total CPU in h, to be filled post run
+  real_time: 1642  # Elapse time in seconds, to be filled post run
+  
+- nb: 1         #the number of jobs for this exp
+  job: 1230090        #the jobid, to be filled post run
+  exp : eORCA05.L121-EXP04       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     360   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  7200   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  4    #number of nodes requested
+  cores: 512     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 500 # number of cores for NEMo
+  xios_cores: 12 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 86390      # time limit for the job
+  date: "04/09/2025"      # date of launch
+  success: Oui   #Oui or Non, to be filled post run 
+  remarks: ""
+  cpu_time: 425  # Total CPU in h, to be filled post run
+  real_time: 3080  # Elapse time in seconds, to be filled post run
   
   
 - nb: 1         #the number of jobs for this exp
@@ -13,13 +194,13 @@
   xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
   time: 82800      # time limit for the job
   date: "04/09/2025"      # date of launch
-  success:    #Oui or Non, to be filled post run 
-  remarks: "Doubling the time step to see if it holds"
-  cpu_time:   # Total CPU in h, to be filled post run
-  real_time:   # Elapse time in seconds, to be filled post run
+  success: Non    #Oui or Non, to be filled post run 
+  remarks: "Doubling the time step to see if it holds, strange behavior"
+  cpu_time: 283402  # Total CPU in h, to be filled post run
+  real_time: 56033  # Elapse time in seconds, to be filled post run
   
 - nb: 1         #the number of jobs for this exp
-  job:         #the jobid, to be filled post run
+  job: 1221598        #the jobid, to be filled post run
   exp : eORCA36.L121-EXP03       #name of the experiment (should be the same than in current_exp.yml)
   dt :     10   #time-step  for this part of the run, in seconds
   nit0:    1   #time step start
@@ -31,10 +212,10 @@
   xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
   time: 86390      # time limit for the job
   date: "03/09/2025"      # date of launch
-  success:    #Oui or Non, to be filled post run 
-  remarks: ""
-  cpu_time:  # Total CPU in h, to be filled post run
-  real_time:   # Elapse time in seconds, to be filled post run
+  success: Non   #Oui or Non, to be filled post run 
+  remarks: "Still hangs after dyn_hpg"
+  cpu_time: 225102 # Total CPU in h, to be filled post run
+  real_time: 45028  # Elapse time in seconds, to be filled post run
   
 - nb: 1         #the number of jobs for this exp
   job: 1220673        #the jobid, to be filled post run
@@ -73,7 +254,7 @@
   real_time: 11833  # Elapse time in seconds, to be filled post run
 
 - nb: 1         #the number of jobs for this exp
-  job:         #the jobid, to be filled post run
+  job: 1215636        #the jobid, to be filled post run
   exp : eORCA36.L121-EXP01       #name of the experiment (should be the same than in current_exp.yml)
   dt :     10   #time-step  for this part of the run, in seconds
   nit0:    1   #time step start
@@ -85,10 +266,10 @@
   xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
   time: 82800      # time limit for the job
   date: "02/09/2025"      # date of launch
-  success:    #Oui or Non, to be filled post run 
-  remarks: ""
-  cpu_time:  # Total CPU in h, to be filled post run
-  real_time:   # Elapse time in seconds, to be filled post run
+  success: Non   #Oui or Non, to be filled post run 
+  remarks: "init ice to flase but still hangs"
+  cpu_time: 431531 # Total CPU in h, to be filled post run
+  real_time: 82800  # Elapse time in seconds, to be filled post run
   
 - nb: 1         #the number of jobs for this exp
   job: 1138859        #the jobid, to be filled post run
