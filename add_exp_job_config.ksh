@@ -2,9 +2,9 @@
 
 cd /ccc/work/cont003/gen12020/alberaur/DEV/myNEMO
 
-add_job=0
-add_exp=0
-add_config=1
+add_job=1
+add_exp=1
+add_config=0
 
 CONFIG=eORCA05.L121
 CASE=EXP08
