@@ -1,13 +1,12 @@
 #!/bin/bash
-#MSUB -r output               # Job name
-#MSUB -N 1                # Number of tasks to use
-#MSUB -n 1                # Number of tasks to use
-#MSUB -T 600               # Elapsed time limit in seconds
-#MSUB -o output.o%I           # Standard output. %I is the job id
-#MSUB -e output.e%I           # Error output. %I is the job id
-#MSUB -q xlarge               # Partition name (see ccc_mpinfo)
-#MSUB -A gen12020           # Project ID
-#MSUB -m work,scratch
+#SBATCH -J output               # Job name
+#SBATCH --nodes 1                # Number of tasks to use
+#SBATCH --ntasks 1                # Number of tasks to use
+#SBATCH -T 600               # Elapsed time limit in seconds
+#SBATCH -o output.o%I           # Standard output. %I is the job id
+#SBATCH -e output.e%I           # Error output. %I is the job id
+#SBATCH --partition=prepost               # Partition name (see ccc_mpinfo)
+#SBATCH -A cli@cpu           # Project ID
 
 set -x
 source ~/.bashrc

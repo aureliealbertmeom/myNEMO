@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+   <file_group id="1h" output_freq="1h" output_level="10" enabled=".TRUE.">  <!-- 1d files --> 
+     <file id="file51" name_suffix="_icemod" mode="write" gatherer="igatherer" writer="iwriter" using_server2="true" description="ice variables" enabled=".true." >
+
+       <!-- general -->
+       <field field_ref="icethic"          name="sithic" />
+       <field field_ref="iceconc"          name="siconc" />
+       
+
+     </file>
+     
+     
+   </file_group>

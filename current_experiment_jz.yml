@@ -1,4 +1,4 @@
-- name : eORCA05.L121-EXP10
+- name : eORCA05.L121-EXP09
   machine: jean-zay
   compiler: intel
   arch_xios: X64_JEANZAY
@@ -8,4 +8,4 @@
   nemo_ref: WED025
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP08
-  purpose: "still debugging new xml on jean zay"
+  purpose: "debugging new xml on jean zay"

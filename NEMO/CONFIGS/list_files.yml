@@ -1,5 +1,15 @@
 
 
+- name : eORCA05.L121-EXP10
+  all_init : ['eORCA05.L121_domain_cfg_v2025.nc','votemper_eORCA025L121-eORCA05L121_y1989m01.nc','vosaline_eORCA025L121-eORCA05L121_y1989m01.nc','wght_JRA55-eORCA05_bicub_4.2.nc','chlorophyl_v0.0.nc','sosaline_eORCA025L121-eORCA05L121_y1989m01.nc','eORCA05_ISBA_runoff_y1979-2018_4.2.nc','ghflux_v2.0.nc','wght_chlorophyl_eORCA05_bilin_4.2.nc','siconc_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','sithic_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','wght_ghflux_eORCA05_bilin_4.2.nc','wght_JRA55-eORCA05_bilin_4.2.nc']
+  all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
+  path_forc: '/gpfswork/rech/cli/commun/DATA_FORCING/JRA55/drowned'
+
+- name : eORCA05.L121-EXP09
+  all_init : ['eORCA05.L121_domain_cfg_v2025.nc','votemper_eORCA025L121-eORCA05L121_y1989m01.nc','vosaline_eORCA025L121-eORCA05L121_y1989m01.nc','wght_JRA55-eORCA05_bicub_4.2.nc','chlorophyl_v0.0.nc','sosaline_eORCA025L121-eORCA05L121_y1989m01.nc','eORCA05_ISBA_runoff_y1979-2018_4.2.nc','ghflux_v2.0.nc','wght_chlorophyl_eORCA05_bilin_4.2.nc','siconc_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','sithic_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','wght_ghflux_eORCA05_bilin_4.2.nc','wght_JRA55-eORCA05_bilin_4.2.nc']
+  all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
+  path_forc: '/gpfswork/rech/cli/commun/DATA_FORCING/JRA55/drowned'
+
 - name : eORCA05.L121-EXP08
   all_init : ['eORCA05.L121_domain_cfg_v2025.nc','votemper_eORCA025L121-eORCA05L121_y1989m01.nc','vosaline_eORCA025L121-eORCA05L121_y1989m01.nc','wght_JRA55-eORCA05_bicub_4.2.nc','chlorophyl_v0.0.nc','sosaline_eORCA025L121-eORCA05L121_y1989m01.nc','eORCA05_ISBA_runoff_y1979-2018_4.2.nc','ghflux_v2.0.nc','wght_chlorophyl_eORCA05_bilin_4.2.nc','siconc_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','sithic_eORCA025L121-eORCA05L121_y1989m01_4.2.nc','wght_ghflux_eORCA05_bilin_4.2.nc','wght_JRA55-eORCA05_bilin_4.2.nc']
   all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
