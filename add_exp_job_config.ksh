@@ -1,13 +1,17 @@
 #bin/bash
 
-cd /ccc/work/cont003/gen12020/alberaur/DEV/myNEMO
-
 add_job=1
 add_exp=1
-add_config=0
+add_config=1
 
 CONFIG=eORCA05.L121
-CASE=EXP08
+CASE=EXP09
+
+machine=$(cat current_experiment.yml | grep machine | awk '{print $2}')
+path_mynemo=$(cat lists.py | grep script_path | grep ${machine} | awk -F\' '{print $4}')
+scdir=$(cat lists.py | grep scratch | grep ${machine} | awk -F\' '{print $4}')
+
+cd $path_mynemo
 
 if [ $add_job -eq 1 ]; then
 	cp current_job.yml tmp.yml
@@ -23,8 +27,8 @@ fi
 
 if [ $add_config -eq 1 ]; then
 	mkdir -p NEMO/CONFIGS/${CONFIG}/${CONFIG}-${CASE}
-	cp /ccc/scratch/cont003/gen12020/alberaur/TMPDIR_${CONFIG}-${CASE}/namelist* NEMO/CONFIGS/${CONFIG}/${CONFIG}-${CASE}/.
-	cp /ccc/scratch/cont003/gen12020/alberaur/TMPDIR_${CONFIG}-${CASE}/*xml NEMO/CONFIGS/${CONFIG}/${CONFIG}-${CASE}/.
+	cp ${scdir}/TMPDIR_${CONFIG}-${CASE}/namelist* NEMO/CONFIGS/${CONFIG}/${CONFIG}-${CASE}/.
+	cp ${scdir}/TMPDIR_${CONFIG}-${CASE}/*xml NEMO/CONFIGS/${CONFIG}/${CONFIG}-${CASE}/.
 fi
 
 

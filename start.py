@@ -40,7 +40,7 @@ if "nemo_ref" in dic_exp:
         cppconf=cppconf+'_wo'+dic_exp['del_key']
     print('We are going to run '+name+' on '+machine+' with '+xios_version_tag+' and '+nemo_version+' from reference NEMO case '+nemo_ref_conf)
 else:
-    #We will use another experiment as a reference, we need to specify the compilation parameters (compiler, xios version and cpp keys)
+    #We will use another experiment as a reference, we need to specify the compilation parameters (compiler, arch, xios version and cpp keys)
     cppconf=dic_exp['cpp_conf']
     print('We are going to run '+name+' on '+machine+' with '+xios_version_tag+' and '+nemo_version+' from previous run '+ref_exp)
 
@@ -63,13 +63,17 @@ else:
 
 #The compiler (intel, gnu, etc...)
 compiler=dic_exp['compiler']
-if compiler in ls.all_arch[machine]:
+if compiler in ls.all_compiler[machine]:
     print('We will use '+str(compiler))
 
+#The arch files for both xios and nemo
+arch_xios=dic_exp['arch_xios']
+if arch_xios in ls.all_arch_xios[machine]:
+    print('We will use '+str(arch_xios)+' to compile xios')
 
-#Decompose XIOS version
-xios_version=xios_version_tag[4]
-xios_tag=xios_version_tag[-4:]
+arch_nemo=dic_exp['arch_nemo']
+if arch_nemo in ls.all_arch_nemo[machine]:
+    print('We will use '+str(arch_nemo)+' to compile nemo')
 
 #If XIOS version is already installed and compiled
 if xios_version_tag in ls.all_tag_xios[machine]:
@@ -78,7 +82,7 @@ if xios_version_tag in ls.all_tag_xios[machine]:
 
 #A new version of XIOS for this machine has to be downloaded and compiled
 else:
-    path_xios=f.install_xios(machine, xios_version_tag, path_dev, path_mynemo,compiler)
+    path_xios=f.install_xios(machine, xios_version_tag, path_dev, path_mynemo,arch_xios)
 
 #NEMO version
 
@@ -92,14 +96,18 @@ else:
 
 #Existing compilation for this experiment
 #comp_nemo here is a set of compilation parameter (intel, xios version and cpp keys) for which different geographical config can be run
-comp_nemo=str(cppconf)+'_'+str(compiler)+'_'+str(xios_version_tag)
+comp_nemo=str(cppconf)+'_'+str(arch_nemo)+'_'+str(xios_version_tag)
 path_comp_nemo=path_nemo+'/cfgs/'+str(comp_nemo)
 
-if comp_nemo in ls.all_comp_nemo[machine][nemo_version]:
-    print('This specific reference NEMO config has already been compiled with the selected version of xios and compiler')
+if  len(ls.all_comp_nemo[machine])==0:
+    print('Version '+nemo_version+' has not yet been compiled on '+machine)
+    f.compile_nemo(arch_nemo,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios)
 else:
-    #Compilation of a ref case
-    f.compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios)
+    if comp_nemo in ls.all_comp_nemo[machine][nemo_version]:
+        print('This specific reference NEMO config has already been compiled with the selected version of xios and arch')
+    else:
+        #Compilation of a ref case
+        f.compile_nemo(arch_nemo,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios)
 
 #Set up the experiment : create directories
 tmpdir_exp=path_scratch+'/TMPDIR_'+str(config)+'-'+str(new_exp)
@@ -203,7 +211,7 @@ core_nemo=dic_job['nemo_cores']
 if nit0 == 1:
     print("We start from init, no restarts are needed")
 else:
-    f.process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_version_tag,core_nemo,jobsub,jobnb,rdir_exp_store,rdir_exp_work)
+    f.process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,arch_nemo,xios_version_tag,core_nemo,jobsub,jobnb,rdir_exp_store,rdir_exp_work)
 
 #Generate the job 
 

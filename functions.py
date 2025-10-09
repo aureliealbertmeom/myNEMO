@@ -74,26 +74,32 @@ def install_xios(machine, xios_version_tag, path_dev, path_mynemo,compiler):
     using script from myNEMO
     """
     print("We are going to compile XIOS on "+str(machine))
-    scriptname=path_mynemo+'/XIOS/get_xios_'+str(xios_version_tag)+'.ksh'
-    if not os.path.exists(scriptname):
-        templatename=path_mynemo+'/XIOS/template_get_xios_tag.ksh'
-        use_template(templatename, scriptname, {'VERS':str(xios_version),'TAG':str(xios_tag)})
-    subprocess.call(["chmod", "+x",scriptname])
-    print('Go to '+path_dev+' and use the script '+str(scriptname)+'.sh script to download '+xios_version_tag)
-    continue_question('If successfully downloaded, ht Continue to go on')
+    scriptname='get_xios_'+str(xios_version_tag)+'.ksh'
+    #Separate version tag in version and tag
+    xios_version=xios_version_tag[4]
+    xios_tag=xios_version_tag[-4:]
+    
+    if not os.path.exists(path_dev+'/'+scriptname):
+        if not os.path.exists(path_mynemo+'/XIOS/'+scriptname):
+            templatename=path_mynemo+'/XIOS/template_get_xios_tag.ksh'
+            use_template(templatename, path_mynemo+'/XIOS/'+scriptname, {'VERS':str(xios_version),'TAG':str(xios_tag)})
+            subprocess.call(["chmod", "+x",path_mynemo+'/XIOS/'+scriptname])
+        shutil.copyfile(path_mynemo+'/XIOS/'+scriptname,path_dev+'/'+scriptname)
+    print('Go to '+path_dev+' and use the script '+str(scriptname)+'.ksh script to download '+xios_version_tag)
+    continue_question('If successfully downloaded,')
     path_xios=path_dev+'/xios'+xios_version+'-trunk-'+xios_tag
     #A script with the proper arch to compile on this machine
-    scriptname=path_mynemo+'/XIOS/compile_xios_'+str(compiler)+'.sh'
+    scriptname='compile_xios_'+str(compiler)+'.ksh'
     #check if the corresponding compile_xios script already exists
-    if not os.path.exists(scriptname):
+    if not os.path.exists(path_mynemo+'/XIOS/'+scriptname):
         templatename=path_mynemo+'/XIOS/template_compile_xios_arch.ksh'
-        use_template(templatename, scriptname, {'ARCH':str(compiler)})
-    shutil.copyfile(scriptname,path_xios+'/compile_xios_'+str(compiler)+'.sh')
-    subprocess.call(["chmod", "+x", path_xios+'/compile_xios_'+str(compiler)+'.sh'])
-    print('Go to '+path_xios+' and compile XIOS using script compile_xios_'+str(compiler)+'.sh')
-    continue_question('If succesfully compiled, hit Continue to go on')
-    print('Go to '+path_mynemo+' and modify lists.py : add '+xios_version+' to the list all_tag_xios for '+machine+' and '+path_xios+' to all_path_xios')
-    continue_question('If that is done, hit Continue to go on')
+        use_template(templatename, path_mynemo+'/XIOS/'+scriptname, {'ARCH':str(compiler)})
+        subprocess.call(["chmod", "+x", path_mynemo+'/XIOS/'+scriptname])
+    shutil.copyfile(path_mynemo+'/XIOS/'+scriptname,path_xios+'/'+scriptname)
+    print('Go to '+path_xios+' and compile XIOS using script '+scriptname)
+    continue_question('If succesfully compiled,')
+    print('Go to '+path_mynemo+' and modify lists.py : add '+xios_version_tag+' to the list all_tag_xios for '+machine+' and '+path_xios+' to all_path_xios')
+    continue_question('If that is done,')
     return path_xios
 
 def download_nemo(nemo_version,machine,path_mynemo,path_dev):
@@ -102,17 +108,17 @@ def download_nemo(nemo_version,machine,path_mynemo,path_dev):
     """
     print("We are going to download NEMO version "+str(nemo_version)+" on "+str(machine))
     [nemo,tag]=nemo_version.split('_')
-    scriptname=path_mynemo+'/NEMO/get_nemo_'+str(tag)+'.sh'
+    scriptname=path_mynemo+'/NEMO/get_nemo_'+str(tag)+'.ksh'
     if not os.path.exists(scriptname):
-        templatename=path_mynemo+'/NEMO/template_get_nemo_tag.sh'
+        templatename=path_mynemo+'/NEMO/template_get_nemo_tag.ksh'
         use_template(templatename, scriptname, {'TAG':str(tag),'PATH':path_dev})
-    shutil.copyfile(scriptname,path_dev+'/get_nemo_'+str(tag)+'.sh')
-    subprocess.call(["chmod", "+x", path_dev+'/get_nemo_'+str(tag)+'.sh'])
-    print('Go to '+path_dev+' and download NEMO using script get_nemo_'+str(tag)+'.sh')
-    continue_question('If succesfully dowloaded, hit Continue to go on')
+    shutil.copyfile(scriptname,path_dev+'/get_nemo_'+str(tag)+'.ksh')
+    subprocess.call(["chmod", "+x", path_dev+'/get_nemo_'+str(tag)+'.ksh'])
+    print('Go to '+path_dev+' and download NEMO using script get_nemo_'+str(tag)+'.ksh')
+    continue_question('If succesfully dowloaded,')
     path_nemo=path_dev+'/'+nemo_version
     print('Go to '+path_mynemo+' and modify lists.py : add '+nemo_version+' to the list all_tag_nemo for '+machine+' and '+path_nemo+' to all_path_nemo')
-    continue_question('If that is done, hit Continue to go on')
+    continue_question('If that is done,')
     return path_nemo
 
 def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,dic_exp,comp_nemo,cppconf,nemo_ref_conf,machine,path_xios):
@@ -125,6 +131,9 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
     if not os.path.exists(path_nemo+'/arch/CNRS/'+archname):
         if not os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname):
             templatename=path_mynemo+'/NEMO/'+nemo_version+'/arch/template_arch-'+str(compiler)+'_xios_path.fcm'
+            if not os.path.exists(templatename):
+                print('Got to '+path_nemo+'/NEMO/'+nemo_version+'/arch/ and make sure there is a template arch called template_arch-'+str(compiler)+'_xios_path.fcm')
+                continue_question('When it is done,')
             use_template(templatename, path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname, {'PATH_XIOS':str(path_xios)})
         print('We copy the '+str(archname)+' arch file to '+path_nemo+'/arch/CNRS')
         shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname,path_nemo+'/arch/CNRS/'+archname)
@@ -147,7 +156,7 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
     shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname,path_nemo+'/'+scriptname)
     subprocess.call(["chmod", "+x", path_nemo+'/'+scriptname])
     print('Go to '+path_nemo+' and compile NEMO with '+str(scriptname))
-    continue_question('If successfully compiled, hit Continue to go on')
+    continue_question('If successfully compiled,')
 
     #Archiving scripts
     print('We are going to archive this new comp_nemo by keeping its ccp keys file and MY_SRC files if there are any')
@@ -162,7 +171,7 @@ def compile_nemo(compiler,xios_version_tag,path_nemo,path_mynemo,nemo_version,di
         for filemy in os.listdir(path_comp_nemo_nemo+'/MY_SRC'):
             shutil.copyfile(path_comp_nemo_nemo+'/MY_SRC/'+filemy,path_comp_nemo_my+'/MY_SRC/'+filemy)
     print('Go to '+path_mynemo+' and modify lists.py : add '+comp_nemo+' to all_comp_nemo for '+str(nemo_version)+' on '+str(machine))
-    continue_question('If that is done, hit Continue to go on')
+    continue_question('If that is done,')
 
 def find_exp_in_dics(list_file,name,prop,path_mynemo):
     """
@@ -176,7 +185,7 @@ def find_exp_in_dics(list_file,name,prop,path_mynemo):
 
     if 'all_files' not in vars():
         print('The list of forcing files is not available for this reference experiment, fill out '+path_mynemo+'/NEMO/CONFIGS/list_files.yml')
-        continue_question('And hit Continue to proceed')
+        continue_question('When it is done,')
 
     alldics=read_multiple_yaml(list_file)
     for dic in np.arange(len(alldics)):
@@ -233,17 +242,17 @@ def process_restarts(nit0,tmpdir_exp,name,path_nemo,path_mynemo,compiler,xios_ve
                 templatename=path_mynemo+'/NEMO/template_compile_tool.ksh'
                 use_template(templatename, compilerebuild, {'ARCH':str(compiler)+'_'+str(xios_version_tag),'TOOL':'REBUILD_NEMO','PATH':path_nemo+'/tools'})
                 subprocess.call(["chmod", "+x", compilerebuild])
-                continue_question('We are about to compile REBUILD_NEMO in '+path_nemo+'/tools/ check that everything is ok and hit Continue to proceed')
+                continue_question('We are about to compile REBUILD_NEMO in '+path_nemo+'/tools/ check that everything is ok,')
                 subprocess.run(compilerebuild,shell=True)
-                continue_question('If compilation went ok, hit Continue so that the script can be saved')
+                continue_question('If compilation went ok,')
                 shutil.copyfile(compilerebuild,path_mynemo+'/NEMO/compile_rebuild_'+compiler+'_'+str(xios_version_tag)+'.ksh')
             scriptrebuirst=tmpdir_exp+'/job_rebuild_restart'+str(jobnb)+'.ksh'
             templatename=path_mynemo+'/NEMO/job_rebuild_restart_irene.ksh'
             use_template(templatename, scriptrebuirst, {'TMPDIR':tmpdir_exp,'PATH_REBUILD':path_nemo+'/tools/REBUILD_NEMO','BASE':name+'_'+str(nitm18)+'_restart','DOMAINS':core_nemo})
             subprocess.call(["chmod", "+x",scriptrebuirst])
-            continue_question('We are about to recombine restarts, hit Continue if that is ok')
+            continue_question('We are about to recombine restarts,')
             subprocess.call([jobsub,scriptrebuirst])
-            continue_question('The restarts are being recombined, when it is done, hit Continue to go on')
+            continue_question('The restarts are being recombined, when it is done,')
 
     #Recombined restart exists
     if linkrst_bool == True:
@@ -293,11 +302,11 @@ def setup_job(tmpdir_exp,jobnb,core_xios,path_mynemo,machine,node,core,time,name
     #Launch the main job
     runname=tmpdir_exp+'/run'+str(jobnb)+'.ksh'
     if not os.path.exists(runname):
-        runtemplate=path_mynemo+'/NEMO/run_'+machine+'.ksh'
+        runtemplate=path_mynemo+'/NEMO/run.ksh'
         use_template(runtemplate, runname, {'SUB':jobsub,'TMPDIR':str(tmpdir_exp),'KK':jobnb})
         subprocess.call(["chmod", "+x", runname])
 
-    continue_question('We are about to launch the job in '+tmpdir_exp+' check that everything is ok and hit Continue to proceed')
+    continue_question('We are about to launch the job in '+tmpdir_exp+' check that everything is ok,')
     subprocess.run(runname,shell=True)
 
     print('You can check the progress of your job with qmt command and the progression of NEMO with tail -f ocean.output and tts')
@@ -371,6 +380,6 @@ def compile_tool(machine,arch,nemo_version,tool_name,path_nemo,path_mynemo):
     shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/'+scriptname,path_nemo+'/tools/'+scriptname)
     subprocess.call(["chmod", "+x", path_nemo+'/tools/'+scriptname])
     print('Go to '+path_nemo+'/tools and compile the tool '+str(tool_name)+' with '+str(scriptname))
-    continue_question('If successfully compiled, hit Continue to go on')
-    continue_question('Now that is has been successfully compiled, add '+tool_name+' to the list all_tools and all_exec_tool to lists.py, hit Continue to go on')
+    continue_question('If successfully compiled,')
+    continue_question('Now that is has been successfully compiled, add '+tool_name+' to the list all_tools and all_exec_tool to lists.py,')
 

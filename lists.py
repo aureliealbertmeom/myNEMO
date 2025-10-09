@@ -22,30 +22,44 @@ all_path_scratch['jean-zay']='/lustre/fsn1/projects/rech/cli/rote001'
 
 script_path={}
 script_path['irene']='/ccc/work/cont003/gen12020/alberaur/DEV/myNEMO'
-script_path['jean-zay']='/lustre/fswork/projects/rech/cli/rote001/DEV/git/myNEMO'
+script_path['jean-zay']='/lustre/fswork/projects/rech/cli/rote001/DEV/myNEMO'
 
 all_path_store={}
 all_path_store['irene']='/ccc/store/cont003/gen12020/alberaur'
 all_path_store['jean-zay']='/lustre/fsstor/projects/rech/cli/rote001'
 
-all_arch={}
-all_arch['irene']=['X64_IRENE','X64_IRENE_debug']
-all_arch['jean-zay']=['X64_JEANZAY']
+all_compiler={}
+all_compiler['irene']='intel'
+all_compiler['jean-zay']='intel'
+
+all_arch_xios={}
+all_arch_xios['irene']=['X64_IRENE']
+all_arch_xios['jean-zay']=['X64_JEANZAY']
+
+all_arch_nemo={}
+all_arch_nemo['irene']=['X64_IRENE','X64_IRENE_debug']
+all_arch_nemo['jean-zay']=['X64_JEANZAY']
 
 all_tag_xios={}
 all_tag_xios['irene']=['XIOS3_2656','XIOS2_2430','XIOS3_2806']
+all_tag_xios['jean-zay']=['XIOS3_2806']
 
 all_path_xios={}
 all_path_xios['irene']={}
 all_path_xios['irene']['XIOS3_2806']=all_path_dev['irene']+'/xios3-trunk-2806'
 all_path_xios['irene']['XIOS3_2656']=all_path_dev['irene']+'/xios3-trunk-2656'
 all_path_xios['irene']['XIOS2_2430']=all_path_dev['irene']+'/xios-trunk-2430'
+all_path_xios['jean-zay']={}
+all_path_xios['jean-zay']['XIOS3_2806']=all_path_dev['jean-zay']+'/xios3-trunk-2806'
 
 all_tag_nemo={}
 all_tag_nemo['irene']=['NEMO_4.2.2','NEMO_5.0']
+all_tag_nemo['jean-zay']=['NEMO_5.0']
 
 all_path_nemo={}
 all_path_nemo['irene']={}
+all_path_nemo['jean-zay']={}
+all_path_nemo['jean-zay']['NEMO_5.0']='/lustre/fswork/projects/rech/cli/rote001/DEV/NEMO_5.0'
 for tag_nemo in all_tag_nemo['irene']:
     all_path_nemo['irene'][tag_nemo]=all_path_dev['irene']+'/'+str(tag_nemo)
 
@@ -60,19 +74,24 @@ all_geo_ref_conf_nemo['X3_ORCA2_ICE']='ORCA2'
 
 all_geo_conf_nemo={}
 all_geo_conf_nemo['irene']=['ORCA2','WED025','eORCA05.L121','eORCA36.L121']
+all_geo_conf_nemo['jean-zay']={}
 
 all_comp_nemo={}
 all_comp_nemo['irene']={}
+all_comp_nemo['jean-zay']={}
+all_comp_nemo['jean-zay']['NEMO_5.0']=['WED025_wkey_xios3_X64_JEANZAY_XIOS3_2806','WED025_wkey_xios3_X64_JEANZAY_debug_XIOS3_2806']
 all_comp_nemo['irene']['NEMO_4.2.2']=['WED025_X64_IRENE_XIOS2_2430','X3_ORCA2_ICE_X64_IRENE_XIOS3_2656','WED025_X64_IRENE_XIOS2_2430']
 all_comp_nemo['irene']['NEMO_5.0']=['X3_ORCA2_ICE_PISCES','X3_ORCA2_ICE_PISCES_X64_IRENE_XIOS3_2806','WED025_X64_IRENE_XIOS2_2430','WED025_wkey_xios3_X64_IRENE_XIOS3_2806','WED025_wkey_xios3_X64_IRENE_debug_XIOS3_2806','WED025_wkey_xios3_X64_IRENE_init_XIOS3_2806','WED025_wkey_xios3_X64_IRENE_debugO3_XIOS3_2806']
 
 all_exp_config_nemo={}
 all_exp_config_nemo['irene']={}
+all_exp_config_nemo['jean-zay']={}
 all_exp_config_nemo['irene']['NEMO_4.2.2']={}
 all_exp_config_nemo['irene']['NEMO_4.2.2']['WED025_X64_IRENE_XIOS2_2430']={}
 
 all_tools={}
 all_tools['irene']={}
+all_tools['jean-zay']={}
 all_tools['irene']['NEMO_5.0']=['REBUILD_NEMO','DOMAINcfg']
 
 all_exec_tool={}
