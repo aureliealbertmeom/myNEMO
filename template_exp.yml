@@ -1,6 +1,8 @@
 - name : # name of the experiment in the form of CONFIG-CASE
   machine: # machine on which it will run (irene, adastra, jean-zay, dahu ...)
-  compiler: # name of the compiler used on this machine (X64_IRENE)
+  compiler: # name of the compiler used on this machine (intel)
+  arch_xios: # name of the arch type used for XIOS (X64_IRENE)
+  arch_nemo: # name of the arch type used for NEMO (X64_IRENE)
   xios: # version of XIOS in the form of XIOSVERSION-TAG
   nemo: # version of NEMO in the form NEMO_TAG
   nemo_ref: # reference NEMO config, prev_exp must be EXP00

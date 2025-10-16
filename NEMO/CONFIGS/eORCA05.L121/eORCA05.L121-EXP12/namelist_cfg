@@ -31,9 +31,9 @@
 &namrun        !   parameters of the run
 !-----------------------------------------------------------------------
    nn_no       =       0   !  job number (no more used...)
-   cn_exp      =  'eORCA05.L121-EXP07' !  experience name
+   cn_exp      =  'eORCA05.L121-EXP12' !  experience name
    nn_it000    =   1       !  first time step
-   nn_itend    =  87600    !  last  time step (std 5475)
+   nn_itend    =  240    !  last  time step (std 5475)
    nn_date0    = 20120101  !  date at nit_0000 (format yyyymmdd) used if ln_rstart=F or (ln_rstart=T and nn_rstctl=0 or 1)
    ln_rstart   = .false.   !  start from rest (F) or from a restart file (T)
       nn_rstctl   =    2      !  restart control ==> activated only if ln_rstart=T

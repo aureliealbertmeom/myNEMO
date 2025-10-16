@@ -1,24 +1,74 @@
+- name : eORCA05.L121-EXP12
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA05.L121-EXP07
+  purpose: "outputs non recombines"
+- name : eORCA36.L121-EXP06
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP05
+  purpose: "one day with 1h outputs"
+- name : eORCA05.L121-EXP11
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA05.L121-EXP07
+  purpose: "adjust time step"
 - name : eORCA05.L121-EXP09
   machine: jean-zay
-  compiler: X64_JEANZAY
+  compiler: intel
+  arch_xios: X64_JEANZAY
+  arch_nemo: X64_JEANZAY
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP08
   purpose: "debugging new xml on jean zay"
+- name : eORCA05.L121-EXP08
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_debug
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA05.L121-EXP07
+  purpose: "debugging new xml"
 - name : eORCA05.L121-EXP07
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP05
-  purpose: "New xml and test doubling time step"
+  purpose: "New xml for 1d files and 1h outputs"
 - name : eORCA36.L121-EXP05
   machine: irene
-  compiler: X64_IRENE_debug
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_debug
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -27,7 +77,9 @@
   purpose: "new xml with all debug options"
 - name : eORCA36.L121-EXP04
   machine: irene
-  compiler: X64_IRENE_debugO3
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_debugO3
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -37,7 +89,9 @@
 
 - name : eORCA05.L121-EXP06
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -46,7 +100,9 @@
   purpose: "Performances on 16 nodes"       
 - name : eORCA05.L121-EXP05
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -55,7 +111,9 @@
   purpose: "Performances on 8 nodes"       
 - name : eORCA05.L121-EXP04
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -64,7 +122,9 @@
   purpose: "Performances on 4 nodes"       
 - name : eORCA36.L121-EXP03
   machine: irene
-  compiler: X64_IRENE_init
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_init
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -73,7 +133,9 @@
   purpose: "keep init array compilation option"       
 - name : eORCA05.L121-EXP03
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
@@ -82,7 +144,9 @@
        
 - name : eORCA36.L121-EXP02
   machine: irene
-  compiler: X64_IRENE_debug
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_debug
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -92,7 +156,9 @@
        
 - name : eORCA05.L121-EXP02
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
@@ -101,7 +167,9 @@
        
 - name : eORCA36.L121-EXP01
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
@@ -110,7 +178,9 @@
        
 - name : eORCA025.L121-EXP01
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
@@ -119,7 +189,9 @@
        
 - name : eORCA05.L121-EXP01
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
@@ -128,7 +200,9 @@
 
 - name : WED025-EXP01
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS2_2430
   nemo: NEMO_4.2.2
   nemo_ref: WED025
@@ -140,7 +214,9 @@
       
 - name : WED025-EXP02
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS2_2430
   nemo: NEMO_4.2.2
   prev_exp: EXP01
@@ -151,7 +227,9 @@
 
 - name : ORCA2-EXP01
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2656
   nemo: NEMO_4.2.2
   nemo_ref: X3_ORCA2_ICE
@@ -163,7 +241,9 @@
 
 - name : ORCA2-EXP02
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2656
   nemo: NEMO_5.0
   nemo_ref: X3_ORCA2_ICE_PISCES
@@ -176,7 +256,9 @@
 
 - name : ORCA2-EXP03
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   nemo_ref: X3_ORCA2_ICE_PISCES
@@ -189,7 +271,9 @@
 
 - name : WED025-EXP03
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS2_2430
   nemo: NEMO_5.0
   nemo_ref: WED025
@@ -200,7 +284,9 @@
        
 - name : WED025-EXP04
   machine: irene
-  compiler: X64_IRENE
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
   xios: XIOS3_2806
   nemo: NEMO_5.0
   cpp_conf: WED025
