@@ -16,7 +16,7 @@
   cpu_time: 62  # Total CPU in h, to be filled post run
   real_time: 262   # Elapse time in seconds, to be filled post run
 - nb: 1         #the number of jobs for this exp
-  job:1794433         #the jobid, to be filled post run
+  job: 1794433         #the jobid, to be filled post run
   exp : eORCA36.L121-EXP06       #name of the experiment (should be the same than in current_exp.yml)
   dt :     10   #time-step  for this part of the run, in seconds
   nit0:    1   #time step start
