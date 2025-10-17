@@ -1,3 +1,16 @@
+- name : eORCA36.L121-EXP07
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE_debug
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP06
+  purpose: "debug options"
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP12
   machine: irene
   compiler: intel
@@ -9,6 +22,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP07
   purpose: "outputs non recombines"
+  success: 
+  remarks: 
 - name : eORCA36.L121-EXP06
   machine: irene
   compiler: intel
@@ -20,6 +35,8 @@
   add_key: key_xios3
   prev_exp: eORCA36.L121-EXP05
   purpose: "one day with 1h outputs"
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP11
   machine: irene
   compiler: intel
@@ -31,6 +48,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP07
   purpose: "adjust time step"
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP09
   machine: jean-zay
   compiler: intel
@@ -42,6 +61,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP08
   purpose: "debugging new xml on jean zay"
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP08
   machine: irene
   compiler: intel
@@ -53,6 +74,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP07
   purpose: "debugging new xml"
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP07
   machine: irene
   compiler: intel
@@ -64,6 +87,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP05
   purpose: "New xml for 1d files and 1h outputs"
+  success: 
+  remarks: 
 - name : eORCA36.L121-EXP05
   machine: irene
   compiler: intel
@@ -75,6 +100,8 @@
   add_key: key_xios3
   prev_exp: eORCA36.L121-EXP02
   purpose: "new xml with all debug options"
+  success: 
+  remarks: 
 - name : eORCA36.L121-EXP04
   machine: irene
   compiler: intel
@@ -86,6 +113,8 @@
   add_key: key_xios3
   prev_exp: eORCA36.L121-EXP02
   purpose: "try debug with O3"
+  success: 
+  remarks: 
 
 - name : eORCA05.L121-EXP06
   machine: irene
@@ -98,6 +127,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP04
   purpose: "Performances on 16 nodes"       
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP05
   machine: irene
   compiler: intel
@@ -109,6 +140,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP04
   purpose: "Performances on 8 nodes"       
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP04
   machine: irene
   compiler: intel
@@ -120,6 +153,8 @@
   add_key: key_xios3
   prev_exp: eORCA05.L121-EXP03
   purpose: "Performances on 4 nodes"       
+  success: 
+  remarks: 
 - name : eORCA36.L121-EXP03
   machine: irene
   compiler: intel
@@ -131,6 +166,8 @@
   add_key: key_xios3
   prev_exp: eORCA36.L121-EXP02
   purpose: "keep init array compilation option"       
+  success: 
+  remarks: 
 - name : eORCA05.L121-EXP03
   machine: irene
   compiler: intel
@@ -141,6 +178,8 @@
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
   prev_exp: eORCA05.L121-EXP02
   purpose: "New decomposition for better performances (1 year in one job)"
+  success: 
+  remarks: 
        
 - name : eORCA36.L121-EXP02
   machine: irene
@@ -153,6 +192,8 @@
   add_key: key_xios3
   prev_exp: eORCA36.L121-EXP01
   purpose: "debug compilation options"
+  success: 
+  remarks: 
        
 - name : eORCA05.L121-EXP02
   machine: irene
@@ -164,6 +205,8 @@
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
   prev_exp: eORCA05.L121-EXP01
   purpose: "New domain with 30m limit for cavity height"
+  success: 
+  remarks: 
        
 - name : eORCA36.L121-EXP01
   machine: irene
@@ -175,6 +218,8 @@
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
   prev_exp: eORCA025.L121-EXP01
   purpose: "Test eORCA36.L121 without cavities on Irene with NEMO5 and XIOS3"
+  success: 
+  remarks: 
        
 - name : eORCA025.L121-EXP01
   machine: irene
@@ -186,6 +231,8 @@
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
   prev_exp: eORCA05.L121-EXP01
   purpose: "Test eORCA025.L121 from OPM026 exp P Mathiot on Irene with NEMO5 and XIOS3"
+  success: 
+  remarks: 
        
 - name : eORCA05.L121-EXP01
   machine: irene
@@ -197,6 +244,8 @@
   cpp_conf: WED025_wkey_xios3 #name of the reference config or NEMO that was taken as a reference originally
   prev_exp: WED025-EXP04
   purpose: "First eORCA05.L121 run on Irene with NEMO5 and XIOS3"
+  success: 
+  remarks: 
 
 - name : WED025-EXP01
   machine: irene
@@ -209,7 +258,7 @@
   prev_exp: EXP00
   date: "04/08/2025"
   purpose: "First Test on Irene with myNEMO cfg mngr"
-  success: Oui
+  success: 
   remarks: "One month duration instead of one year because not enough forcing files are provided, bug in the reference on the name of the runoff file name"
       
 - name : WED025-EXP02
@@ -222,6 +271,7 @@
   prev_exp: EXP01
   date: "06/08/2025"
   purpose: "Second test with myNEMO, reproducing an existing exp"
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
   success: Oui
   remarks: "Name of the experiment is changed so that the outputs and restarts are distinguishable"
 
@@ -236,6 +286,7 @@
   prev_exp: EXP00
   date: "07/08/2025"
   purpose: "First test of XIOS3 on Irene with the dedicated nemo reference config ORCA2 with NEMO 422"
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
   success: Non
   remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
 
@@ -251,6 +302,7 @@
   del_key: key_top
   date: "07/08/2025"
   purpose: "Trying to debug ORCA2-EXP01 by removing the top cpp key and switching to NEMO 5"
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
   success: Non
   remarks: "Error Please verify that both the operating system and the processor support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3, SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT, AVX2, AVX512F, AVX512DQ, ADX, AVX512CD, AVX512BW and AVX512VL instructions, realized later that the compilation option -xCORE-AVX512 was responsible"
 
@@ -266,6 +318,7 @@
   del_key: key_top
   date: "08/08/2025"
   purpose: "Debug prev exp with updating XIOS3"
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
   success: Oui
   remarks: "Adding some cores for xios in server mode (12 were specified in iodef in pool) really fixed the freezing issues"
 
@@ -279,6 +332,7 @@
   nemo_ref: WED025
   prev_exp: EXP00
   purpose: "Running reference case WED025 with NEMO5"
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
   success: Non
   remarks: "Same forcing issue than before, time step have been doubled between NEMO422 and NEMO5, so my number of time steps are more than the length of focing files (1month)" 
        
@@ -293,5 +347,6 @@
   prev_exp: EXP03
   add_key: key_xios3
   purpose: "Running WED025 with XIOS3"
-  success: True
+  remarks: "Freeze randomly at the initialization, realized later that xios needed some dedicated cores"
+  success: Oui
   remarks: ""
