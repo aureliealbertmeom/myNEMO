@@ -1,6 +1,6 @@
 ---
 section_id: Experiments
-nav_order: 1
+nav_order: 4
 title: WED025-EXP03
 ---
 
