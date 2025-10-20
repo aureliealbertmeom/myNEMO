@@ -8,23 +8,23 @@
 ============================================================================================================
     -->
 
-    <file_definition type="multiple_file"  compression_level="1" name="@expname@_@freq@" sync_freq="1d" min_digits="4">
+    <file_definition type="multiple_file"  compression_level="1" name="@expname@_@freq@_@startdate@_@enddate@" sync_freq="1d" min_digits="4">
 
       <file_group id="1h" output_freq="1h"  split_freq="1d" output_level="10" enabled=".TRUE.">  <!-- 1h files -->
-        <file id="file1" name_suffix="_surf_T"  description="ocean T grid variables" >
+        <file id="file1" name_suffix="_surf_T"  mode="write" using_server2="true" description="ocean T grid variables" >
           <field field_ref="sst"          name="tos"   />
           <field field_ref="sss"          name="sos"   />
           <field field_ref="ssh"          name="zos"   />
         </file>
 
-        <file id="file2" name_suffix="_surf_U"  description="ocean U grid variables" >
+        <file id="file2" name_suffix="_surf_U"  mode="write" using_server2="true" description="ocean U grid variables" >
           <field field_ref="ssu"          name="uos"      />
         </file>
 
-        <file id="file3" name_suffix="_surf_V"  description="ocean V grid variables" >
+        <file id="file3" name_suffix="_surf_V"  mode="write" using_server2="true" description="ocean V grid variables" >
           <field field_ref="ssv"          name="vos"      />
         </file>
-        <file id="file15" name_suffix="_scalar" compression_level="0" description="scalar variables" >
+        <file id="file15" name_suffix="_scalar" compression_level="0" mode="write" using_server2="true" description="scalar variables" >
           <!-- global drifts (conservation checks) -->
           <field field_ref="bgtemper"     name="bgtemper"    />
           <field field_ref="bgsaline"     name="bgsaline"    />
@@ -49,7 +49,7 @@
 
       </file_group>
       <file_group id="1d" output_freq="1d" split_freq="1d" output_level="10" enabled=".TRUE.">  <!-- 1d files -->
-        <file id="file11" name_suffix="_grid_T"  description="ocean T grid variables" >
+        <file id="file11" name_suffix="_grid_T"  mode="write" using_server2="true" description="ocean T grid variables" >
           <field field_ref="e3t"      />
           <field field_ref="toce"         name="thetao"                                                                      operation="instant" freq_op="1d" > @toce_e3t / @e3t </field>
           <field field_ref="soce"         name="so"                                                                          operation="instant" freq_op="1d" > @soce_e3t / @e3t </field>
@@ -72,16 +72,16 @@
           <field field_ref="snowpre" />
         </file>
 
-        <file id="file12" name_suffix="_grid_U"  description="ocean U grid variables" >
+        <file id="file12" name_suffix="_grid_U"  mode="write" using_server2="true" description="ocean U grid variables" >
           <field field_ref="e3u" />
           <field field_ref="uoce"         name="uo"       operation="instant" freq_op="1d" > @uoce_e3u / @e3u </field>
         </file>
 
-        <file id="file13" name_suffix="_grid_V"  description="ocean V grid variables" >
+        <file id="file13" name_suffix="_grid_V"  mode="write" using_server2="true" description="ocean V grid variables" >
           <field field_ref="e3v" />
           <field field_ref="voce"         name="vo"       operation="instant" freq_op="1d" > @voce_e3v / @e3v </field>
         </file>
-        <file id="file14" name_suffix="_grid_W"  description="ocean W grid variables" >
+        <file id="file14" name_suffix="_grid_W"  mode="write" using_server2="true" description="ocean W grid variables" >
           <field field_ref="e3w" />
           <field field_ref="woce"         name="wo"       />
           <field field_ref="avt"          name="difvho"   />

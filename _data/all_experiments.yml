@@ -1,3 +1,25 @@
+- name : eORCA36.L121-EXP08
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP06
+  purpose: "test 20"
+- name : eORCA36.L121-EXP08
+  machine: irene
+  compiler: intel
+  arch_xios: X64_IRENE
+  arch_nemo: X64_IRENE
+  xios: XIOS3_2806
+  nemo: NEMO_5.0
+  nemo_ref: WED025
+  add_key: key_xios3
+  prev_exp: eORCA36.L121-EXP06
+  purpose: "test 20"
 - name : eORCA36.L121-EXP07
   machine: irene
   compiler: intel
