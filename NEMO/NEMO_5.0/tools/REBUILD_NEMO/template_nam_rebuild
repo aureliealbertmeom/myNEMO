@@ -1,0 +1,4 @@
+&nam_rebuild
+filebase='BASE'
+ndomain=NB
+ndigits=DIGITS
