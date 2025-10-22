@@ -18,7 +18,7 @@
                     <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
                     {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li>{% endif %} 
                     {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li>{% endif %} 
-                    <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
+                    {% if c.remarks %}<li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
                 </ul>
 </div>
 
@@ -33,14 +33,14 @@
 <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title h3"> Job number {{ c.job }}</h2>
+                <h2 class="card-title h3"> Job number {{ j.job }}</h2>
                 <ul>
-                    <li> was launched on  : {{ c.date }} </li>
-                    <li> run from time-step {{ c.nit0 }} to {{ c.nitend }} with a time-step of {{ c.dt }} seconds </li>
-                    <li> on {{ c.node }} nodes and {{ c.cores }} cores that runned for {{ c.real_time }} seconds consumming {{ c.cpu_time }} hours in total</li>
-                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li> {% endif %} 
-                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li> {% endif %} 
-                    {% if c.remarks %} <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font> {% endif %} </li>
+                    <li> was launched on  : {{ j.date }} </li>
+                    <li> run from time-step {{ j.nit0 }} to {{ j.nitend }} with a time-step of {{ j.dt }} seconds </li>
+                    <li> on {{ j.node }} nodes and {{ j.cores }} cores that runned for {{ j.real_time }} seconds consumming {{ j.cpu_time }} hours in total</li>
+                    {% if j.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li> {% endif %} 
+                    {% if j.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li> {% endif %} 
+                    {% if j.remarks %} <li> Remarks : <font color="SlateGrey">{{ j.remarks }} </font>  </li>{% endif %}
                 </ul>
             </div>
         </div>
