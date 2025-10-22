@@ -1,0 +1,12 @@
+---
+section: Configurations
+nav_order: 3
+title: CONF
+---
+
+CONF is a global configuration with ice-shelves and 121 vertical levels, which is suited for it?
+
+All the experiments performed with NEMO for this CONF configuration are listed below :
+
+{% include list_config_CONF.html %}
+

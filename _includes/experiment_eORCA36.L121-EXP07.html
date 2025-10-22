@@ -1,7 +1,7 @@
 {% for c in site.data.all_experiments %}
 {% assign confcase = c.name | split: "-" %}
 
-{% if c.name == "CONFCASE" %} 
+{% if c.name == "eORCA36.L121-EXP07" %} 
 <div class="row justify-content-start">
                 <h2> Technical aspects : </h2>
                 <ul>
@@ -29,7 +29,7 @@
 
 {% assign my_sorted_list = site.data.all_jobs | sort:"date" %}
 {% for j in my_sorted_list %}
-{% if j.exp == "CONFCASE" %} 
+{% if j.exp == "eORCA36.L121-EXP07" %} 
 <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">

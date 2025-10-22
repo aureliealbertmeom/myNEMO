@@ -1,5 +1,5 @@
 - nb: 1         #the number of jobs for this exp
-  job:         #the jobid, to be filled post run
+  job: 1809984        #the jobid, to be filled post run
   exp : eORCA36.L121-EXP08       #name of the experiment (should be the same than in current_exp.yml)
   dt :     20   #time-step  for this part of the run, in seconds
   nit0:    1   #time step start
@@ -11,12 +11,29 @@
   xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
   time: 82800      # time limit for the job
   date: "17/10/2025"      # date of launch
+  success: Non   #Oui or Non, to be filled post run
+  remarks: "Maybe due to quota issues"
+  cpu_time: 438736  # Total CPU in h, to be filled post run
+  real_time: 82795   # Elapse time in seconds, to be filled post run
+- nb: 1         #the number of jobs for this exp
+  job: 1889064        #the jobid, to be filled post run
+  exp : eORCA36.L121-EXP07       #name of the experiment (should be the same than in current_exp.yml)
+  dt :     10   #time-step  for this part of the run, in seconds
+  nit0:    1   #time step start
+  nitend:  8640   #time step end
+  date_init: 20120101  #date at the beginning of job
+  node:  200    #number of nodes requested
+  cores: 25600     #number of cores requested (should be adequate to the machine characteristics)
+  nemo_cores: 25200 # number of cores for NEMo
+  xios_cores: 400 # number of cores for XIOS, the sum of the two should be the total number of cores requested
+  time: 82800      # time limit for the job
+  date: "22/10/2025"      # date of launch
   success:    #Oui or Non, to be filled post run
   remarks: ""
   cpu_time:   # Total CPU in h, to be filled post run
   real_time:    # Elapse time in seconds, to be filled post run
 - nb: 1         #the number of jobs for this exp
-  job:         #the jobid, to be filled post run
+  job: 1809922        #the jobid, to be filled post run
   exp : eORCA36.L121-EXP07       #name of the experiment (should be the same than in current_exp.yml)
   dt :     10   #time-step  for this part of the run, in seconds
   nit0:    1   #time step start
@@ -28,10 +45,10 @@
   xios_cores: 200 # number of cores for XIOS, the sum of the two should be the total number of cores requested
   time: 82800      # time limit for the job
   date: "17/10/2025"      # date of launch
-  success:    #Oui or Non, to be filled post run
-  remarks: ""
-  cpu_time:   # Total CPU in h, to be filled post run
-  real_time:    # Elapse time in seconds, to be filled post run
+  success: Non   #Oui or Non, to be filled post run
+  remarks: "Maybe a quota issue"
+  cpu_time: 431741   # Total CPU in h, to be filled post run
+  real_time: 82773   # Elapse time in seconds, to be filled post run
 - nb: 1         #the number of jobs for this exp
   job: 1791360        #the jobid, to be filled post run
   exp : eORCA05.L121-EXP12       #name of the experiment (should be the same than in current_exp.yml)
