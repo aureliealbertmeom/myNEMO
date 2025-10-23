@@ -27,8 +27,8 @@
 </div>                
 
 
-{% assign my_sorted_list = site.data.all_jobs  | sort:"job" %}
-{% for j in my_sorted_list reverse %}
+{% assign my_sorted_list = site.data.all_jobs  | sort:"job" | reverse %}
+{% for j in my_sorted_list %}
 {% if j.exp == "eORCA36.L121-EXP07" %} 
 <div class="row justify-content-center">
         <div class="card">
