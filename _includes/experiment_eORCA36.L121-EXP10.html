@@ -1,0 +1,52 @@
+{% for c in site.data.all_experiments %}
+{% assign confcase = c.name | split: "-" %}
+
+{% if c.name == "eORCA36.L121-EXP10" %} 
+<div class="row justify-content-start">
+                <h2> Technical aspects : </h2>
+                <ul>
+                    <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ confcase[0] }}.html">{{ confcase[0] }}</a> </li>
+                    <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
+                    <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
+                    <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
+                    <li> compiler : {{ c.compiler }} </li>
+                    <li> arch_xios : {{ c.arch_xios }} </li>
+                    <li> arch_nemo : {{ c.arch_nemo }} </li>
+                </ul>
+                <h2>Motivations and results : </h2>
+                <ul>
+                    <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
+                    {% if c.success == "Oui" %} <li> Result : <font color="SeaGreen"> Success </font> </li>{% endif %} 
+                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li>{% endif %} 
+                    {% if c.remarks %}<li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>{% endif %}
+                </ul>
+</div>
+
+<div class="row justify-content-start">
+                <h2> The jobs : </h2>
+</div>                
+
+
+{% assign my_sorted_list = site.data.all_jobs  | sort:"job" | reverse %}
+{% for j in my_sorted_list %}
+{% if j.exp == "eORCA36.L121-EXP10" %} 
+<div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title h3"> Job number {{ j.job }}</h2>
+                <ul>
+                    <li> was launched on  : <font color="SlateGrey">{{ j.date }}</font> </li>
+                    <li> run from time-step <font color="SlateGrey">{{ j.nit0 }}</font> to <font color="SlateGrey">{{ j.nitend }}</font> with a time-step of <font color="SlateGrey">{{ j.dt }}</font> seconds </li>
+                    <li> on <font color="SlateGrey">{{ j.node }}</font> nodes and <font color="SlateGrey">{{ j.cores }}</font> cores that runned for <font color="SlateGrey">{{ j.real_time }}</font> seconds consumming <font color="SlateGrey">{{ j.cpu_time }}</font> hours in total</li>
+                    {% if j.success == "Oui" %} <li> Result : <font color="SeaGreen"> Success </font> </li> {% endif %} 
+                    {% if j.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li> {% endif %} 
+                    {% if j.remarks %} <li> Remarks : <font color="SlateGrey">{{ j.remarks }} </font>  </li>{% endif %}
+                </ul>
+            </div>
+        </div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}

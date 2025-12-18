@@ -98,6 +98,11 @@ all_exec_tool={}
 all_exec_tool['REBUILD_NEMO']=['rebuild_nemo.exe']
 all_exec_tool['DOMAINcfg']=['make_domain_cfg.exe','dom_doc.exe']
 
+all_nam_tool={}
+all_nam_tool['REBUILD_NEMO']=['nam_rebuild']
+all_nam_tool['DOMAINcfg']=['namelist_cfg','namelist_ref']
+
+all_nam_tool
 #Relative to stored simulations for slice and plots
 
 configuration_list={}

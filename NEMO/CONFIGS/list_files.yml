@@ -1,4 +1,17 @@
 
+
+- name : eORCA36.L121-EXP10
+  all_init : ['eORCA36.L121_domain_noisf_v2_4.2.nc','votemper_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'vosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'weights_bicubic_JRA55-eORCA36.nc', 'weights_bilinear_JRA55-eORCA36.nc', 'chlorophyl_v0.0.nc','weights_bilinear_chla-eORCA36_4.2.nc', 'sosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'eORCA36.L121_runoffs_ISBA_clim1979-2018_4.2.nc', 'ghflux_v2.0.nc', 'weights_bilinear_ghflx-eORCA36_4.2.nc', 'sithic_eORCA025L121-eORCA36L121_y1989m01_4.2.nc', 'siconc_eORCA025L121-eORCA36L121_y1989m01_4.2.nc']
+  all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
+  path_forc: '/ccc/work/cont003/gen12020/alberaur/DATA_FORCING/JRA55'
+
+
+- name : eORCA36.L121-EXP09
+  all_init : ['eORCA36.L121_domain_noisf_v2_4.2.nc','votemper_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'vosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'weights_bicubic_JRA55-eORCA36.nc', 'weights_bilinear_JRA55-eORCA36.nc', 'chlorophyl_v0.0.nc','weights_bilinear_chla-eORCA36_4.2.nc', 'sosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'eORCA36.L121_runoffs_ISBA_clim1979-2018_4.2.nc', 'ghflux_v2.0.nc', 'weights_bilinear_ghflx-eORCA36_4.2.nc', 'sithic_eORCA025L121-eORCA36L121_y1989m01_4.2.nc', 'siconc_eORCA025L121-eORCA36L121_y1989m01_4.2.nc']
+  all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']
+  path_forc: '/ccc/work/cont003/gen12020/alberaur/DATA_FORCING/JRA55'
+
+
 - name : eORCA36.L121-EXP08
   all_init : ['eORCA36.L121_domain_noisf_v2_4.2.nc','votemper_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'vosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'weights_bicubic_JRA55-eORCA36.nc', 'weights_bilinear_JRA55-eORCA36.nc', 'chlorophyl_v0.0.nc','weights_bilinear_chla-eORCA36_4.2.nc', 'sosaline_eORCA025L121-eORCA36L121_y1989m01_v6d_4.2.nc', 'eORCA36.L121_runoffs_ISBA_clim1979-2018_4.2.nc', 'ghflux_v2.0.nc', 'weights_bilinear_ghflx-eORCA36_4.2.nc', 'sithic_eORCA025L121-eORCA36L121_y1989m01_4.2.nc', 'siconc_eORCA025L121-eORCA36L121_y1989m01_4.2.nc']
   all_forc : ['drowned_uas_JRA55','drowned_vas_JRA55','drowned_rsds_JRA55_1d','drowned_rlds_JRA55','drowned_tas_JRA55','drowned_huss_JRA55','drowned_tprecip_JRA55','drowned_prsn_JRA55','drowned_psl_JRA55']

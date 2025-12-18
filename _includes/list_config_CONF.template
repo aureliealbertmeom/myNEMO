@@ -1,0 +1,27 @@
+{% for c in site.data.all_experiments %}
+
+{% assign config = c.name | split: "-" %}
+{% if config[0] == "CONF" %} 
+<div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title h3"> <a href="https://aureliealbertmeom.github.io/myNEMO/content/experiments/{{ c.name }}.html"> {{ c.name }} </a> </h2>
+                Technical aspects :
+                <ul>
+                    <li> Configuration : <a href="https://aureliealbertmeom.github.io/myNEMO/content/configurations/{{ config[0] }}.html">{{ config[0] }}</a> </li>
+                    <li> Machine : <a href="https://aureliealbertmeom.github.io/myNEMO/content/machines/{{ c.machine }}.html">{{ c.machine }}</a> </li>
+                    <li> NEMO : <a href="https://aureliealbertmeom.github.io/myNEMO/content/nemo_versions/{{ c.nemo }}.html">{{ c.nemo }}</a> </li>
+                    <li> XIOS : <a href="https://aureliealbertmeom.github.io/myNEMO/content/xios_versions/{{ c.xios }}.html">{{ c.xios }}</a> </li>
+                </ul>
+                Motivations and results :
+                <ul>
+                    <li> Purpose : <font color="SteelBlue">{{ c.purpose }}</font> </li>
+                    {% if c.success == "Oui" %} <li> Result : <font color="Teal"> Success </font> </li>{% endif %} 
+                    {% if c.success == "Non" %} <li> Result : <font color="Tomato"> Failed </font> </li>{% endif %} 
+                    <li> Remarks : <font color="SlateGrey">{{ c.remarks }} </font>  </li>
+                </ul>
+            </div>
+        </div>
+</div>
+{% endif %}
+{% endfor %}

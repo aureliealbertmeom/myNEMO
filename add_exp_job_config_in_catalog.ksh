@@ -1,6 +1,6 @@
 #bin/bash
 
-list_exp='eORCA36.L121-EXP08 eORCA36.L121-EXP07'
+list_exp='eORCA36.L121-EXP01 eORCA36.L121-EXP02 eORCA36.L121-EXP03 eORCA36.L121-EXP04 eORCA36.L121-EXP05 eORCA36.L121-EXP06 eORCA36.L121-EXP09 eORCA36.L121-EXP10'
 
 for exp in $list_exp; do
 	CONFIG=$(echo $exp | awk -F- '{print $1}')
@@ -17,7 +17,7 @@ for exp in $list_exp; do
 	if [ ! -f content/experiments/${exp}.md ]; then
 		cp content/experiments/CONF-CASE.template content/experiments/${exp}.md
 		sed -i "s/CONFCASE/${exp}/g" content/experiments/${exp}.md
-		cp _includes/experiment_CONF-CASE.html _includes/experiment_${exp}.html
+		cp _includes/experiment_CONFCASE.template _includes/experiment_${exp}.html
 		sed -i "s/CONFCASE/${exp}/g" _includes/experiment_${exp}.html
 	fi
 

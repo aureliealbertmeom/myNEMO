@@ -5,7 +5,7 @@ add_exp=1
 add_config=1
 
 CONFIG=eORCA36.L121
-CASE=EXP08
+CASE=EXP10
 
 machine=$(cat current_experiment.yml | grep machine | awk '{print $2}')
 path_mynemo=$(cat lists.py | grep script_path | grep ${machine} | awk -F\' '{print $4}')

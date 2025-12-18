@@ -18,7 +18,8 @@ machine=dic_tool['machine']
 arch=dic_tool['arch']
 nemo_version=dic_tool['nemo']
 tool_name=dic_tool['name']
-config=dic_tool['config']
+if 'config' in dic_tool:
+    config=dic_tool['config']
 
 #Specific path and tools relative to the machine
 if machine in ls.all_machine:
@@ -48,19 +49,23 @@ else:
     f.compile_tool(machine,arch,nemo_version,tool_name,path_nemo,path_mynemo)
 
 #Use of the tool for a CONFIG
-path_use_tool=path_work+'/'+config+'/'+config+'-I/'+tool_name
-if not os.path.exists(path_use_tool):
-        os.makedirs(path_use_tool)
+if 'config' in dic_tool:
+    print(str(tool_name)+" will be used for config "+config)
+    path_use_tool=path_work+'/'+config+'/'+config+'-I/'+tool_name
+    if not os.path.exists(path_use_tool):
+            os.makedirs(path_use_tool)
 
-for exec_tool in ls.all_exec_tool[tool_name]:
-    if not os.path.exists(path_use_tool+'/'+exec_tool):
-        if os.path.exists(path_tool+'/'+exec_tool):
-            os.symlink(path_tool+'/'+exec_tool, path_use_tool+'/'+exec_tool)
-        else:
-            sys.exit(tool_name+' has been properly compiled, the executable '+exec_tool+' could not be found')
+    for exec_tool in ls.all_exec_tool[tool_name]:
+        if not os.path.exists(path_use_tool+'/'+exec_tool):
+            if os.path.exists(path_tool+'/'+exec_tool):
+                os.symlink(path_tool+'/'+exec_tool, path_use_tool+'/'+exec_tool)
+            else:
+                sys.exit(tool_name+' has not been properly compiled, the executable '+exec_tool+' could not be found')
 
-for nam_tool in ls.all_nam_tool[tool_name]:
-    if not os.path.exists(path_use_tool+'/'+nam_tool):
-        if os.path.exists(path_mynemo+'/NEMO/tools/'+tool_name+'/'+nam_tool):
+    for nam_tool in ls.all_nam_tool[tool_name]:
+        if not os.path.exists(path_use_tool+'/'+nam_tool):
+            if os.path.exists(path_mynemo+'/NEMO/tools/'+tool_name+'/'+nam_tool):
+                shutil.copyfile(path_mynemo+'/NEMO/tools/'+tool_name+'/'+nam_tool,path_use_tool+'/'+nam_tool)
 
+    print("All is ready at "+path_tool)
 

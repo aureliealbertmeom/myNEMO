@@ -371,6 +371,12 @@ def compile_tool(machine,arch,nemo_version,tool_name,path_nemo,path_mynemo):
         print('We copy the '+str(archname)+' arch file to '+path_nemo+'/arch/CNRS')
         shutil.copyfile(path_mynemo+'/NEMO/'+nemo_version+'/arch/'+archname,path_nemo+'/arch/CNRS/'+archname)
 
+    #Check wether the tool is a native NEMO tool or a myNEMO tool (heritage from DCM)
+    if not os.path.exists(path_nemo+'/tools/'+tool_name):
+        if os.path.exists(path_mynemo+'/NEMO/'+nemo_version+'/tools/'+tool_name):
+            print('This a myNEMO tool, we have to copy the sources')
+            shutil.copytree(path_mynemo+'/NEMO/'+nemo_version+'/tools/'+tool_name+'/src',path_nemo+'/tools/'+tool_name+'/src')
+
     #A script to compile the reference config with proper arch file
     scriptname='compile_'+str(tool_name)+'_'+arch+'.ksh'
     if not os.path.exists(path_nemo+'/tools/'+scriptname):
